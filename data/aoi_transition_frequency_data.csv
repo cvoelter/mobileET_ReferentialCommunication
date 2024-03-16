@@ -1,0 +1,1801 @@
+"","subject.x","session","trial","condition","transition_category","n","transition_binary"
+"1","Arko3",1,1,"gazing","Face-Hand",0,0
+"2","Arko3",1,1,"gazing","Face-Correct Bowl",0,0
+"3","Arko3",1,1,"gazing","Hand-Correct Bowl",0,0
+"4","Arko3",1,2,"gazing","Face-Hand",0,0
+"5","Arko3",1,2,"gazing","Face-Correct Bowl",0,0
+"6","Arko3",1,2,"gazing","Hand-Correct Bowl",0,0
+"7","Arko3",1,3,"control","Face-Hand",0,0
+"8","Arko3",1,3,"control","Face-Correct Bowl",0,0
+"9","Arko3",1,3,"control","Hand-Correct Bowl",0,0
+"10","Arko3",1,4,"gazing","Face-Hand",0,0
+"11","Arko3",1,4,"gazing","Face-Correct Bowl",0,0
+"12","Arko3",1,4,"gazing","Hand-Correct Bowl",0,0
+"13","Arko3",1,5,"gazing","Face-Hand",0,0
+"14","Arko3",1,5,"gazing","Face-Correct Bowl",0,0
+"15","Arko3",1,5,"gazing","Hand-Correct Bowl",0,0
+"16","Arko3",1,6,"gazing","Face-Hand",0,0
+"17","Arko3",1,6,"gazing","Face-Correct Bowl",0,0
+"18","Arko3",1,6,"gazing","Hand-Correct Bowl",0,0
+"19","Arko3",1,7,"gazing","Face-Hand",0,0
+"20","Arko3",1,7,"gazing","Face-Correct Bowl",0,0
+"21","Arko3",1,7,"gazing","Hand-Correct Bowl",0,0
+"22","Arko3",1,8,"control","Face-Hand",0,0
+"23","Arko3",1,8,"control","Face-Correct Bowl",0,0
+"24","Arko3",1,8,"control","Hand-Correct Bowl",0,0
+"25","Arko3",1,9,"pointing","Face-Hand",0,0
+"26","Arko3",1,9,"pointing","Face-Correct Bowl",0,0
+"27","Arko3",1,9,"pointing","Hand-Correct Bowl",0,0
+"28","Arko3",1,10,"pointing","Face-Hand",0,0
+"29","Arko3",1,10,"pointing","Face-Correct Bowl",0,0
+"30","Arko3",1,10,"pointing","Hand-Correct Bowl",0,0
+"31","Arko3",1,11,"pointing","Face-Hand",0,0
+"32","Arko3",1,11,"pointing","Face-Correct Bowl",0,0
+"33","Arko3",1,11,"pointing","Hand-Correct Bowl",0,0
+"34","Arko3",1,12,"pointing","Face-Hand",0,0
+"35","Arko3",1,12,"pointing","Face-Correct Bowl",0,0
+"36","Arko3",1,12,"pointing","Hand-Correct Bowl",0,0
+"37","Arko3",1,13,"control","Face-Hand",0,0
+"38","Arko3",1,13,"control","Face-Correct Bowl",0,0
+"39","Arko3",1,13,"control","Hand-Correct Bowl",0,0
+"40","Arko3",1,14,"pointing","Face-Hand",0,0
+"41","Arko3",1,14,"pointing","Face-Correct Bowl",0,0
+"42","Arko3",1,14,"pointing","Hand-Correct Bowl",2,1
+"43","Arko3",1,15,"pointing","Face-Hand",0,0
+"44","Arko3",1,15,"pointing","Face-Correct Bowl",0,0
+"45","Arko3",1,15,"pointing","Hand-Correct Bowl",0,0
+"46","Arko3",2,1,"throwing","Face-Hand",1,1
+"47","Arko3",2,1,"throwing","Face-Correct Bowl",0,0
+"48","Arko3",2,1,"throwing","Hand-Correct Bowl",0,0
+"49","Arko3",2,2,"throwing","Face-Hand",1,1
+"50","Arko3",2,2,"throwing","Face-Correct Bowl",0,0
+"51","Arko3",2,2,"throwing","Hand-Correct Bowl",0,0
+"52","Arko3",2,3,"control","Face-Hand",0,0
+"53","Arko3",2,3,"control","Face-Correct Bowl",0,0
+"54","Arko3",2,3,"control","Hand-Correct Bowl",0,0
+"55","Arko3",2,4,"throwing","Face-Hand",0,0
+"56","Arko3",2,4,"throwing","Face-Correct Bowl",0,0
+"57","Arko3",2,4,"throwing","Hand-Correct Bowl",0,0
+"58","Arko3",2,5,"throwing","Face-Hand",0,0
+"59","Arko3",2,5,"throwing","Face-Correct Bowl",0,0
+"60","Arko3",2,5,"throwing","Hand-Correct Bowl",0,0
+"61","Arko3",2,6,"throwing","Face-Hand",0,0
+"62","Arko3",2,6,"throwing","Face-Correct Bowl",0,0
+"63","Arko3",2,6,"throwing","Hand-Correct Bowl",0,0
+"64","Arko3",2,7,"throwing","Face-Hand",0,0
+"65","Arko3",2,7,"throwing","Face-Correct Bowl",0,0
+"66","Arko3",2,7,"throwing","Hand-Correct Bowl",0,0
+"67","Arko3",2,8,"control","Face-Hand",0,0
+"68","Arko3",2,8,"control","Face-Correct Bowl",0,0
+"69","Arko3",2,8,"control","Hand-Correct Bowl",0,0
+"70","Arko3",2,9,"p+g","Face-Hand",0,0
+"71","Arko3",2,9,"p+g","Face-Correct Bowl",0,0
+"72","Arko3",2,9,"p+g","Hand-Correct Bowl",0,0
+"73","Arko3",2,10,"p+g","Face-Hand",0,0
+"74","Arko3",2,10,"p+g","Face-Correct Bowl",0,0
+"75","Arko3",2,10,"p+g","Hand-Correct Bowl",0,0
+"76","Arko3",2,11,"p+g","Face-Hand",0,0
+"77","Arko3",2,11,"p+g","Face-Correct Bowl",0,0
+"78","Arko3",2,11,"p+g","Hand-Correct Bowl",2,1
+"79","Arko3",2,12,"p+g","Face-Hand",0,0
+"80","Arko3",2,12,"p+g","Face-Correct Bowl",0,0
+"81","Arko3",2,12,"p+g","Hand-Correct Bowl",0,0
+"82","Arko3",2,13,"control","Face-Hand",0,0
+"83","Arko3",2,13,"control","Face-Correct Bowl",0,0
+"84","Arko3",2,13,"control","Hand-Correct Bowl",0,0
+"85","Arko3",2,14,"p+g","Face-Hand",0,0
+"86","Arko3",2,14,"p+g","Face-Correct Bowl",0,0
+"87","Arko3",2,14,"p+g","Hand-Correct Bowl",0,0
+"88","Arko3",2,15,"p+g","Face-Hand",1,1
+"89","Arko3",2,15,"p+g","Face-Correct Bowl",0,0
+"90","Arko3",2,15,"p+g","Hand-Correct Bowl",0,0
+"91","Diara",1,1,"throwing","Face-Hand",0,0
+"92","Diara",1,1,"throwing","Face-Correct Bowl",0,0
+"93","Diara",1,1,"throwing","Hand-Correct Bowl",0,0
+"94","Diara",1,2,"throwing","Face-Hand",0,0
+"95","Diara",1,2,"throwing","Face-Correct Bowl",0,0
+"96","Diara",1,2,"throwing","Hand-Correct Bowl",0,0
+"97","Diara",1,3,"control","Face-Hand",0,0
+"98","Diara",1,3,"control","Face-Correct Bowl",0,0
+"99","Diara",1,3,"control","Hand-Correct Bowl",0,0
+"100","Diara",1,4,"throwing","Face-Hand",1,1
+"101","Diara",1,4,"throwing","Face-Correct Bowl",0,0
+"102","Diara",1,4,"throwing","Hand-Correct Bowl",2,1
+"103","Diara",1,5,"throwing","Face-Hand",0,0
+"104","Diara",1,5,"throwing","Face-Correct Bowl",0,0
+"105","Diara",1,5,"throwing","Hand-Correct Bowl",2,1
+"106","Diara",1,6,"throwing","Face-Hand",1,1
+"107","Diara",1,6,"throwing","Face-Correct Bowl",0,0
+"108","Diara",1,6,"throwing","Hand-Correct Bowl",0,0
+"109","Diara",1,7,"throwing","Face-Hand",1,1
+"110","Diara",1,7,"throwing","Face-Correct Bowl",0,0
+"111","Diara",1,7,"throwing","Hand-Correct Bowl",0,0
+"112","Diara",1,8,"control","Face-Hand",0,0
+"113","Diara",1,8,"control","Face-Correct Bowl",0,0
+"114","Diara",1,8,"control","Hand-Correct Bowl",0,0
+"115","Diara",1,9,"p+g","Face-Hand",0,0
+"116","Diara",1,9,"p+g","Face-Correct Bowl",0,0
+"117","Diara",1,9,"p+g","Hand-Correct Bowl",1,1
+"118","Diara",1,10,"p+g","Face-Hand",0,0
+"119","Diara",1,10,"p+g","Face-Correct Bowl",0,0
+"120","Diara",1,10,"p+g","Hand-Correct Bowl",0,0
+"121","Diara",1,11,"p+g","Face-Hand",0,0
+"122","Diara",1,11,"p+g","Face-Correct Bowl",0,0
+"123","Diara",1,11,"p+g","Hand-Correct Bowl",0,0
+"124","Diara",1,12,"p+g","Face-Hand",0,0
+"125","Diara",1,12,"p+g","Face-Correct Bowl",0,0
+"126","Diara",1,12,"p+g","Hand-Correct Bowl",0,0
+"127","Diara",1,13,"control","Face-Hand",0,0
+"128","Diara",1,13,"control","Face-Correct Bowl",0,0
+"129","Diara",1,13,"control","Hand-Correct Bowl",0,0
+"130","Diara",1,14,"p+g","Face-Hand",0,0
+"131","Diara",1,14,"p+g","Face-Correct Bowl",0,0
+"132","Diara",1,14,"p+g","Hand-Correct Bowl",0,0
+"133","Diara",1,15,"p+g","Face-Hand",0,0
+"134","Diara",1,15,"p+g","Face-Correct Bowl",1,1
+"135","Diara",1,15,"p+g","Hand-Correct Bowl",1,1
+"136","Diara",2,1,"p+g","Face-Hand",0,0
+"137","Diara",2,1,"p+g","Face-Correct Bowl",1,1
+"138","Diara",2,1,"p+g","Hand-Correct Bowl",0,0
+"139","Diara",2,2,"p+g","Face-Hand",0,0
+"140","Diara",2,2,"p+g","Face-Correct Bowl",0,0
+"141","Diara",2,2,"p+g","Hand-Correct Bowl",2,1
+"142","Diara",2,3,"control","Face-Hand",0,0
+"143","Diara",2,3,"control","Face-Correct Bowl",0,0
+"144","Diara",2,3,"control","Hand-Correct Bowl",0,0
+"145","Diara",2,4,"p+g","Face-Hand",0,0
+"146","Diara",2,4,"p+g","Face-Correct Bowl",0,0
+"147","Diara",2,4,"p+g","Hand-Correct Bowl",0,0
+"148","Diara",2,5,"p+g","Face-Hand",1,1
+"149","Diara",2,5,"p+g","Face-Correct Bowl",1,1
+"150","Diara",2,5,"p+g","Hand-Correct Bowl",0,0
+"151","Diara",2,6,"p+g","Face-Hand",0,0
+"152","Diara",2,6,"p+g","Face-Correct Bowl",0,0
+"153","Diara",2,6,"p+g","Hand-Correct Bowl",1,1
+"154","Diara",2,7,"p+g","Face-Hand",0,0
+"155","Diara",2,7,"p+g","Face-Correct Bowl",0,0
+"156","Diara",2,7,"p+g","Hand-Correct Bowl",1,1
+"157","Diara",2,8,"control","Face-Hand",0,0
+"158","Diara",2,8,"control","Face-Correct Bowl",0,0
+"159","Diara",2,8,"control","Hand-Correct Bowl",0,0
+"160","Diara",2,9,"pointing","Face-Hand",0,0
+"161","Diara",2,9,"pointing","Face-Correct Bowl",0,0
+"162","Diara",2,9,"pointing","Hand-Correct Bowl",0,0
+"163","Diara",2,10,"pointing","Face-Hand",0,0
+"164","Diara",2,10,"pointing","Face-Correct Bowl",0,0
+"165","Diara",2,10,"pointing","Hand-Correct Bowl",0,0
+"166","Diara",2,11,"pointing","Face-Hand",0,0
+"167","Diara",2,11,"pointing","Face-Correct Bowl",0,0
+"168","Diara",2,11,"pointing","Hand-Correct Bowl",0,0
+"169","Diara",2,12,"pointing","Face-Hand",0,0
+"170","Diara",2,12,"pointing","Face-Correct Bowl",0,0
+"171","Diara",2,12,"pointing","Hand-Correct Bowl",3,1
+"172","Diara",2,13,"control","Face-Hand",0,0
+"173","Diara",2,13,"control","Face-Correct Bowl",0,0
+"174","Diara",2,13,"control","Hand-Correct Bowl",0,0
+"175","Diara",2,14,"pointing","Face-Hand",0,0
+"176","Diara",2,14,"pointing","Face-Correct Bowl",1,1
+"177","Diara",2,14,"pointing","Hand-Correct Bowl",0,0
+"178","Diara",2,15,"pointing","Face-Hand",0,0
+"179","Diara",2,15,"pointing","Face-Correct Bowl",0,0
+"180","Diara",2,15,"pointing","Hand-Correct Bowl",0,0
+"181","Jimi",1,1,"p+g","Face-Hand",0,0
+"182","Jimi",1,1,"p+g","Face-Correct Bowl",0,0
+"183","Jimi",1,1,"p+g","Hand-Correct Bowl",0,0
+"184","Jimi",1,2,"p+g","Face-Hand",1,1
+"185","Jimi",1,2,"p+g","Face-Correct Bowl",1,1
+"186","Jimi",1,2,"p+g","Hand-Correct Bowl",1,1
+"187","Jimi",1,3,"control","Face-Hand",0,0
+"188","Jimi",1,3,"control","Face-Correct Bowl",0,0
+"189","Jimi",1,3,"control","Hand-Correct Bowl",0,0
+"190","Jimi",1,4,"p+g","Face-Hand",1,1
+"191","Jimi",1,4,"p+g","Face-Correct Bowl",0,0
+"192","Jimi",1,4,"p+g","Hand-Correct Bowl",0,0
+"193","Jimi",1,5,"p+g","Face-Hand",0,0
+"194","Jimi",1,5,"p+g","Face-Correct Bowl",0,0
+"195","Jimi",1,5,"p+g","Hand-Correct Bowl",0,0
+"196","Jimi",1,6,"p+g","Face-Hand",0,0
+"197","Jimi",1,6,"p+g","Face-Correct Bowl",0,0
+"198","Jimi",1,6,"p+g","Hand-Correct Bowl",0,0
+"199","Jimi",1,7,"p+g","Face-Hand",0,0
+"200","Jimi",1,7,"p+g","Face-Correct Bowl",0,0
+"201","Jimi",1,7,"p+g","Hand-Correct Bowl",0,0
+"202","Jimi",1,8,"control","Face-Hand",0,0
+"203","Jimi",1,8,"control","Face-Correct Bowl",0,0
+"204","Jimi",1,8,"control","Hand-Correct Bowl",0,0
+"205","Jimi",1,9,"gazing","Face-Hand",0,0
+"206","Jimi",1,9,"gazing","Face-Correct Bowl",0,0
+"207","Jimi",1,9,"gazing","Hand-Correct Bowl",0,0
+"208","Jimi",1,10,"gazing","Face-Hand",0,0
+"209","Jimi",1,10,"gazing","Face-Correct Bowl",0,0
+"210","Jimi",1,10,"gazing","Hand-Correct Bowl",0,0
+"211","Jimi",1,11,"gazing","Face-Hand",0,0
+"212","Jimi",1,11,"gazing","Face-Correct Bowl",0,0
+"213","Jimi",1,11,"gazing","Hand-Correct Bowl",0,0
+"214","Jimi",1,12,"gazing","Face-Hand",0,0
+"215","Jimi",1,12,"gazing","Face-Correct Bowl",0,0
+"216","Jimi",1,12,"gazing","Hand-Correct Bowl",0,0
+"217","Jimi",1,13,"control","Face-Hand",0,0
+"218","Jimi",1,13,"control","Face-Correct Bowl",0,0
+"219","Jimi",1,13,"control","Hand-Correct Bowl",0,0
+"220","Jimi",1,14,"gazing","Face-Hand",0,0
+"221","Jimi",1,14,"gazing","Face-Correct Bowl",0,0
+"222","Jimi",1,14,"gazing","Hand-Correct Bowl",0,0
+"223","Jimi",1,15,"gazing","Face-Hand",0,0
+"224","Jimi",1,15,"gazing","Face-Correct Bowl",0,0
+"225","Jimi",1,15,"gazing","Hand-Correct Bowl",0,0
+"226","Jimi",2,1,"pointing","Face-Hand",0,0
+"227","Jimi",2,1,"pointing","Face-Correct Bowl",1,1
+"228","Jimi",2,1,"pointing","Hand-Correct Bowl",0,0
+"229","Jimi",2,2,"pointing","Face-Hand",1,1
+"230","Jimi",2,2,"pointing","Face-Correct Bowl",0,0
+"231","Jimi",2,2,"pointing","Hand-Correct Bowl",0,0
+"232","Jimi",2,3,"control","Face-Hand",0,0
+"233","Jimi",2,3,"control","Face-Correct Bowl",0,0
+"234","Jimi",2,3,"control","Hand-Correct Bowl",0,0
+"235","Jimi",2,4,"pointing","Face-Hand",0,0
+"236","Jimi",2,4,"pointing","Face-Correct Bowl",0,0
+"237","Jimi",2,4,"pointing","Hand-Correct Bowl",0,0
+"238","Jimi",2,5,"pointing","Face-Hand",0,0
+"239","Jimi",2,5,"pointing","Face-Correct Bowl",0,0
+"240","Jimi",2,5,"pointing","Hand-Correct Bowl",0,0
+"241","Jimi",2,6,"pointing","Face-Hand",0,0
+"242","Jimi",2,6,"pointing","Face-Correct Bowl",0,0
+"243","Jimi",2,6,"pointing","Hand-Correct Bowl",0,0
+"244","Jimi",2,7,"pointing","Face-Hand",1,1
+"245","Jimi",2,7,"pointing","Face-Correct Bowl",0,0
+"246","Jimi",2,7,"pointing","Hand-Correct Bowl",0,0
+"247","Jimi",2,8,"control","Face-Hand",0,0
+"248","Jimi",2,8,"control","Face-Correct Bowl",0,0
+"249","Jimi",2,8,"control","Hand-Correct Bowl",0,0
+"250","Jimi",2,9,"throwing","Face-Hand",0,0
+"251","Jimi",2,9,"throwing","Face-Correct Bowl",0,0
+"252","Jimi",2,9,"throwing","Hand-Correct Bowl",0,0
+"253","Jimi",2,10,"throwing","Face-Hand",0,0
+"254","Jimi",2,10,"throwing","Face-Correct Bowl",0,0
+"255","Jimi",2,10,"throwing","Hand-Correct Bowl",0,0
+"256","Jimi",2,11,"throwing","Face-Hand",0,0
+"257","Jimi",2,11,"throwing","Face-Correct Bowl",0,0
+"258","Jimi",2,11,"throwing","Hand-Correct Bowl",0,0
+"259","Jimi",2,12,"throwing","Face-Hand",0,0
+"260","Jimi",2,12,"throwing","Face-Correct Bowl",0,0
+"261","Jimi",2,12,"throwing","Hand-Correct Bowl",0,0
+"262","Jimi",2,13,"control","Face-Hand",0,0
+"263","Jimi",2,13,"control","Face-Correct Bowl",0,0
+"264","Jimi",2,13,"control","Hand-Correct Bowl",0,0
+"265","Jimi",2,14,"throwing","Face-Hand",0,0
+"266","Jimi",2,14,"throwing","Face-Correct Bowl",0,0
+"267","Jimi",2,14,"throwing","Hand-Correct Bowl",0,0
+"268","Jimi",2,15,"throwing","Face-Hand",0,0
+"269","Jimi",2,15,"throwing","Face-Correct Bowl",0,0
+"270","Jimi",2,15,"throwing","Hand-Correct Bowl",0,0
+"271","Panda",1,1,"pointing","Face-Hand",2,1
+"272","Panda",1,1,"pointing","Face-Correct Bowl",0,0
+"273","Panda",1,1,"pointing","Hand-Correct Bowl",2,1
+"274","Panda",1,2,"pointing","Face-Hand",1,1
+"275","Panda",1,2,"pointing","Face-Correct Bowl",0,0
+"276","Panda",1,2,"pointing","Hand-Correct Bowl",5,1
+"277","Panda",1,3,"control","Face-Hand",0,0
+"278","Panda",1,3,"control","Face-Correct Bowl",0,0
+"279","Panda",1,3,"control","Hand-Correct Bowl",0,0
+"280","Panda",1,4,"pointing","Face-Hand",0,0
+"281","Panda",1,4,"pointing","Face-Correct Bowl",0,0
+"282","Panda",1,4,"pointing","Hand-Correct Bowl",1,1
+"283","Panda",1,5,"pointing","Face-Hand",1,1
+"284","Panda",1,5,"pointing","Face-Correct Bowl",0,0
+"285","Panda",1,5,"pointing","Hand-Correct Bowl",0,0
+"286","Panda",1,6,"pointing","Face-Hand",2,1
+"287","Panda",1,6,"pointing","Face-Correct Bowl",0,0
+"288","Panda",1,6,"pointing","Hand-Correct Bowl",0,0
+"289","Panda",1,7,"pointing","Face-Hand",0,0
+"290","Panda",1,7,"pointing","Face-Correct Bowl",0,0
+"291","Panda",1,7,"pointing","Hand-Correct Bowl",0,0
+"292","Panda",1,8,"control","Face-Hand",0,0
+"293","Panda",1,8,"control","Face-Correct Bowl",0,0
+"294","Panda",1,8,"control","Hand-Correct Bowl",0,0
+"295","Panda",1,9,"gazing","Face-Hand",0,0
+"296","Panda",1,9,"gazing","Face-Correct Bowl",0,0
+"297","Panda",1,9,"gazing","Hand-Correct Bowl",0,0
+"298","Panda",1,10,"gazing","Face-Hand",0,0
+"299","Panda",1,10,"gazing","Face-Correct Bowl",0,0
+"300","Panda",1,10,"gazing","Hand-Correct Bowl",0,0
+"301","Panda",1,11,"gazing","Face-Hand",1,1
+"302","Panda",1,11,"gazing","Face-Correct Bowl",1,1
+"303","Panda",1,11,"gazing","Hand-Correct Bowl",1,1
+"304","Panda",1,12,"gazing","Face-Hand",0,0
+"305","Panda",1,12,"gazing","Face-Correct Bowl",0,0
+"306","Panda",1,12,"gazing","Hand-Correct Bowl",0,0
+"307","Panda",1,13,"control","Face-Hand",0,0
+"308","Panda",1,13,"control","Face-Correct Bowl",0,0
+"309","Panda",1,13,"control","Hand-Correct Bowl",0,0
+"310","Panda",1,14,"gazing","Face-Hand",0,0
+"311","Panda",1,14,"gazing","Face-Correct Bowl",0,0
+"312","Panda",1,14,"gazing","Hand-Correct Bowl",0,0
+"313","Panda",1,15,"gazing","Face-Hand",0,0
+"314","Panda",1,15,"gazing","Face-Correct Bowl",0,0
+"315","Panda",1,15,"gazing","Hand-Correct Bowl",0,0
+"316","Panda",2,1,"p+g","Face-Hand",0,0
+"317","Panda",2,1,"p+g","Face-Correct Bowl",0,0
+"318","Panda",2,1,"p+g","Hand-Correct Bowl",3,1
+"319","Panda",2,2,"p+g","Face-Hand",0,0
+"320","Panda",2,2,"p+g","Face-Correct Bowl",0,0
+"321","Panda",2,2,"p+g","Hand-Correct Bowl",0,0
+"322","Panda",2,3,"control","Face-Hand",0,0
+"323","Panda",2,3,"control","Face-Correct Bowl",1,1
+"324","Panda",2,3,"control","Hand-Correct Bowl",0,0
+"325","Panda",2,4,"p+g","Face-Hand",0,0
+"326","Panda",2,4,"p+g","Face-Correct Bowl",0,0
+"327","Panda",2,4,"p+g","Hand-Correct Bowl",0,0
+"328","Panda",2,5,"p+g","Face-Hand",0,0
+"329","Panda",2,5,"p+g","Face-Correct Bowl",0,0
+"330","Panda",2,5,"p+g","Hand-Correct Bowl",0,0
+"331","Panda",2,6,"p+g","Face-Hand",0,0
+"332","Panda",2,6,"p+g","Face-Correct Bowl",0,0
+"333","Panda",2,6,"p+g","Hand-Correct Bowl",0,0
+"334","Panda",2,7,"p+g","Face-Hand",0,0
+"335","Panda",2,7,"p+g","Face-Correct Bowl",0,0
+"336","Panda",2,7,"p+g","Hand-Correct Bowl",0,0
+"337","Panda",2,8,"control","Face-Hand",0,0
+"338","Panda",2,8,"control","Face-Correct Bowl",0,0
+"339","Panda",2,8,"control","Hand-Correct Bowl",0,0
+"340","Panda",2,9,"throwing","Face-Hand",0,0
+"341","Panda",2,9,"throwing","Face-Correct Bowl",0,0
+"342","Panda",2,9,"throwing","Hand-Correct Bowl",0,0
+"343","Panda",2,10,"throwing","Face-Hand",0,0
+"344","Panda",2,10,"throwing","Face-Correct Bowl",0,0
+"345","Panda",2,10,"throwing","Hand-Correct Bowl",0,0
+"346","Panda",2,11,"throwing","Face-Hand",0,0
+"347","Panda",2,11,"throwing","Face-Correct Bowl",0,0
+"348","Panda",2,11,"throwing","Hand-Correct Bowl",0,0
+"349","Panda",2,12,"throwing","Face-Hand",0,0
+"350","Panda",2,12,"throwing","Face-Correct Bowl",0,0
+"351","Panda",2,12,"throwing","Hand-Correct Bowl",0,0
+"352","Panda",2,13,"control","Face-Hand",0,0
+"353","Panda",2,13,"control","Face-Correct Bowl",0,0
+"354","Panda",2,13,"control","Hand-Correct Bowl",0,0
+"355","Panda",2,14,"throwing","Face-Hand",0,0
+"356","Panda",2,14,"throwing","Face-Correct Bowl",0,0
+"357","Panda",2,14,"throwing","Hand-Correct Bowl",0,0
+"358","Panda",2,15,"throwing","Face-Hand",0,0
+"359","Panda",2,15,"throwing","Face-Correct Bowl",0,0
+"360","Panda",2,15,"throwing","Hand-Correct Bowl",0,0
+"361","Juna",1,1,"throwing","Face-Hand",0,0
+"362","Juna",1,1,"throwing","Face-Correct Bowl",0,0
+"363","Juna",1,1,"throwing","Hand-Correct Bowl",0,0
+"364","Juna",1,2,"throwing","Face-Hand",0,0
+"365","Juna",1,2,"throwing","Face-Correct Bowl",0,0
+"366","Juna",1,2,"throwing","Hand-Correct Bowl",0,0
+"367","Juna",1,3,"control","Face-Hand",0,0
+"368","Juna",1,3,"control","Face-Correct Bowl",0,0
+"369","Juna",1,3,"control","Hand-Correct Bowl",0,0
+"370","Juna",1,4,"throwing","Face-Hand",0,0
+"371","Juna",1,4,"throwing","Face-Correct Bowl",0,0
+"372","Juna",1,4,"throwing","Hand-Correct Bowl",0,0
+"373","Juna",1,5,"throwing","Face-Hand",0,0
+"374","Juna",1,5,"throwing","Face-Correct Bowl",0,0
+"375","Juna",1,5,"throwing","Hand-Correct Bowl",0,0
+"376","Juna",1,6,"throwing","Face-Hand",0,0
+"377","Juna",1,6,"throwing","Face-Correct Bowl",0,0
+"378","Juna",1,6,"throwing","Hand-Correct Bowl",0,0
+"379","Juna",1,7,"throwing","Face-Hand",0,0
+"380","Juna",1,7,"throwing","Face-Correct Bowl",0,0
+"381","Juna",1,7,"throwing","Hand-Correct Bowl",0,0
+"382","Juna",1,8,"control","Face-Hand",0,0
+"383","Juna",1,8,"control","Face-Correct Bowl",0,0
+"384","Juna",1,8,"control","Hand-Correct Bowl",0,0
+"385","Juna",1,9,"pointing","Face-Hand",0,0
+"386","Juna",1,9,"pointing","Face-Correct Bowl",0,0
+"387","Juna",1,9,"pointing","Hand-Correct Bowl",0,0
+"388","Juna",1,10,"pointing","Face-Hand",0,0
+"389","Juna",1,10,"pointing","Face-Correct Bowl",0,0
+"390","Juna",1,10,"pointing","Hand-Correct Bowl",0,0
+"391","Juna",1,11,"pointing","Face-Hand",0,0
+"392","Juna",1,11,"pointing","Face-Correct Bowl",0,0
+"393","Juna",1,11,"pointing","Hand-Correct Bowl",0,0
+"394","Juna",1,12,"pointing","Face-Hand",1,1
+"395","Juna",1,12,"pointing","Face-Correct Bowl",0,0
+"396","Juna",1,12,"pointing","Hand-Correct Bowl",0,0
+"397","Juna",1,13,"control","Face-Hand",0,0
+"398","Juna",1,13,"control","Face-Correct Bowl",0,0
+"399","Juna",1,13,"control","Hand-Correct Bowl",0,0
+"400","Juna",1,14,"pointing","Face-Hand",1,1
+"401","Juna",1,14,"pointing","Face-Correct Bowl",0,0
+"402","Juna",1,14,"pointing","Hand-Correct Bowl",0,0
+"403","Juna",1,15,"pointing","Face-Hand",1,1
+"404","Juna",1,15,"pointing","Face-Correct Bowl",0,0
+"405","Juna",1,15,"pointing","Hand-Correct Bowl",0,0
+"406","Juna",2,1,"p+g","Face-Hand",0,0
+"407","Juna",2,1,"p+g","Face-Correct Bowl",0,0
+"408","Juna",2,1,"p+g","Hand-Correct Bowl",0,0
+"409","Juna",2,2,"p+g","Face-Hand",0,0
+"410","Juna",2,2,"p+g","Face-Correct Bowl",0,0
+"411","Juna",2,2,"p+g","Hand-Correct Bowl",0,0
+"412","Juna",2,3,"control","Face-Hand",0,0
+"413","Juna",2,3,"control","Face-Correct Bowl",0,0
+"414","Juna",2,3,"control","Hand-Correct Bowl",0,0
+"415","Juna",2,4,"p+g","Face-Hand",0,0
+"416","Juna",2,4,"p+g","Face-Correct Bowl",0,0
+"417","Juna",2,4,"p+g","Hand-Correct Bowl",0,0
+"418","Juna",2,5,"p+g","Face-Hand",0,0
+"419","Juna",2,5,"p+g","Face-Correct Bowl",0,0
+"420","Juna",2,5,"p+g","Hand-Correct Bowl",0,0
+"421","Juna",2,6,"p+g","Face-Hand",0,0
+"422","Juna",2,6,"p+g","Face-Correct Bowl",0,0
+"423","Juna",2,6,"p+g","Hand-Correct Bowl",0,0
+"424","Juna",2,7,"p+g","Face-Hand",0,0
+"425","Juna",2,7,"p+g","Face-Correct Bowl",0,0
+"426","Juna",2,7,"p+g","Hand-Correct Bowl",0,0
+"427","Juna",2,8,"control","Face-Hand",0,0
+"428","Juna",2,8,"control","Face-Correct Bowl",0,0
+"429","Juna",2,8,"control","Hand-Correct Bowl",0,0
+"430","Juna",2,9,"gazing","Face-Hand",0,0
+"431","Juna",2,9,"gazing","Face-Correct Bowl",0,0
+"432","Juna",2,9,"gazing","Hand-Correct Bowl",0,0
+"433","Juna",2,10,"gazing","Face-Hand",0,0
+"434","Juna",2,10,"gazing","Face-Correct Bowl",0,0
+"435","Juna",2,10,"gazing","Hand-Correct Bowl",0,0
+"436","Juna",2,11,"gazing","Face-Hand",0,0
+"437","Juna",2,11,"gazing","Face-Correct Bowl",0,0
+"438","Juna",2,11,"gazing","Hand-Correct Bowl",0,0
+"439","Juna",2,12,"gazing","Face-Hand",0,0
+"440","Juna",2,12,"gazing","Face-Correct Bowl",0,0
+"441","Juna",2,12,"gazing","Hand-Correct Bowl",0,0
+"442","Juna",2,13,"control","Face-Hand",0,0
+"443","Juna",2,13,"control","Face-Correct Bowl",0,0
+"444","Juna",2,13,"control","Hand-Correct Bowl",0,0
+"445","Juna",2,14,"gazing","Face-Hand",0,0
+"446","Juna",2,14,"gazing","Face-Correct Bowl",0,0
+"447","Juna",2,14,"gazing","Hand-Correct Bowl",0,0
+"448","Juna",2,15,"gazing","Face-Hand",0,0
+"449","Juna",2,15,"gazing","Face-Correct Bowl",0,0
+"450","Juna",2,15,"gazing","Hand-Correct Bowl",0,0
+"451","Riu",1,1,"gazing","Face-Hand",0,0
+"452","Riu",1,1,"gazing","Face-Correct Bowl",0,0
+"453","Riu",1,1,"gazing","Hand-Correct Bowl",0,0
+"454","Riu",1,2,"gazing","Face-Hand",1,1
+"455","Riu",1,2,"gazing","Face-Correct Bowl",0,0
+"456","Riu",1,2,"gazing","Hand-Correct Bowl",0,0
+"457","Riu",1,3,"control","Face-Hand",0,0
+"458","Riu",1,3,"control","Face-Correct Bowl",0,0
+"459","Riu",1,3,"control","Hand-Correct Bowl",0,0
+"460","Riu",1,4,"gazing","Face-Hand",0,0
+"461","Riu",1,4,"gazing","Face-Correct Bowl",0,0
+"462","Riu",1,4,"gazing","Hand-Correct Bowl",0,0
+"463","Riu",1,5,"gazing","Face-Hand",0,0
+"464","Riu",1,5,"gazing","Face-Correct Bowl",0,0
+"465","Riu",1,5,"gazing","Hand-Correct Bowl",0,0
+"466","Riu",1,6,"gazing","Face-Hand",0,0
+"467","Riu",1,6,"gazing","Face-Correct Bowl",0,0
+"468","Riu",1,6,"gazing","Hand-Correct Bowl",0,0
+"469","Riu",1,7,"gazing","Face-Hand",0,0
+"470","Riu",1,7,"gazing","Face-Correct Bowl",0,0
+"471","Riu",1,7,"gazing","Hand-Correct Bowl",0,0
+"472","Riu",1,8,"control","Face-Hand",0,0
+"473","Riu",1,8,"control","Face-Correct Bowl",0,0
+"474","Riu",1,8,"control","Hand-Correct Bowl",0,0
+"475","Riu",1,9,"throwing","Face-Hand",0,0
+"476","Riu",1,9,"throwing","Face-Correct Bowl",0,0
+"477","Riu",1,9,"throwing","Hand-Correct Bowl",0,0
+"478","Riu",1,10,"throwing","Face-Hand",0,0
+"479","Riu",1,10,"throwing","Face-Correct Bowl",0,0
+"480","Riu",1,10,"throwing","Hand-Correct Bowl",0,0
+"481","Riu",1,11,"throwing","Face-Hand",0,0
+"482","Riu",1,11,"throwing","Face-Correct Bowl",0,0
+"483","Riu",1,11,"throwing","Hand-Correct Bowl",0,0
+"484","Riu",1,12,"throwing","Face-Hand",0,0
+"485","Riu",1,12,"throwing","Face-Correct Bowl",0,0
+"486","Riu",1,12,"throwing","Hand-Correct Bowl",0,0
+"487","Riu",1,13,"control","Face-Hand",0,0
+"488","Riu",1,13,"control","Face-Correct Bowl",0,0
+"489","Riu",1,13,"control","Hand-Correct Bowl",0,0
+"490","Riu",1,14,"throwing","Face-Hand",0,0
+"491","Riu",1,14,"throwing","Face-Correct Bowl",0,0
+"492","Riu",1,14,"throwing","Hand-Correct Bowl",0,0
+"493","Riu",1,15,"throwing","Face-Hand",0,0
+"494","Riu",1,15,"throwing","Face-Correct Bowl",0,0
+"495","Riu",1,15,"throwing","Hand-Correct Bowl",0,0
+"496","Riu",2,1,"p+g","Face-Hand",0,0
+"497","Riu",2,1,"p+g","Face-Correct Bowl",0,0
+"498","Riu",2,1,"p+g","Hand-Correct Bowl",0,0
+"499","Riu",2,2,"p+g","Face-Hand",0,0
+"500","Riu",2,2,"p+g","Face-Correct Bowl",0,0
+"501","Riu",2,2,"p+g","Hand-Correct Bowl",0,0
+"502","Riu",2,3,"control","Face-Hand",0,0
+"503","Riu",2,3,"control","Face-Correct Bowl",0,0
+"504","Riu",2,3,"control","Hand-Correct Bowl",0,0
+"505","Riu",2,4,"p+g","Face-Hand",1,1
+"506","Riu",2,4,"p+g","Face-Correct Bowl",0,0
+"507","Riu",2,4,"p+g","Hand-Correct Bowl",2,1
+"508","Riu",2,5,"p+g","Face-Hand",0,0
+"509","Riu",2,5,"p+g","Face-Correct Bowl",0,0
+"510","Riu",2,5,"p+g","Hand-Correct Bowl",0,0
+"511","Riu",2,6,"p+g","Face-Hand",2,1
+"512","Riu",2,6,"p+g","Face-Correct Bowl",0,0
+"513","Riu",2,6,"p+g","Hand-Correct Bowl",0,0
+"514","Riu",2,7,"p+g","Face-Hand",0,0
+"515","Riu",2,7,"p+g","Face-Correct Bowl",1,1
+"516","Riu",2,7,"p+g","Hand-Correct Bowl",1,1
+"517","Riu",2,8,"control","Face-Hand",0,0
+"518","Riu",2,8,"control","Face-Correct Bowl",0,0
+"519","Riu",2,8,"control","Hand-Correct Bowl",0,0
+"520","Riu",2,9,"pointing","Face-Hand",1,1
+"521","Riu",2,9,"pointing","Face-Correct Bowl",0,0
+"522","Riu",2,9,"pointing","Hand-Correct Bowl",0,0
+"523","Riu",2,10,"pointing","Face-Hand",0,0
+"524","Riu",2,10,"pointing","Face-Correct Bowl",0,0
+"525","Riu",2,10,"pointing","Hand-Correct Bowl",0,0
+"526","Riu",2,11,"pointing","Face-Hand",0,0
+"527","Riu",2,11,"pointing","Face-Correct Bowl",0,0
+"528","Riu",2,11,"pointing","Hand-Correct Bowl",0,0
+"529","Riu",2,12,"pointing","Face-Hand",0,0
+"530","Riu",2,12,"pointing","Face-Correct Bowl",0,0
+"531","Riu",2,12,"pointing","Hand-Correct Bowl",0,0
+"532","Riu",2,13,"control","Face-Hand",0,0
+"533","Riu",2,13,"control","Face-Correct Bowl",0,0
+"534","Riu",2,13,"control","Hand-Correct Bowl",0,0
+"535","Riu",2,14,"pointing","Face-Hand",0,0
+"536","Riu",2,14,"pointing","Face-Correct Bowl",0,0
+"537","Riu",2,14,"pointing","Hand-Correct Bowl",0,0
+"538","Riu",2,15,"pointing","Face-Hand",0,0
+"539","Riu",2,15,"pointing","Face-Correct Bowl",0,0
+"540","Riu",2,15,"pointing","Hand-Correct Bowl",0,0
+"541","Mia11",1,1,"gazing","Face-Hand",0,0
+"542","Mia11",1,1,"gazing","Face-Correct Bowl",0,0
+"543","Mia11",1,1,"gazing","Hand-Correct Bowl",2,1
+"544","Mia11",1,2,"gazing","Face-Hand",0,0
+"545","Mia11",1,2,"gazing","Face-Correct Bowl",0,0
+"546","Mia11",1,2,"gazing","Hand-Correct Bowl",0,0
+"547","Mia11",1,3,"control","Face-Hand",0,0
+"548","Mia11",1,3,"control","Face-Correct Bowl",0,0
+"549","Mia11",1,3,"control","Hand-Correct Bowl",0,0
+"550","Mia11",1,4,"gazing","Face-Hand",0,0
+"551","Mia11",1,4,"gazing","Face-Correct Bowl",0,0
+"552","Mia11",1,4,"gazing","Hand-Correct Bowl",0,0
+"553","Mia11",1,5,"gazing","Face-Hand",0,0
+"554","Mia11",1,5,"gazing","Face-Correct Bowl",0,0
+"555","Mia11",1,5,"gazing","Hand-Correct Bowl",0,0
+"556","Mia11",1,6,"gazing","Face-Hand",0,0
+"557","Mia11",1,6,"gazing","Face-Correct Bowl",0,0
+"558","Mia11",1,6,"gazing","Hand-Correct Bowl",0,0
+"559","Mia11",1,7,"gazing","Face-Hand",0,0
+"560","Mia11",1,7,"gazing","Face-Correct Bowl",0,0
+"561","Mia11",1,7,"gazing","Hand-Correct Bowl",0,0
+"562","Mia11",1,8,"control","Face-Hand",0,0
+"563","Mia11",1,8,"control","Face-Correct Bowl",0,0
+"564","Mia11",1,8,"control","Hand-Correct Bowl",0,0
+"565","Mia11",1,9,"p+g","Face-Hand",0,0
+"566","Mia11",1,9,"p+g","Face-Correct Bowl",0,0
+"567","Mia11",1,9,"p+g","Hand-Correct Bowl",0,0
+"568","Mia11",1,10,"p+g","Face-Hand",0,0
+"569","Mia11",1,10,"p+g","Face-Correct Bowl",0,0
+"570","Mia11",1,10,"p+g","Hand-Correct Bowl",0,0
+"571","Mia11",1,11,"p+g","Face-Hand",0,0
+"572","Mia11",1,11,"p+g","Face-Correct Bowl",0,0
+"573","Mia11",1,11,"p+g","Hand-Correct Bowl",0,0
+"574","Mia11",1,12,"p+g","Face-Hand",0,0
+"575","Mia11",1,12,"p+g","Face-Correct Bowl",0,0
+"576","Mia11",1,12,"p+g","Hand-Correct Bowl",0,0
+"577","Mia11",1,13,"control","Face-Hand",0,0
+"578","Mia11",1,13,"control","Face-Correct Bowl",0,0
+"579","Mia11",1,13,"control","Hand-Correct Bowl",0,0
+"580","Mia11",1,14,"p+g","Face-Hand",1,1
+"581","Mia11",1,14,"p+g","Face-Correct Bowl",0,0
+"582","Mia11",1,14,"p+g","Hand-Correct Bowl",0,0
+"583","Mia11",1,15,"p+g","Face-Hand",0,0
+"584","Mia11",1,15,"p+g","Face-Correct Bowl",0,0
+"585","Mia11",1,15,"p+g","Hand-Correct Bowl",0,0
+"586","Mia11",2,1,"pointing","Face-Hand",0,0
+"587","Mia11",2,1,"pointing","Face-Correct Bowl",0,0
+"588","Mia11",2,1,"pointing","Hand-Correct Bowl",0,0
+"589","Mia11",2,2,"pointing","Face-Hand",0,0
+"590","Mia11",2,2,"pointing","Face-Correct Bowl",0,0
+"591","Mia11",2,2,"pointing","Hand-Correct Bowl",1,1
+"592","Mia11",2,3,"control","Face-Hand",0,0
+"593","Mia11",2,3,"control","Face-Correct Bowl",0,0
+"594","Mia11",2,3,"control","Hand-Correct Bowl",0,0
+"595","Mia11",2,4,"pointing","Face-Hand",0,0
+"596","Mia11",2,4,"pointing","Face-Correct Bowl",0,0
+"597","Mia11",2,4,"pointing","Hand-Correct Bowl",2,1
+"598","Mia11",2,5,"pointing","Face-Hand",0,0
+"599","Mia11",2,5,"pointing","Face-Correct Bowl",0,0
+"600","Mia11",2,5,"pointing","Hand-Correct Bowl",0,0
+"601","Mia11",2,6,"pointing","Face-Hand",1,1
+"602","Mia11",2,6,"pointing","Face-Correct Bowl",0,0
+"603","Mia11",2,6,"pointing","Hand-Correct Bowl",0,0
+"604","Mia11",2,7,"pointing","Face-Hand",0,0
+"605","Mia11",2,7,"pointing","Face-Correct Bowl",0,0
+"606","Mia11",2,7,"pointing","Hand-Correct Bowl",0,0
+"607","Mia11",2,8,"control","Face-Hand",0,0
+"608","Mia11",2,8,"control","Face-Correct Bowl",0,0
+"609","Mia11",2,8,"control","Hand-Correct Bowl",0,0
+"610","Mia11",2,9,"throwing","Face-Hand",0,0
+"611","Mia11",2,9,"throwing","Face-Correct Bowl",0,0
+"612","Mia11",2,9,"throwing","Hand-Correct Bowl",0,0
+"613","Mia11",2,10,"throwing","Face-Hand",0,0
+"614","Mia11",2,10,"throwing","Face-Correct Bowl",0,0
+"615","Mia11",2,10,"throwing","Hand-Correct Bowl",0,0
+"616","Mia11",2,11,"throwing","Face-Hand",0,0
+"617","Mia11",2,11,"throwing","Face-Correct Bowl",0,0
+"618","Mia11",2,11,"throwing","Hand-Correct Bowl",0,0
+"619","Mia11",2,12,"throwing","Face-Hand",0,0
+"620","Mia11",2,12,"throwing","Face-Correct Bowl",0,0
+"621","Mia11",2,12,"throwing","Hand-Correct Bowl",0,0
+"622","Mia11",2,13,"control","Face-Hand",0,0
+"623","Mia11",2,13,"control","Face-Correct Bowl",0,0
+"624","Mia11",2,13,"control","Hand-Correct Bowl",0,0
+"625","Mia11",2,14,"throwing","Face-Hand",0,0
+"626","Mia11",2,14,"throwing","Face-Correct Bowl",0,0
+"627","Mia11",2,14,"throwing","Hand-Correct Bowl",0,0
+"628","Mia11",2,15,"throwing","Face-Hand",0,0
+"629","Mia11",2,15,"throwing","Face-Correct Bowl",0,0
+"630","Mia11",2,15,"throwing","Hand-Correct Bowl",0,0
+"631","Emil9",1,1,"p+g","Face-Hand",0,0
+"632","Emil9",1,1,"p+g","Face-Correct Bowl",0,0
+"633","Emil9",1,1,"p+g","Hand-Correct Bowl",0,0
+"634","Emil9",1,2,"p+g","Face-Hand",0,0
+"635","Emil9",1,2,"p+g","Face-Correct Bowl",0,0
+"636","Emil9",1,2,"p+g","Hand-Correct Bowl",2,1
+"637","Emil9",1,3,"control","Face-Hand",0,0
+"638","Emil9",1,3,"control","Face-Correct Bowl",0,0
+"639","Emil9",1,3,"control","Hand-Correct Bowl",0,0
+"640","Emil9",1,4,"p+g","Face-Hand",0,0
+"641","Emil9",1,4,"p+g","Face-Correct Bowl",0,0
+"642","Emil9",1,4,"p+g","Hand-Correct Bowl",4,1
+"643","Emil9",1,5,"p+g","Face-Hand",0,0
+"644","Emil9",1,5,"p+g","Face-Correct Bowl",0,0
+"645","Emil9",1,5,"p+g","Hand-Correct Bowl",0,0
+"646","Emil9",1,6,"p+g","Face-Hand",0,0
+"647","Emil9",1,6,"p+g","Face-Correct Bowl",0,0
+"648","Emil9",1,6,"p+g","Hand-Correct Bowl",0,0
+"649","Emil9",1,7,"p+g","Face-Hand",1,1
+"650","Emil9",1,7,"p+g","Face-Correct Bowl",1,1
+"651","Emil9",1,7,"p+g","Hand-Correct Bowl",2,1
+"652","Emil9",1,8,"control","Face-Hand",0,0
+"653","Emil9",1,8,"control","Face-Correct Bowl",0,0
+"654","Emil9",1,8,"control","Hand-Correct Bowl",0,0
+"655","Emil9",1,9,"gazing","Face-Hand",0,0
+"656","Emil9",1,9,"gazing","Face-Correct Bowl",0,0
+"657","Emil9",1,9,"gazing","Hand-Correct Bowl",0,0
+"658","Emil9",1,10,"gazing","Face-Hand",0,0
+"659","Emil9",1,10,"gazing","Face-Correct Bowl",0,0
+"660","Emil9",1,10,"gazing","Hand-Correct Bowl",0,0
+"661","Emil9",1,11,"gazing","Face-Hand",0,0
+"662","Emil9",1,11,"gazing","Face-Correct Bowl",0,0
+"663","Emil9",1,11,"gazing","Hand-Correct Bowl",0,0
+"664","Emil9",1,12,"gazing","Face-Hand",0,0
+"665","Emil9",1,12,"gazing","Face-Correct Bowl",0,0
+"666","Emil9",1,12,"gazing","Hand-Correct Bowl",0,0
+"667","Emil9",1,13,"control","Face-Hand",0,0
+"668","Emil9",1,13,"control","Face-Correct Bowl",0,0
+"669","Emil9",1,13,"control","Hand-Correct Bowl",0,0
+"670","Emil9",1,14,"gazing","Face-Hand",0,0
+"671","Emil9",1,14,"gazing","Face-Correct Bowl",0,0
+"672","Emil9",1,14,"gazing","Hand-Correct Bowl",0,0
+"673","Emil9",1,15,"gazing","Face-Hand",0,0
+"674","Emil9",1,15,"gazing","Face-Correct Bowl",0,0
+"675","Emil9",1,15,"gazing","Hand-Correct Bowl",0,0
+"676","Emil9",2,1,"throwing","Face-Hand",0,0
+"677","Emil9",2,1,"throwing","Face-Correct Bowl",0,0
+"678","Emil9",2,1,"throwing","Hand-Correct Bowl",0,0
+"679","Emil9",2,2,"throwing","Face-Hand",1,1
+"680","Emil9",2,2,"throwing","Face-Correct Bowl",0,0
+"681","Emil9",2,2,"throwing","Hand-Correct Bowl",0,0
+"682","Emil9",2,3,"control","Face-Hand",0,0
+"683","Emil9",2,3,"control","Face-Correct Bowl",0,0
+"684","Emil9",2,3,"control","Hand-Correct Bowl",0,0
+"685","Emil9",2,4,"throwing","Face-Hand",0,0
+"686","Emil9",2,4,"throwing","Face-Correct Bowl",0,0
+"687","Emil9",2,4,"throwing","Hand-Correct Bowl",0,0
+"688","Emil9",2,5,"throwing","Face-Hand",0,0
+"689","Emil9",2,5,"throwing","Face-Correct Bowl",0,0
+"690","Emil9",2,5,"throwing","Hand-Correct Bowl",0,0
+"691","Emil9",2,6,"throwing","Face-Hand",0,0
+"692","Emil9",2,6,"throwing","Face-Correct Bowl",0,0
+"693","Emil9",2,6,"throwing","Hand-Correct Bowl",0,0
+"694","Emil9",2,7,"throwing","Face-Hand",0,0
+"695","Emil9",2,7,"throwing","Face-Correct Bowl",0,0
+"696","Emil9",2,7,"throwing","Hand-Correct Bowl",0,0
+"697","Emil9",2,8,"control","Face-Hand",0,0
+"698","Emil9",2,8,"control","Face-Correct Bowl",0,0
+"699","Emil9",2,8,"control","Hand-Correct Bowl",0,0
+"700","Emil9",2,9,"pointing","Face-Hand",0,0
+"701","Emil9",2,9,"pointing","Face-Correct Bowl",0,0
+"702","Emil9",2,9,"pointing","Hand-Correct Bowl",1,1
+"703","Emil9",2,10,"pointing","Face-Hand",2,1
+"704","Emil9",2,10,"pointing","Face-Correct Bowl",0,0
+"705","Emil9",2,10,"pointing","Hand-Correct Bowl",0,0
+"706","Emil9",2,11,"pointing","Face-Hand",0,0
+"707","Emil9",2,11,"pointing","Face-Correct Bowl",0,0
+"708","Emil9",2,11,"pointing","Hand-Correct Bowl",0,0
+"709","Emil9",2,12,"pointing","Face-Hand",1,1
+"710","Emil9",2,12,"pointing","Face-Correct Bowl",0,0
+"711","Emil9",2,12,"pointing","Hand-Correct Bowl",0,0
+"712","Emil9",2,13,"control","Face-Hand",0,0
+"713","Emil9",2,13,"control","Face-Correct Bowl",0,0
+"714","Emil9",2,13,"control","Hand-Correct Bowl",0,0
+"715","Emil9",2,14,"pointing","Face-Hand",1,1
+"716","Emil9",2,14,"pointing","Face-Correct Bowl",0,0
+"717","Emil9",2,14,"pointing","Hand-Correct Bowl",0,0
+"718","Emil9",2,15,"pointing","Face-Hand",0,0
+"719","Emil9",2,15,"pointing","Face-Correct Bowl",0,0
+"720","Emil9",2,15,"pointing","Hand-Correct Bowl",0,0
+"721","Mexx2",1,1,"gazing","Face-Hand",0,0
+"722","Mexx2",1,1,"gazing","Face-Correct Bowl",2,1
+"723","Mexx2",1,1,"gazing","Hand-Correct Bowl",0,0
+"724","Mexx2",1,2,"gazing","Face-Hand",0,0
+"725","Mexx2",1,2,"gazing","Face-Correct Bowl",0,0
+"726","Mexx2",1,2,"gazing","Hand-Correct Bowl",0,0
+"727","Mexx2",1,3,"gazing","Face-Hand",0,0
+"728","Mexx2",1,3,"gazing","Face-Correct Bowl",1,1
+"729","Mexx2",1,3,"gazing","Hand-Correct Bowl",0,0
+"730","Mexx2",1,4,"gazing","Face-Hand",0,0
+"731","Mexx2",1,4,"gazing","Face-Correct Bowl",0,0
+"732","Mexx2",1,4,"gazing","Hand-Correct Bowl",0,0
+"733","Mexx2",1,5,"control","Face-Hand",0,0
+"734","Mexx2",1,5,"control","Face-Correct Bowl",0,0
+"735","Mexx2",1,5,"control","Hand-Correct Bowl",0,0
+"736","Mexx2",1,6,"gazing","Face-Hand",0,0
+"737","Mexx2",1,6,"gazing","Face-Correct Bowl",0,0
+"738","Mexx2",1,6,"gazing","Hand-Correct Bowl",0,0
+"739","Mexx2",1,7,"gazing","Face-Hand",0,0
+"740","Mexx2",1,7,"gazing","Face-Correct Bowl",0,0
+"741","Mexx2",1,7,"gazing","Hand-Correct Bowl",1,1
+"742","Mexx2",1,8,"control","Face-Hand",0,0
+"743","Mexx2",1,8,"control","Face-Correct Bowl",0,0
+"744","Mexx2",1,8,"control","Hand-Correct Bowl",0,0
+"745","Mexx2",1,9,"throwing","Face-Hand",0,0
+"746","Mexx2",1,9,"throwing","Face-Correct Bowl",0,0
+"747","Mexx2",1,9,"throwing","Hand-Correct Bowl",0,0
+"748","Mexx2",1,10,"throwing","Face-Hand",0,0
+"749","Mexx2",1,10,"throwing","Face-Correct Bowl",0,0
+"750","Mexx2",1,10,"throwing","Hand-Correct Bowl",0,0
+"751","Mexx2",1,11,"throwing","Face-Hand",0,0
+"752","Mexx2",1,11,"throwing","Face-Correct Bowl",0,0
+"753","Mexx2",1,11,"throwing","Hand-Correct Bowl",0,0
+"754","Mexx2",1,12,"throwing","Face-Hand",0,0
+"755","Mexx2",1,12,"throwing","Face-Correct Bowl",0,0
+"756","Mexx2",1,12,"throwing","Hand-Correct Bowl",0,0
+"757","Mexx2",1,13,"control","Face-Hand",0,0
+"758","Mexx2",1,13,"control","Face-Correct Bowl",0,0
+"759","Mexx2",1,13,"control","Hand-Correct Bowl",0,0
+"760","Mexx2",1,14,"throwing","Face-Hand",0,0
+"761","Mexx2",1,14,"throwing","Face-Correct Bowl",0,0
+"762","Mexx2",1,14,"throwing","Hand-Correct Bowl",0,0
+"763","Mexx2",1,15,"throwing","Face-Hand",0,0
+"764","Mexx2",1,15,"throwing","Face-Correct Bowl",0,0
+"765","Mexx2",1,15,"throwing","Hand-Correct Bowl",0,0
+"766","Mexx2",2,1,"p+g","Face-Hand",0,0
+"767","Mexx2",2,1,"p+g","Face-Correct Bowl",0,0
+"768","Mexx2",2,1,"p+g","Hand-Correct Bowl",0,0
+"769","Mexx2",2,2,"p+g","Face-Hand",0,0
+"770","Mexx2",2,2,"p+g","Face-Correct Bowl",0,0
+"771","Mexx2",2,2,"p+g","Hand-Correct Bowl",0,0
+"772","Mexx2",2,3,"control","Face-Hand",0,0
+"773","Mexx2",2,3,"control","Face-Correct Bowl",0,0
+"774","Mexx2",2,3,"control","Hand-Correct Bowl",0,0
+"775","Mexx2",2,4,"p+g","Face-Hand",0,0
+"776","Mexx2",2,4,"p+g","Face-Correct Bowl",0,0
+"777","Mexx2",2,4,"p+g","Hand-Correct Bowl",4,1
+"778","Mexx2",2,5,"p+g","Face-Hand",0,0
+"779","Mexx2",2,5,"p+g","Face-Correct Bowl",0,0
+"780","Mexx2",2,5,"p+g","Hand-Correct Bowl",1,1
+"781","Mexx2",2,6,"p+g","Face-Hand",0,0
+"782","Mexx2",2,6,"p+g","Face-Correct Bowl",0,0
+"783","Mexx2",2,6,"p+g","Hand-Correct Bowl",0,0
+"784","Mexx2",2,7,"p+g","Face-Hand",0,0
+"785","Mexx2",2,7,"p+g","Face-Correct Bowl",0,0
+"786","Mexx2",2,7,"p+g","Hand-Correct Bowl",1,1
+"787","Mexx2",2,8,"control","Face-Hand",0,0
+"788","Mexx2",2,8,"control","Face-Correct Bowl",0,0
+"789","Mexx2",2,8,"control","Hand-Correct Bowl",0,0
+"790","Mexx2",2,9,"pointing","Face-Hand",0,0
+"791","Mexx2",2,9,"pointing","Face-Correct Bowl",0,0
+"792","Mexx2",2,9,"pointing","Hand-Correct Bowl",0,0
+"793","Mexx2",2,10,"pointing","Face-Hand",0,0
+"794","Mexx2",2,10,"pointing","Face-Correct Bowl",0,0
+"795","Mexx2",2,10,"pointing","Hand-Correct Bowl",0,0
+"796","Mexx2",2,11,"pointing","Face-Hand",0,0
+"797","Mexx2",2,11,"pointing","Face-Correct Bowl",0,0
+"798","Mexx2",2,11,"pointing","Hand-Correct Bowl",0,0
+"799","Mexx2",2,12,"pointing","Face-Hand",0,0
+"800","Mexx2",2,12,"pointing","Face-Correct Bowl",0,0
+"801","Mexx2",2,12,"pointing","Hand-Correct Bowl",0,0
+"802","Mexx2",2,13,"control","Face-Hand",0,0
+"803","Mexx2",2,13,"control","Face-Correct Bowl",0,0
+"804","Mexx2",2,13,"control","Hand-Correct Bowl",0,0
+"805","Mexx2",2,14,"pointing","Face-Hand",0,0
+"806","Mexx2",2,14,"pointing","Face-Correct Bowl",0,0
+"807","Mexx2",2,14,"pointing","Hand-Correct Bowl",0,0
+"808","Mexx2",2,15,"pointing","Face-Hand",0,0
+"809","Mexx2",2,15,"pointing","Face-Correct Bowl",0,0
+"810","Mexx2",2,15,"pointing","Hand-Correct Bowl",0,0
+"811","Floki",1,1,"pointing","Face-Hand",0,0
+"812","Floki",1,1,"pointing","Face-Correct Bowl",1,1
+"813","Floki",1,1,"pointing","Hand-Correct Bowl",0,0
+"814","Floki",1,2,"pointing","Face-Hand",0,0
+"815","Floki",1,2,"pointing","Face-Correct Bowl",0,0
+"816","Floki",1,2,"pointing","Hand-Correct Bowl",0,0
+"817","Floki",1,3,"pointing","Face-Hand",0,0
+"818","Floki",1,3,"pointing","Face-Correct Bowl",0,0
+"819","Floki",1,3,"pointing","Hand-Correct Bowl",0,0
+"820","Floki",1,4,"pointing","Face-Hand",0,0
+"821","Floki",1,4,"pointing","Face-Correct Bowl",0,0
+"822","Floki",1,4,"pointing","Hand-Correct Bowl",0,0
+"823","Floki",1,5,"control","Face-Hand",0,0
+"824","Floki",1,5,"control","Face-Correct Bowl",0,0
+"825","Floki",1,5,"control","Hand-Correct Bowl",0,0
+"826","Floki",1,6,"pointing","Face-Hand",0,0
+"827","Floki",1,6,"pointing","Face-Correct Bowl",0,0
+"828","Floki",1,6,"pointing","Hand-Correct Bowl",0,0
+"829","Floki",1,7,"pointing","Face-Hand",0,0
+"830","Floki",1,7,"pointing","Face-Correct Bowl",0,0
+"831","Floki",1,7,"pointing","Hand-Correct Bowl",0,0
+"832","Floki",1,8,"control","Face-Hand",0,0
+"833","Floki",1,8,"control","Face-Correct Bowl",0,0
+"834","Floki",1,8,"control","Hand-Correct Bowl",0,0
+"835","Floki",1,9,"p+g","Face-Hand",0,0
+"836","Floki",1,9,"p+g","Face-Correct Bowl",0,0
+"837","Floki",1,9,"p+g","Hand-Correct Bowl",0,0
+"838","Floki",1,10,"p+g","Face-Hand",3,1
+"839","Floki",1,10,"p+g","Face-Correct Bowl",0,0
+"840","Floki",1,10,"p+g","Hand-Correct Bowl",0,0
+"841","Floki",1,11,"p+g","Face-Hand",0,0
+"842","Floki",1,11,"p+g","Face-Correct Bowl",0,0
+"843","Floki",1,11,"p+g","Hand-Correct Bowl",0,0
+"844","Floki",1,12,"p+g","Face-Hand",0,0
+"845","Floki",1,12,"p+g","Face-Correct Bowl",1,1
+"846","Floki",1,12,"p+g","Hand-Correct Bowl",1,1
+"847","Floki",1,13,"control","Face-Hand",0,0
+"848","Floki",1,13,"control","Face-Correct Bowl",0,0
+"849","Floki",1,13,"control","Hand-Correct Bowl",0,0
+"850","Floki",1,14,"p+g","Face-Hand",0,0
+"851","Floki",1,14,"p+g","Face-Correct Bowl",0,0
+"852","Floki",1,14,"p+g","Hand-Correct Bowl",0,0
+"853","Floki",1,15,"p+g","Face-Hand",0,0
+"854","Floki",1,15,"p+g","Face-Correct Bowl",0,0
+"855","Floki",1,15,"p+g","Hand-Correct Bowl",0,0
+"856","Floki",2,1,"throwing","Face-Hand",0,0
+"857","Floki",2,1,"throwing","Face-Correct Bowl",0,0
+"858","Floki",2,1,"throwing","Hand-Correct Bowl",0,0
+"859","Floki",2,2,"throwing","Face-Hand",0,0
+"860","Floki",2,2,"throwing","Face-Correct Bowl",0,0
+"861","Floki",2,2,"throwing","Hand-Correct Bowl",0,0
+"862","Floki",2,3,"control","Face-Hand",0,0
+"863","Floki",2,3,"control","Face-Correct Bowl",0,0
+"864","Floki",2,3,"control","Hand-Correct Bowl",0,0
+"865","Floki",2,4,"throwing","Face-Hand",0,0
+"866","Floki",2,4,"throwing","Face-Correct Bowl",0,0
+"867","Floki",2,4,"throwing","Hand-Correct Bowl",0,0
+"868","Floki",2,5,"throwing","Face-Hand",0,0
+"869","Floki",2,5,"throwing","Face-Correct Bowl",0,0
+"870","Floki",2,5,"throwing","Hand-Correct Bowl",0,0
+"871","Floki",2,6,"throwing","Face-Hand",0,0
+"872","Floki",2,6,"throwing","Face-Correct Bowl",0,0
+"873","Floki",2,6,"throwing","Hand-Correct Bowl",0,0
+"874","Floki",2,7,"throwing","Face-Hand",0,0
+"875","Floki",2,7,"throwing","Face-Correct Bowl",0,0
+"876","Floki",2,7,"throwing","Hand-Correct Bowl",0,0
+"877","Floki",2,8,"control","Face-Hand",0,0
+"878","Floki",2,8,"control","Face-Correct Bowl",0,0
+"879","Floki",2,8,"control","Hand-Correct Bowl",0,0
+"880","Floki",2,9,"gazing","Face-Hand",0,0
+"881","Floki",2,9,"gazing","Face-Correct Bowl",0,0
+"882","Floki",2,9,"gazing","Hand-Correct Bowl",0,0
+"883","Floki",2,10,"gazing","Face-Hand",0,0
+"884","Floki",2,10,"gazing","Face-Correct Bowl",0,0
+"885","Floki",2,10,"gazing","Hand-Correct Bowl",0,0
+"886","Floki",2,11,"gazing","Face-Hand",0,0
+"887","Floki",2,11,"gazing","Face-Correct Bowl",0,0
+"888","Floki",2,11,"gazing","Hand-Correct Bowl",0,0
+"889","Floki",2,12,"gazing","Face-Hand",0,0
+"890","Floki",2,12,"gazing","Face-Correct Bowl",0,0
+"891","Floki",2,12,"gazing","Hand-Correct Bowl",0,0
+"892","Floki",2,13,"control","Face-Hand",0,0
+"893","Floki",2,13,"control","Face-Correct Bowl",0,0
+"894","Floki",2,13,"control","Hand-Correct Bowl",0,0
+"895","Floki",2,14,"gazing","Face-Hand",0,0
+"896","Floki",2,14,"gazing","Face-Correct Bowl",0,0
+"897","Floki",2,14,"gazing","Hand-Correct Bowl",0,0
+"898","Floki",2,15,"gazing","Face-Hand",0,0
+"899","Floki",2,15,"gazing","Face-Correct Bowl",0,0
+"900","Floki",2,15,"gazing","Hand-Correct Bowl",0,0
+"901","Django2",1,1,"throwing","Face-Hand",0,0
+"902","Django2",1,1,"throwing","Face-Correct Bowl",0,0
+"903","Django2",1,1,"throwing","Hand-Correct Bowl",0,0
+"904","Django2",1,2,"throwing","Face-Hand",0,0
+"905","Django2",1,2,"throwing","Face-Correct Bowl",0,0
+"906","Django2",1,2,"throwing","Hand-Correct Bowl",0,0
+"907","Django2",1,3,"control","Face-Hand",0,0
+"908","Django2",1,3,"control","Face-Correct Bowl",0,0
+"909","Django2",1,3,"control","Hand-Correct Bowl",0,0
+"910","Django2",1,4,"throwing","Face-Hand",0,0
+"911","Django2",1,4,"throwing","Face-Correct Bowl",0,0
+"912","Django2",1,4,"throwing","Hand-Correct Bowl",0,0
+"913","Django2",1,5,"throwing","Face-Hand",0,0
+"914","Django2",1,5,"throwing","Face-Correct Bowl",0,0
+"915","Django2",1,5,"throwing","Hand-Correct Bowl",0,0
+"916","Django2",1,6,"throwing","Face-Hand",0,0
+"917","Django2",1,6,"throwing","Face-Correct Bowl",0,0
+"918","Django2",1,6,"throwing","Hand-Correct Bowl",0,0
+"919","Django2",1,7,"throwing","Face-Hand",0,0
+"920","Django2",1,7,"throwing","Face-Correct Bowl",0,0
+"921","Django2",1,7,"throwing","Hand-Correct Bowl",0,0
+"922","Django2",1,8,"control","Face-Hand",0,0
+"923","Django2",1,8,"control","Face-Correct Bowl",0,0
+"924","Django2",1,8,"control","Hand-Correct Bowl",0,0
+"925","Django2",1,9,"p+g","Face-Hand",0,0
+"926","Django2",1,9,"p+g","Face-Correct Bowl",0,0
+"927","Django2",1,9,"p+g","Hand-Correct Bowl",0,0
+"928","Django2",1,10,"p+g","Face-Hand",0,0
+"929","Django2",1,10,"p+g","Face-Correct Bowl",2,1
+"930","Django2",1,10,"p+g","Hand-Correct Bowl",0,0
+"931","Django2",1,11,"p+g","Face-Hand",0,0
+"932","Django2",1,11,"p+g","Face-Correct Bowl",2,1
+"933","Django2",1,11,"p+g","Hand-Correct Bowl",0,0
+"934","Django2",1,12,"p+g","Face-Hand",0,0
+"935","Django2",1,12,"p+g","Face-Correct Bowl",0,0
+"936","Django2",1,12,"p+g","Hand-Correct Bowl",0,0
+"937","Django2",1,13,"control","Face-Hand",0,0
+"938","Django2",1,13,"control","Face-Correct Bowl",0,0
+"939","Django2",1,13,"control","Hand-Correct Bowl",0,0
+"940","Django2",1,14,"p+g","Face-Hand",0,0
+"941","Django2",1,14,"p+g","Face-Correct Bowl",0,0
+"942","Django2",1,14,"p+g","Hand-Correct Bowl",0,0
+"943","Django2",1,15,"p+g","Face-Hand",0,0
+"944","Django2",1,15,"p+g","Face-Correct Bowl",0,0
+"945","Django2",1,15,"p+g","Hand-Correct Bowl",0,0
+"946","Django2",2,1,"pointing","Face-Hand",0,0
+"947","Django2",2,1,"pointing","Face-Correct Bowl",0,0
+"948","Django2",2,1,"pointing","Hand-Correct Bowl",0,0
+"949","Django2",2,2,"pointing","Face-Hand",0,0
+"950","Django2",2,2,"pointing","Face-Correct Bowl",0,0
+"951","Django2",2,2,"pointing","Hand-Correct Bowl",0,0
+"952","Django2",2,3,"control","Face-Hand",0,0
+"953","Django2",2,3,"control","Face-Correct Bowl",0,0
+"954","Django2",2,3,"control","Hand-Correct Bowl",0,0
+"955","Django2",2,4,"pointing","Face-Hand",0,0
+"956","Django2",2,4,"pointing","Face-Correct Bowl",2,1
+"957","Django2",2,4,"pointing","Hand-Correct Bowl",0,0
+"958","Django2",2,5,"pointing","Face-Hand",0,0
+"959","Django2",2,5,"pointing","Face-Correct Bowl",0,0
+"960","Django2",2,5,"pointing","Hand-Correct Bowl",0,0
+"961","Django2",2,6,"pointing","Face-Hand",0,0
+"962","Django2",2,6,"pointing","Face-Correct Bowl",0,0
+"963","Django2",2,6,"pointing","Hand-Correct Bowl",0,0
+"964","Django2",2,7,"pointing","Face-Hand",0,0
+"965","Django2",2,7,"pointing","Face-Correct Bowl",0,0
+"966","Django2",2,7,"pointing","Hand-Correct Bowl",0,0
+"967","Django2",2,8,"control","Face-Hand",0,0
+"968","Django2",2,8,"control","Face-Correct Bowl",0,0
+"969","Django2",2,8,"control","Hand-Correct Bowl",0,0
+"970","Django2",2,9,"gazing","Face-Hand",0,0
+"971","Django2",2,9,"gazing","Face-Correct Bowl",2,1
+"972","Django2",2,9,"gazing","Hand-Correct Bowl",0,0
+"973","Django2",2,10,"gazing","Face-Hand",0,0
+"974","Django2",2,10,"gazing","Face-Correct Bowl",0,0
+"975","Django2",2,10,"gazing","Hand-Correct Bowl",0,0
+"976","Django2",2,11,"gazing","Face-Hand",0,0
+"977","Django2",2,11,"gazing","Face-Correct Bowl",0,0
+"978","Django2",2,11,"gazing","Hand-Correct Bowl",0,0
+"979","Django2",2,12,"gazing","Face-Hand",0,0
+"980","Django2",2,12,"gazing","Face-Correct Bowl",0,0
+"981","Django2",2,12,"gazing","Hand-Correct Bowl",0,0
+"982","Django2",2,13,"control","Face-Hand",0,0
+"983","Django2",2,13,"control","Face-Correct Bowl",0,0
+"984","Django2",2,13,"control","Hand-Correct Bowl",0,0
+"985","Django2",2,14,"gazing","Face-Hand",0,0
+"986","Django2",2,14,"gazing","Face-Correct Bowl",0,0
+"987","Django2",2,14,"gazing","Hand-Correct Bowl",0,0
+"988","Django2",2,15,"gazing","Face-Hand",0,0
+"989","Django2",2,15,"gazing","Face-Correct Bowl",0,0
+"990","Django2",2,15,"gazing","Hand-Correct Bowl",0,0
+"991","Pisco",1,1,"throwing","Face-Hand",0,0
+"992","Pisco",1,1,"throwing","Face-Correct Bowl",0,0
+"993","Pisco",1,1,"throwing","Hand-Correct Bowl",0,0
+"994","Pisco",1,2,"throwing","Face-Hand",0,0
+"995","Pisco",1,2,"throwing","Face-Correct Bowl",0,0
+"996","Pisco",1,2,"throwing","Hand-Correct Bowl",0,0
+"997","Pisco",1,3,"control","Face-Hand",0,0
+"998","Pisco",1,3,"control","Face-Correct Bowl",0,0
+"999","Pisco",1,3,"control","Hand-Correct Bowl",0,0
+"1000","Pisco",1,4,"throwing","Face-Hand",0,0
+"1001","Pisco",1,4,"throwing","Face-Correct Bowl",0,0
+"1002","Pisco",1,4,"throwing","Hand-Correct Bowl",0,0
+"1003","Pisco",1,5,"throwing","Face-Hand",0,0
+"1004","Pisco",1,5,"throwing","Face-Correct Bowl",0,0
+"1005","Pisco",1,5,"throwing","Hand-Correct Bowl",0,0
+"1006","Pisco",1,6,"throwing","Face-Hand",0,0
+"1007","Pisco",1,6,"throwing","Face-Correct Bowl",0,0
+"1008","Pisco",1,6,"throwing","Hand-Correct Bowl",0,0
+"1009","Pisco",1,7,"throwing","Face-Hand",0,0
+"1010","Pisco",1,7,"throwing","Face-Correct Bowl",0,0
+"1011","Pisco",1,7,"throwing","Hand-Correct Bowl",0,0
+"1012","Pisco",1,8,"control","Face-Hand",0,0
+"1013","Pisco",1,8,"control","Face-Correct Bowl",0,0
+"1014","Pisco",1,8,"control","Hand-Correct Bowl",0,0
+"1015","Pisco",1,9,"pointing","Face-Hand",0,0
+"1016","Pisco",1,9,"pointing","Face-Correct Bowl",0,0
+"1017","Pisco",1,9,"pointing","Hand-Correct Bowl",0,0
+"1018","Pisco",1,10,"pointing","Face-Hand",0,0
+"1019","Pisco",1,10,"pointing","Face-Correct Bowl",0,0
+"1020","Pisco",1,10,"pointing","Hand-Correct Bowl",3,1
+"1021","Pisco",1,11,"pointing","Face-Hand",0,0
+"1022","Pisco",1,11,"pointing","Face-Correct Bowl",0,0
+"1023","Pisco",1,11,"pointing","Hand-Correct Bowl",1,1
+"1024","Pisco",1,12,"pointing","Face-Hand",0,0
+"1025","Pisco",1,12,"pointing","Face-Correct Bowl",0,0
+"1026","Pisco",1,12,"pointing","Hand-Correct Bowl",0,0
+"1027","Pisco",1,13,"control","Face-Hand",0,0
+"1028","Pisco",1,13,"control","Face-Correct Bowl",0,0
+"1029","Pisco",1,13,"control","Hand-Correct Bowl",0,0
+"1030","Pisco",1,14,"pointing","Face-Hand",0,0
+"1031","Pisco",1,14,"pointing","Face-Correct Bowl",0,0
+"1032","Pisco",1,14,"pointing","Hand-Correct Bowl",0,0
+"1033","Pisco",1,15,"pointing","Face-Hand",0,0
+"1034","Pisco",1,15,"pointing","Face-Correct Bowl",1,1
+"1035","Pisco",1,15,"pointing","Hand-Correct Bowl",1,1
+"1036","Pisco",2,1,"gazing","Face-Hand",0,0
+"1037","Pisco",2,1,"gazing","Face-Correct Bowl",0,0
+"1038","Pisco",2,1,"gazing","Hand-Correct Bowl",0,0
+"1039","Pisco",2,2,"gazing","Face-Hand",0,0
+"1040","Pisco",2,2,"gazing","Face-Correct Bowl",0,0
+"1041","Pisco",2,2,"gazing","Hand-Correct Bowl",0,0
+"1042","Pisco",2,3,"gazing","Face-Hand",0,0
+"1043","Pisco",2,3,"gazing","Face-Correct Bowl",0,0
+"1044","Pisco",2,3,"gazing","Hand-Correct Bowl",0,0
+"1045","Pisco",2,4,"gazing","Face-Hand",0,0
+"1046","Pisco",2,4,"gazing","Face-Correct Bowl",0,0
+"1047","Pisco",2,4,"gazing","Hand-Correct Bowl",0,0
+"1048","Pisco",2,5,"control","Face-Hand",0,0
+"1049","Pisco",2,5,"control","Face-Correct Bowl",0,0
+"1050","Pisco",2,5,"control","Hand-Correct Bowl",0,0
+"1051","Pisco",2,6,"gazing","Face-Hand",0,0
+"1052","Pisco",2,6,"gazing","Face-Correct Bowl",0,0
+"1053","Pisco",2,6,"gazing","Hand-Correct Bowl",0,0
+"1054","Pisco",2,7,"gazing","Face-Hand",1,1
+"1055","Pisco",2,7,"gazing","Face-Correct Bowl",0,0
+"1056","Pisco",2,7,"gazing","Hand-Correct Bowl",0,0
+"1057","Pisco",2,8,"control","Face-Hand",0,0
+"1058","Pisco",2,8,"control","Face-Correct Bowl",0,0
+"1059","Pisco",2,8,"control","Hand-Correct Bowl",0,0
+"1060","Pisco",2,9,"p+g","Face-Hand",0,0
+"1061","Pisco",2,9,"p+g","Face-Correct Bowl",0,0
+"1062","Pisco",2,9,"p+g","Hand-Correct Bowl",0,0
+"1063","Pisco",2,10,"p+g","Face-Hand",0,0
+"1064","Pisco",2,10,"p+g","Face-Correct Bowl",0,0
+"1065","Pisco",2,10,"p+g","Hand-Correct Bowl",2,1
+"1066","Pisco",2,11,"p+g","Face-Hand",0,0
+"1067","Pisco",2,11,"p+g","Face-Correct Bowl",0,0
+"1068","Pisco",2,11,"p+g","Hand-Correct Bowl",0,0
+"1069","Pisco",2,12,"p+g","Face-Hand",0,0
+"1070","Pisco",2,12,"p+g","Face-Correct Bowl",0,0
+"1071","Pisco",2,12,"p+g","Hand-Correct Bowl",0,0
+"1072","Pisco",2,13,"control","Face-Hand",0,0
+"1073","Pisco",2,13,"control","Face-Correct Bowl",0,0
+"1074","Pisco",2,13,"control","Hand-Correct Bowl",0,0
+"1075","Pisco",2,14,"p+g","Face-Hand",0,0
+"1076","Pisco",2,14,"p+g","Face-Correct Bowl",0,0
+"1077","Pisco",2,14,"p+g","Hand-Correct Bowl",2,1
+"1078","Pisco",2,15,"p+g","Face-Hand",0,0
+"1079","Pisco",2,15,"p+g","Face-Correct Bowl",0,0
+"1080","Pisco",2,15,"p+g","Hand-Correct Bowl",2,1
+"1081","Edgar3",1,1,"gazing","Face-Hand",0,0
+"1082","Edgar3",1,1,"gazing","Face-Correct Bowl",0,0
+"1083","Edgar3",1,1,"gazing","Hand-Correct Bowl",0,0
+"1084","Edgar3",1,2,"gazing","Face-Hand",0,0
+"1085","Edgar3",1,2,"gazing","Face-Correct Bowl",0,0
+"1086","Edgar3",1,2,"gazing","Hand-Correct Bowl",0,0
+"1087","Edgar3",1,3,"control","Face-Hand",0,0
+"1088","Edgar3",1,3,"control","Face-Correct Bowl",0,0
+"1089","Edgar3",1,3,"control","Hand-Correct Bowl",0,0
+"1090","Edgar3",1,4,"gazing","Face-Hand",0,0
+"1091","Edgar3",1,4,"gazing","Face-Correct Bowl",1,1
+"1092","Edgar3",1,4,"gazing","Hand-Correct Bowl",1,1
+"1093","Edgar3",1,5,"gazing","Face-Hand",0,0
+"1094","Edgar3",1,5,"gazing","Face-Correct Bowl",0,0
+"1095","Edgar3",1,5,"gazing","Hand-Correct Bowl",0,0
+"1096","Edgar3",1,6,"gazing","Face-Hand",0,0
+"1097","Edgar3",1,6,"gazing","Face-Correct Bowl",0,0
+"1098","Edgar3",1,6,"gazing","Hand-Correct Bowl",0,0
+"1099","Edgar3",1,7,"gazing","Face-Hand",0,0
+"1100","Edgar3",1,7,"gazing","Face-Correct Bowl",0,0
+"1101","Edgar3",1,7,"gazing","Hand-Correct Bowl",0,0
+"1102","Edgar3",1,8,"control","Face-Hand",0,0
+"1103","Edgar3",1,8,"control","Face-Correct Bowl",0,0
+"1104","Edgar3",1,8,"control","Hand-Correct Bowl",0,0
+"1105","Edgar3",1,9,"throwing","Face-Hand",0,0
+"1106","Edgar3",1,9,"throwing","Face-Correct Bowl",0,0
+"1107","Edgar3",1,9,"throwing","Hand-Correct Bowl",0,0
+"1108","Edgar3",1,10,"throwing","Face-Hand",0,0
+"1109","Edgar3",1,10,"throwing","Face-Correct Bowl",0,0
+"1110","Edgar3",1,10,"throwing","Hand-Correct Bowl",0,0
+"1111","Edgar3",1,11,"throwing","Face-Hand",0,0
+"1112","Edgar3",1,11,"throwing","Face-Correct Bowl",0,0
+"1113","Edgar3",1,11,"throwing","Hand-Correct Bowl",0,0
+"1114","Edgar3",1,12,"throwing","Face-Hand",0,0
+"1115","Edgar3",1,12,"throwing","Face-Correct Bowl",0,0
+"1116","Edgar3",1,12,"throwing","Hand-Correct Bowl",0,0
+"1117","Edgar3",1,13,"control","Face-Hand",0,0
+"1118","Edgar3",1,13,"control","Face-Correct Bowl",0,0
+"1119","Edgar3",1,13,"control","Hand-Correct Bowl",0,0
+"1120","Edgar3",1,14,"throwing","Face-Hand",0,0
+"1121","Edgar3",1,14,"throwing","Face-Correct Bowl",0,0
+"1122","Edgar3",1,14,"throwing","Hand-Correct Bowl",0,0
+"1123","Edgar3",1,15,"throwing","Face-Hand",0,0
+"1124","Edgar3",1,15,"throwing","Face-Correct Bowl",0,0
+"1125","Edgar3",1,15,"throwing","Hand-Correct Bowl",0,0
+"1126","Edgar3",2,1,"p+g","Face-Hand",1,1
+"1127","Edgar3",2,1,"p+g","Face-Correct Bowl",0,0
+"1128","Edgar3",2,1,"p+g","Hand-Correct Bowl",0,0
+"1129","Edgar3",2,2,"p+g","Face-Hand",0,0
+"1130","Edgar3",2,2,"p+g","Face-Correct Bowl",0,0
+"1131","Edgar3",2,2,"p+g","Hand-Correct Bowl",0,0
+"1132","Edgar3",2,3,"control","Face-Hand",0,0
+"1133","Edgar3",2,3,"control","Face-Correct Bowl",0,0
+"1134","Edgar3",2,3,"control","Hand-Correct Bowl",0,0
+"1135","Edgar3",2,4,"p+g","Face-Hand",2,1
+"1136","Edgar3",2,4,"p+g","Face-Correct Bowl",0,0
+"1137","Edgar3",2,4,"p+g","Hand-Correct Bowl",0,0
+"1138","Edgar3",2,5,"p+g","Face-Hand",1,1
+"1139","Edgar3",2,5,"p+g","Face-Correct Bowl",0,0
+"1140","Edgar3",2,5,"p+g","Hand-Correct Bowl",2,1
+"1141","Edgar3",2,6,"p+g","Face-Hand",0,0
+"1142","Edgar3",2,6,"p+g","Face-Correct Bowl",0,0
+"1143","Edgar3",2,6,"p+g","Hand-Correct Bowl",1,1
+"1144","Edgar3",2,7,"p+g","Face-Hand",0,0
+"1145","Edgar3",2,7,"p+g","Face-Correct Bowl",0,0
+"1146","Edgar3",2,7,"p+g","Hand-Correct Bowl",0,0
+"1147","Edgar3",2,8,"control","Face-Hand",0,0
+"1148","Edgar3",2,8,"control","Face-Correct Bowl",0,0
+"1149","Edgar3",2,8,"control","Hand-Correct Bowl",0,0
+"1150","Edgar3",2,9,"pointing","Face-Hand",0,0
+"1151","Edgar3",2,9,"pointing","Face-Correct Bowl",0,0
+"1152","Edgar3",2,9,"pointing","Hand-Correct Bowl",0,0
+"1153","Edgar3",2,10,"pointing","Face-Hand",0,0
+"1154","Edgar3",2,10,"pointing","Face-Correct Bowl",0,0
+"1155","Edgar3",2,10,"pointing","Hand-Correct Bowl",0,0
+"1156","Edgar3",2,11,"pointing","Face-Hand",0,0
+"1157","Edgar3",2,11,"pointing","Face-Correct Bowl",0,0
+"1158","Edgar3",2,11,"pointing","Hand-Correct Bowl",0,0
+"1159","Edgar3",2,12,"pointing","Face-Hand",0,0
+"1160","Edgar3",2,12,"pointing","Face-Correct Bowl",0,0
+"1161","Edgar3",2,12,"pointing","Hand-Correct Bowl",0,0
+"1162","Edgar3",2,13,"control","Face-Hand",0,0
+"1163","Edgar3",2,13,"control","Face-Correct Bowl",0,0
+"1164","Edgar3",2,13,"control","Hand-Correct Bowl",0,0
+"1165","Edgar3",2,14,"pointing","Face-Hand",0,0
+"1166","Edgar3",2,14,"pointing","Face-Correct Bowl",0,0
+"1167","Edgar3",2,14,"pointing","Hand-Correct Bowl",1,1
+"1168","Edgar3",2,15,"pointing","Face-Hand",0,0
+"1169","Edgar3",2,15,"pointing","Face-Correct Bowl",0,0
+"1170","Edgar3",2,15,"pointing","Hand-Correct Bowl",0,0
+"1171","Timo2",1,1,"pointing","Face-Hand",0,0
+"1172","Timo2",1,1,"pointing","Face-Correct Bowl",0,0
+"1173","Timo2",1,1,"pointing","Hand-Correct Bowl",0,0
+"1174","Timo2",1,2,"pointing","Face-Hand",0,0
+"1175","Timo2",1,2,"pointing","Face-Correct Bowl",0,0
+"1176","Timo2",1,2,"pointing","Hand-Correct Bowl",0,0
+"1177","Timo2",1,3,"control","Face-Hand",0,0
+"1178","Timo2",1,3,"control","Face-Correct Bowl",0,0
+"1179","Timo2",1,3,"control","Hand-Correct Bowl",0,0
+"1180","Timo2",1,4,"pointing","Face-Hand",0,0
+"1181","Timo2",1,4,"pointing","Face-Correct Bowl",0,0
+"1182","Timo2",1,4,"pointing","Hand-Correct Bowl",0,0
+"1183","Timo2",1,5,"pointing","Face-Hand",0,0
+"1184","Timo2",1,5,"pointing","Face-Correct Bowl",0,0
+"1185","Timo2",1,5,"pointing","Hand-Correct Bowl",0,0
+"1186","Timo2",1,6,"pointing","Face-Hand",1,1
+"1187","Timo2",1,6,"pointing","Face-Correct Bowl",0,0
+"1188","Timo2",1,6,"pointing","Hand-Correct Bowl",0,0
+"1189","Timo2",1,7,"pointing","Face-Hand",0,0
+"1190","Timo2",1,7,"pointing","Face-Correct Bowl",1,1
+"1191","Timo2",1,7,"pointing","Hand-Correct Bowl",1,1
+"1192","Timo2",1,8,"control","Face-Hand",0,0
+"1193","Timo2",1,8,"control","Face-Correct Bowl",0,0
+"1194","Timo2",1,8,"control","Hand-Correct Bowl",0,0
+"1195","Timo2",1,9,"gazing","Face-Hand",0,0
+"1196","Timo2",1,9,"gazing","Face-Correct Bowl",0,0
+"1197","Timo2",1,9,"gazing","Hand-Correct Bowl",0,0
+"1198","Timo2",1,10,"gazing","Face-Hand",0,0
+"1199","Timo2",1,10,"gazing","Face-Correct Bowl",0,0
+"1200","Timo2",1,10,"gazing","Hand-Correct Bowl",0,0
+"1201","Timo2",1,11,"gazing","Face-Hand",0,0
+"1202","Timo2",1,11,"gazing","Face-Correct Bowl",0,0
+"1203","Timo2",1,11,"gazing","Hand-Correct Bowl",0,0
+"1204","Timo2",1,12,"gazing","Face-Hand",0,0
+"1205","Timo2",1,12,"gazing","Face-Correct Bowl",0,0
+"1206","Timo2",1,12,"gazing","Hand-Correct Bowl",0,0
+"1207","Timo2",1,13,"control","Face-Hand",0,0
+"1208","Timo2",1,13,"control","Face-Correct Bowl",0,0
+"1209","Timo2",1,13,"control","Hand-Correct Bowl",0,0
+"1210","Timo2",1,14,"gazing","Face-Hand",0,0
+"1211","Timo2",1,14,"gazing","Face-Correct Bowl",0,0
+"1212","Timo2",1,14,"gazing","Hand-Correct Bowl",0,0
+"1213","Timo2",1,15,"gazing","Face-Hand",0,0
+"1214","Timo2",1,15,"gazing","Face-Correct Bowl",0,0
+"1215","Timo2",1,15,"gazing","Hand-Correct Bowl",0,0
+"1216","Timo2",2,1,"p+g","Face-Hand",0,0
+"1217","Timo2",2,1,"p+g","Face-Correct Bowl",1,1
+"1218","Timo2",2,1,"p+g","Hand-Correct Bowl",0,0
+"1219","Timo2",2,2,"p+g","Face-Hand",0,0
+"1220","Timo2",2,2,"p+g","Face-Correct Bowl",0,0
+"1221","Timo2",2,2,"p+g","Hand-Correct Bowl",0,0
+"1222","Timo2",2,3,"control","Face-Hand",0,0
+"1223","Timo2",2,3,"control","Face-Correct Bowl",0,0
+"1224","Timo2",2,3,"control","Hand-Correct Bowl",0,0
+"1225","Timo2",2,4,"p+g","Face-Hand",0,0
+"1226","Timo2",2,4,"p+g","Face-Correct Bowl",1,1
+"1227","Timo2",2,4,"p+g","Hand-Correct Bowl",0,0
+"1228","Timo2",2,5,"p+g","Face-Hand",0,0
+"1229","Timo2",2,5,"p+g","Face-Correct Bowl",0,0
+"1230","Timo2",2,5,"p+g","Hand-Correct Bowl",0,0
+"1231","Timo2",2,6,"p+g","Face-Hand",0,0
+"1232","Timo2",2,6,"p+g","Face-Correct Bowl",0,0
+"1233","Timo2",2,6,"p+g","Hand-Correct Bowl",0,0
+"1234","Timo2",2,7,"p+g","Face-Hand",2,1
+"1235","Timo2",2,7,"p+g","Face-Correct Bowl",0,0
+"1236","Timo2",2,7,"p+g","Hand-Correct Bowl",0,0
+"1237","Timo2",2,8,"control","Face-Hand",0,0
+"1238","Timo2",2,8,"control","Face-Correct Bowl",0,0
+"1239","Timo2",2,8,"control","Hand-Correct Bowl",0,0
+"1240","Timo2",2,9,"throwing","Face-Hand",0,0
+"1241","Timo2",2,9,"throwing","Face-Correct Bowl",0,0
+"1242","Timo2",2,9,"throwing","Hand-Correct Bowl",0,0
+"1243","Timo2",2,10,"throwing","Face-Hand",0,0
+"1244","Timo2",2,10,"throwing","Face-Correct Bowl",0,0
+"1245","Timo2",2,10,"throwing","Hand-Correct Bowl",0,0
+"1246","Timo2",2,11,"throwing","Face-Hand",0,0
+"1247","Timo2",2,11,"throwing","Face-Correct Bowl",0,0
+"1248","Timo2",2,11,"throwing","Hand-Correct Bowl",0,0
+"1249","Timo2",2,12,"throwing","Face-Hand",0,0
+"1250","Timo2",2,12,"throwing","Face-Correct Bowl",1,1
+"1251","Timo2",2,12,"throwing","Hand-Correct Bowl",0,0
+"1252","Timo2",2,13,"control","Face-Hand",0,0
+"1253","Timo2",2,13,"control","Face-Correct Bowl",0,0
+"1254","Timo2",2,13,"control","Hand-Correct Bowl",0,0
+"1255","Timo2",2,14,"throwing","Face-Hand",0,0
+"1256","Timo2",2,14,"throwing","Face-Correct Bowl",0,0
+"1257","Timo2",2,14,"throwing","Hand-Correct Bowl",0,0
+"1258","Timo2",2,15,"throwing","Face-Hand",0,0
+"1259","Timo2",2,15,"throwing","Face-Correct Bowl",0,0
+"1260","Timo2",2,15,"throwing","Hand-Correct Bowl",0,0
+"1261","Mailo",1,1,"pointing","Face-Hand",0,0
+"1262","Mailo",1,1,"pointing","Face-Correct Bowl",0,0
+"1263","Mailo",1,1,"pointing","Hand-Correct Bowl",0,0
+"1264","Mailo",1,2,"pointing","Face-Hand",2,1
+"1265","Mailo",1,2,"pointing","Face-Correct Bowl",0,0
+"1266","Mailo",1,2,"pointing","Hand-Correct Bowl",0,0
+"1267","Mailo",1,3,"control","Face-Hand",0,0
+"1268","Mailo",1,3,"control","Face-Correct Bowl",0,0
+"1269","Mailo",1,3,"control","Hand-Correct Bowl",0,0
+"1270","Mailo",1,4,"pointing","Face-Hand",0,0
+"1271","Mailo",1,4,"pointing","Face-Correct Bowl",0,0
+"1272","Mailo",1,4,"pointing","Hand-Correct Bowl",0,0
+"1273","Mailo",1,5,"pointing","Face-Hand",2,1
+"1274","Mailo",1,5,"pointing","Face-Correct Bowl",0,0
+"1275","Mailo",1,5,"pointing","Hand-Correct Bowl",0,0
+"1276","Mailo",1,6,"pointing","Face-Hand",0,0
+"1277","Mailo",1,6,"pointing","Face-Correct Bowl",0,0
+"1278","Mailo",1,6,"pointing","Hand-Correct Bowl",0,0
+"1279","Mailo",1,7,"pointing","Face-Hand",1,1
+"1280","Mailo",1,7,"pointing","Face-Correct Bowl",0,0
+"1281","Mailo",1,7,"pointing","Hand-Correct Bowl",0,0
+"1282","Mailo",1,8,"control","Face-Hand",0,0
+"1283","Mailo",1,8,"control","Face-Correct Bowl",0,0
+"1284","Mailo",1,8,"control","Hand-Correct Bowl",0,0
+"1285","Mailo",1,9,"gazing","Face-Hand",0,0
+"1286","Mailo",1,9,"gazing","Face-Correct Bowl",0,0
+"1287","Mailo",1,9,"gazing","Hand-Correct Bowl",0,0
+"1288","Mailo",1,10,"gazing","Face-Hand",0,0
+"1289","Mailo",1,10,"gazing","Face-Correct Bowl",0,0
+"1290","Mailo",1,10,"gazing","Hand-Correct Bowl",0,0
+"1291","Mailo",1,11,"gazing","Face-Hand",0,0
+"1292","Mailo",1,11,"gazing","Face-Correct Bowl",0,0
+"1293","Mailo",1,11,"gazing","Hand-Correct Bowl",0,0
+"1294","Mailo",1,12,"gazing","Face-Hand",0,0
+"1295","Mailo",1,12,"gazing","Face-Correct Bowl",0,0
+"1296","Mailo",1,12,"gazing","Hand-Correct Bowl",0,0
+"1297","Mailo",1,13,"control","Face-Hand",0,0
+"1298","Mailo",1,13,"control","Face-Correct Bowl",0,0
+"1299","Mailo",1,13,"control","Hand-Correct Bowl",0,0
+"1300","Mailo",1,14,"gazing","Face-Hand",0,0
+"1301","Mailo",1,14,"gazing","Face-Correct Bowl",0,0
+"1302","Mailo",1,14,"gazing","Hand-Correct Bowl",0,0
+"1303","Mailo",1,15,"gazing","Face-Hand",0,0
+"1304","Mailo",1,15,"gazing","Face-Correct Bowl",0,0
+"1305","Mailo",1,15,"gazing","Hand-Correct Bowl",0,0
+"1306","Mailo",2,1,"p+g","Face-Hand",1,1
+"1307","Mailo",2,1,"p+g","Face-Correct Bowl",0,0
+"1308","Mailo",2,1,"p+g","Hand-Correct Bowl",0,0
+"1309","Mailo",2,2,"p+g","Face-Hand",0,0
+"1310","Mailo",2,2,"p+g","Face-Correct Bowl",0,0
+"1311","Mailo",2,2,"p+g","Hand-Correct Bowl",0,0
+"1312","Mailo",2,3,"control","Face-Hand",0,0
+"1313","Mailo",2,3,"control","Face-Correct Bowl",0,0
+"1314","Mailo",2,3,"control","Hand-Correct Bowl",0,0
+"1315","Mailo",2,4,"p+g","Face-Hand",0,0
+"1316","Mailo",2,4,"p+g","Face-Correct Bowl",0,0
+"1317","Mailo",2,4,"p+g","Hand-Correct Bowl",0,0
+"1318","Mailo",2,5,"p+g","Face-Hand",0,0
+"1319","Mailo",2,5,"p+g","Face-Correct Bowl",0,0
+"1320","Mailo",2,5,"p+g","Hand-Correct Bowl",0,0
+"1321","Mailo",2,6,"p+g","Face-Hand",0,0
+"1322","Mailo",2,6,"p+g","Face-Correct Bowl",0,0
+"1323","Mailo",2,6,"p+g","Hand-Correct Bowl",0,0
+"1324","Mailo",2,7,"p+g","Face-Hand",0,0
+"1325","Mailo",2,7,"p+g","Face-Correct Bowl",0,0
+"1326","Mailo",2,7,"p+g","Hand-Correct Bowl",0,0
+"1327","Mailo",2,8,"control","Face-Hand",0,0
+"1328","Mailo",2,8,"control","Face-Correct Bowl",0,0
+"1329","Mailo",2,8,"control","Hand-Correct Bowl",0,0
+"1330","Mailo",2,9,"throwing","Face-Hand",0,0
+"1331","Mailo",2,9,"throwing","Face-Correct Bowl",0,0
+"1332","Mailo",2,9,"throwing","Hand-Correct Bowl",0,0
+"1333","Mailo",2,10,"throwing","Face-Hand",0,0
+"1334","Mailo",2,10,"throwing","Face-Correct Bowl",0,0
+"1335","Mailo",2,10,"throwing","Hand-Correct Bowl",0,0
+"1336","Mailo",2,11,"throwing","Face-Hand",0,0
+"1337","Mailo",2,11,"throwing","Face-Correct Bowl",0,0
+"1338","Mailo",2,11,"throwing","Hand-Correct Bowl",0,0
+"1339","Mailo",2,12,"throwing","Face-Hand",0,0
+"1340","Mailo",2,12,"throwing","Face-Correct Bowl",0,0
+"1341","Mailo",2,12,"throwing","Hand-Correct Bowl",0,0
+"1342","Mailo",2,13,"control","Face-Hand",0,0
+"1343","Mailo",2,13,"control","Face-Correct Bowl",0,0
+"1344","Mailo",2,13,"control","Hand-Correct Bowl",0,0
+"1345","Mailo",2,14,"throwing","Face-Hand",0,0
+"1346","Mailo",2,14,"throwing","Face-Correct Bowl",0,0
+"1347","Mailo",2,14,"throwing","Hand-Correct Bowl",0,0
+"1348","Mailo",2,15,"throwing","Face-Hand",0,0
+"1349","Mailo",2,15,"throwing","Face-Correct Bowl",0,0
+"1350","Mailo",2,15,"throwing","Hand-Correct Bowl",0,0
+"1351","Ravenna",1,1,"pointing","Face-Hand",0,0
+"1352","Ravenna",1,1,"pointing","Face-Correct Bowl",0,0
+"1353","Ravenna",1,1,"pointing","Hand-Correct Bowl",0,0
+"1354","Ravenna",1,2,"pointing","Face-Hand",0,0
+"1355","Ravenna",1,2,"pointing","Face-Correct Bowl",0,0
+"1356","Ravenna",1,2,"pointing","Hand-Correct Bowl",0,0
+"1357","Ravenna",1,3,"control","Face-Hand",0,0
+"1358","Ravenna",1,3,"control","Face-Correct Bowl",0,0
+"1359","Ravenna",1,3,"control","Hand-Correct Bowl",0,0
+"1360","Ravenna",1,4,"pointing","Face-Hand",0,0
+"1361","Ravenna",1,4,"pointing","Face-Correct Bowl",0,0
+"1362","Ravenna",1,4,"pointing","Hand-Correct Bowl",0,0
+"1363","Ravenna",1,5,"pointing","Face-Hand",0,0
+"1364","Ravenna",1,5,"pointing","Face-Correct Bowl",0,0
+"1365","Ravenna",1,5,"pointing","Hand-Correct Bowl",0,0
+"1366","Ravenna",1,6,"pointing","Face-Hand",0,0
+"1367","Ravenna",1,6,"pointing","Face-Correct Bowl",0,0
+"1368","Ravenna",1,6,"pointing","Hand-Correct Bowl",0,0
+"1369","Ravenna",1,7,"pointing","Face-Hand",0,0
+"1370","Ravenna",1,7,"pointing","Face-Correct Bowl",0,0
+"1371","Ravenna",1,7,"pointing","Hand-Correct Bowl",0,0
+"1372","Ravenna",1,8,"control","Face-Hand",0,0
+"1373","Ravenna",1,8,"control","Face-Correct Bowl",0,0
+"1374","Ravenna",1,8,"control","Hand-Correct Bowl",0,0
+"1375","Ravenna",1,9,"gazing","Face-Hand",0,0
+"1376","Ravenna",1,9,"gazing","Face-Correct Bowl",0,0
+"1377","Ravenna",1,9,"gazing","Hand-Correct Bowl",0,0
+"1378","Ravenna",1,10,"gazing","Face-Hand",0,0
+"1379","Ravenna",1,10,"gazing","Face-Correct Bowl",0,0
+"1380","Ravenna",1,10,"gazing","Hand-Correct Bowl",0,0
+"1381","Ravenna",1,11,"gazing","Face-Hand",0,0
+"1382","Ravenna",1,11,"gazing","Face-Correct Bowl",0,0
+"1383","Ravenna",1,11,"gazing","Hand-Correct Bowl",0,0
+"1384","Ravenna",1,12,"gazing","Face-Hand",0,0
+"1385","Ravenna",1,12,"gazing","Face-Correct Bowl",0,0
+"1386","Ravenna",1,12,"gazing","Hand-Correct Bowl",0,0
+"1387","Ravenna",1,13,"control","Face-Hand",0,0
+"1388","Ravenna",1,13,"control","Face-Correct Bowl",0,0
+"1389","Ravenna",1,13,"control","Hand-Correct Bowl",0,0
+"1390","Ravenna",1,14,"gazing","Face-Hand",0,0
+"1391","Ravenna",1,14,"gazing","Face-Correct Bowl",0,0
+"1392","Ravenna",1,14,"gazing","Hand-Correct Bowl",0,0
+"1393","Ravenna",1,15,"gazing","Face-Hand",0,0
+"1394","Ravenna",1,15,"gazing","Face-Correct Bowl",0,0
+"1395","Ravenna",1,15,"gazing","Hand-Correct Bowl",0,0
+"1396","Ravenna",2,1,"p+g","Face-Hand",0,0
+"1397","Ravenna",2,1,"p+g","Face-Correct Bowl",0,0
+"1398","Ravenna",2,1,"p+g","Hand-Correct Bowl",2,1
+"1399","Ravenna",2,2,"p+g","Face-Hand",0,0
+"1400","Ravenna",2,2,"p+g","Face-Correct Bowl",0,0
+"1401","Ravenna",2,2,"p+g","Hand-Correct Bowl",3,1
+"1402","Ravenna",2,3,"control","Face-Hand",0,0
+"1403","Ravenna",2,3,"control","Face-Correct Bowl",0,0
+"1404","Ravenna",2,3,"control","Hand-Correct Bowl",0,0
+"1405","Ravenna",2,4,"p+g","Face-Hand",0,0
+"1406","Ravenna",2,4,"p+g","Face-Correct Bowl",0,0
+"1407","Ravenna",2,4,"p+g","Hand-Correct Bowl",1,1
+"1408","Ravenna",2,5,"p+g","Face-Hand",0,0
+"1409","Ravenna",2,5,"p+g","Face-Correct Bowl",0,0
+"1410","Ravenna",2,5,"p+g","Hand-Correct Bowl",0,0
+"1411","Ravenna",2,6,"p+g","Face-Hand",0,0
+"1412","Ravenna",2,6,"p+g","Face-Correct Bowl",0,0
+"1413","Ravenna",2,6,"p+g","Hand-Correct Bowl",0,0
+"1414","Ravenna",2,7,"p+g","Face-Hand",0,0
+"1415","Ravenna",2,7,"p+g","Face-Correct Bowl",0,0
+"1416","Ravenna",2,7,"p+g","Hand-Correct Bowl",0,0
+"1417","Ravenna",2,8,"control","Face-Hand",0,0
+"1418","Ravenna",2,8,"control","Face-Correct Bowl",0,0
+"1419","Ravenna",2,8,"control","Hand-Correct Bowl",0,0
+"1420","Ravenna",2,9,"throwing","Face-Hand",0,0
+"1421","Ravenna",2,9,"throwing","Face-Correct Bowl",0,0
+"1422","Ravenna",2,9,"throwing","Hand-Correct Bowl",0,0
+"1423","Ravenna",2,10,"throwing","Face-Hand",0,0
+"1424","Ravenna",2,10,"throwing","Face-Correct Bowl",0,0
+"1425","Ravenna",2,10,"throwing","Hand-Correct Bowl",0,0
+"1426","Ravenna",2,11,"throwing","Face-Hand",0,0
+"1427","Ravenna",2,11,"throwing","Face-Correct Bowl",0,0
+"1428","Ravenna",2,11,"throwing","Hand-Correct Bowl",0,0
+"1429","Ravenna",2,12,"throwing","Face-Hand",0,0
+"1430","Ravenna",2,12,"throwing","Face-Correct Bowl",0,0
+"1431","Ravenna",2,12,"throwing","Hand-Correct Bowl",0,0
+"1432","Ravenna",2,13,"control","Face-Hand",0,0
+"1433","Ravenna",2,13,"control","Face-Correct Bowl",0,0
+"1434","Ravenna",2,13,"control","Hand-Correct Bowl",0,0
+"1435","Ravenna",2,14,"throwing","Face-Hand",0,0
+"1436","Ravenna",2,14,"throwing","Face-Correct Bowl",0,0
+"1437","Ravenna",2,14,"throwing","Hand-Correct Bowl",0,0
+"1438","Ravenna",2,15,"throwing","Face-Hand",0,0
+"1439","Ravenna",2,15,"throwing","Face-Correct Bowl",0,0
+"1440","Ravenna",2,15,"throwing","Hand-Correct Bowl",0,0
+"1441","Lumi",1,1,"throwing","Face-Hand",0,0
+"1442","Lumi",1,1,"throwing","Face-Correct Bowl",0,0
+"1443","Lumi",1,1,"throwing","Hand-Correct Bowl",0,0
+"1444","Lumi",1,2,"throwing","Face-Hand",0,0
+"1445","Lumi",1,2,"throwing","Face-Correct Bowl",0,0
+"1446","Lumi",1,2,"throwing","Hand-Correct Bowl",0,0
+"1447","Lumi",1,3,"control","Face-Hand",0,0
+"1448","Lumi",1,3,"control","Face-Correct Bowl",0,0
+"1449","Lumi",1,3,"control","Hand-Correct Bowl",0,0
+"1450","Lumi",1,4,"throwing","Face-Hand",0,0
+"1451","Lumi",1,4,"throwing","Face-Correct Bowl",0,0
+"1452","Lumi",1,4,"throwing","Hand-Correct Bowl",0,0
+"1453","Lumi",1,5,"throwing","Face-Hand",0,0
+"1454","Lumi",1,5,"throwing","Face-Correct Bowl",0,0
+"1455","Lumi",1,5,"throwing","Hand-Correct Bowl",0,0
+"1456","Lumi",1,6,"throwing","Face-Hand",0,0
+"1457","Lumi",1,6,"throwing","Face-Correct Bowl",0,0
+"1458","Lumi",1,6,"throwing","Hand-Correct Bowl",0,0
+"1459","Lumi",1,7,"throwing","Face-Hand",0,0
+"1460","Lumi",1,7,"throwing","Face-Correct Bowl",0,0
+"1461","Lumi",1,7,"throwing","Hand-Correct Bowl",0,0
+"1462","Lumi",1,8,"control","Face-Hand",0,0
+"1463","Lumi",1,8,"control","Face-Correct Bowl",0,0
+"1464","Lumi",1,8,"control","Hand-Correct Bowl",0,0
+"1465","Lumi",1,9,"p+g","Face-Hand",0,0
+"1466","Lumi",1,9,"p+g","Face-Correct Bowl",0,0
+"1467","Lumi",1,9,"p+g","Hand-Correct Bowl",0,0
+"1468","Lumi",1,10,"p+g","Face-Hand",0,0
+"1469","Lumi",1,10,"p+g","Face-Correct Bowl",0,0
+"1470","Lumi",1,10,"p+g","Hand-Correct Bowl",2,1
+"1471","Lumi",1,11,"p+g","Face-Hand",0,0
+"1472","Lumi",1,11,"p+g","Face-Correct Bowl",0,0
+"1473","Lumi",1,11,"p+g","Hand-Correct Bowl",2,1
+"1474","Lumi",1,12,"p+g","Face-Hand",0,0
+"1475","Lumi",1,12,"p+g","Face-Correct Bowl",0,0
+"1476","Lumi",1,12,"p+g","Hand-Correct Bowl",1,1
+"1477","Lumi",1,13,"control","Face-Hand",0,0
+"1478","Lumi",1,13,"control","Face-Correct Bowl",0,0
+"1479","Lumi",1,13,"control","Hand-Correct Bowl",0,0
+"1480","Lumi",1,14,"p+g","Face-Hand",0,0
+"1481","Lumi",1,14,"p+g","Face-Correct Bowl",0,0
+"1482","Lumi",1,14,"p+g","Hand-Correct Bowl",0,0
+"1483","Lumi",1,15,"p+g","Face-Hand",0,0
+"1484","Lumi",1,15,"p+g","Face-Correct Bowl",0,0
+"1485","Lumi",1,15,"p+g","Hand-Correct Bowl",1,1
+"1486","Lumi",2,1,"pointing","Face-Hand",0,0
+"1487","Lumi",2,1,"pointing","Face-Correct Bowl",0,0
+"1488","Lumi",2,1,"pointing","Hand-Correct Bowl",0,0
+"1489","Lumi",2,2,"pointing","Face-Hand",0,0
+"1490","Lumi",2,2,"pointing","Face-Correct Bowl",0,0
+"1491","Lumi",2,2,"pointing","Hand-Correct Bowl",0,0
+"1492","Lumi",2,3,"control","Face-Hand",0,0
+"1493","Lumi",2,3,"control","Face-Correct Bowl",0,0
+"1494","Lumi",2,3,"control","Hand-Correct Bowl",0,0
+"1495","Lumi",2,4,"pointing","Face-Hand",0,0
+"1496","Lumi",2,4,"pointing","Face-Correct Bowl",0,0
+"1497","Lumi",2,4,"pointing","Hand-Correct Bowl",6,1
+"1498","Lumi",2,5,"pointing","Face-Hand",0,0
+"1499","Lumi",2,5,"pointing","Face-Correct Bowl",0,0
+"1500","Lumi",2,5,"pointing","Hand-Correct Bowl",3,1
+"1501","Lumi",2,6,"pointing","Face-Hand",0,0
+"1502","Lumi",2,6,"pointing","Face-Correct Bowl",0,0
+"1503","Lumi",2,6,"pointing","Hand-Correct Bowl",0,0
+"1504","Lumi",2,7,"pointing","Face-Hand",0,0
+"1505","Lumi",2,7,"pointing","Face-Correct Bowl",0,0
+"1506","Lumi",2,7,"pointing","Hand-Correct Bowl",0,0
+"1507","Lumi",2,8,"control","Face-Hand",0,0
+"1508","Lumi",2,8,"control","Face-Correct Bowl",0,0
+"1509","Lumi",2,8,"control","Hand-Correct Bowl",0,0
+"1510","Lumi",2,9,"gazing","Face-Hand",0,0
+"1511","Lumi",2,9,"gazing","Face-Correct Bowl",0,0
+"1512","Lumi",2,9,"gazing","Hand-Correct Bowl",0,0
+"1513","Lumi",2,10,"gazing","Face-Hand",0,0
+"1514","Lumi",2,10,"gazing","Face-Correct Bowl",0,0
+"1515","Lumi",2,10,"gazing","Hand-Correct Bowl",0,0
+"1516","Lumi",2,11,"gazing","Face-Hand",0,0
+"1517","Lumi",2,11,"gazing","Face-Correct Bowl",0,0
+"1518","Lumi",2,11,"gazing","Hand-Correct Bowl",0,0
+"1519","Lumi",2,12,"gazing","Face-Hand",0,0
+"1520","Lumi",2,12,"gazing","Face-Correct Bowl",0,0
+"1521","Lumi",2,12,"gazing","Hand-Correct Bowl",0,0
+"1522","Lumi",2,13,"control","Face-Hand",0,0
+"1523","Lumi",2,13,"control","Face-Correct Bowl",0,0
+"1524","Lumi",2,13,"control","Hand-Correct Bowl",0,0
+"1525","Lumi",2,14,"gazing","Face-Hand",0,0
+"1526","Lumi",2,14,"gazing","Face-Correct Bowl",0,0
+"1527","Lumi",2,14,"gazing","Hand-Correct Bowl",0,0
+"1528","Lumi",2,15,"gazing","Face-Hand",0,0
+"1529","Lumi",2,15,"gazing","Face-Correct Bowl",0,0
+"1530","Lumi",2,15,"gazing","Hand-Correct Bowl",0,0
+"1531","Lenny",1,1,"pointing","Face-Hand",0,0
+"1532","Lenny",1,1,"pointing","Face-Correct Bowl",0,0
+"1533","Lenny",1,1,"pointing","Hand-Correct Bowl",0,0
+"1534","Lenny",1,2,"pointing","Face-Hand",0,0
+"1535","Lenny",1,2,"pointing","Face-Correct Bowl",0,0
+"1536","Lenny",1,2,"pointing","Hand-Correct Bowl",0,0
+"1537","Lenny",1,3,"pointing","Face-Hand",0,0
+"1538","Lenny",1,3,"pointing","Face-Correct Bowl",0,0
+"1539","Lenny",1,3,"pointing","Hand-Correct Bowl",0,0
+"1540","Lenny",1,4,"pointing","Face-Hand",0,0
+"1541","Lenny",1,4,"pointing","Face-Correct Bowl",0,0
+"1542","Lenny",1,4,"pointing","Hand-Correct Bowl",0,0
+"1543","Lenny",1,5,"pointing","Face-Hand",0,0
+"1544","Lenny",1,5,"pointing","Face-Correct Bowl",0,0
+"1545","Lenny",1,5,"pointing","Hand-Correct Bowl",0,0
+"1546","Lenny",1,6,"control","Face-Hand",0,0
+"1547","Lenny",1,6,"control","Face-Correct Bowl",0,0
+"1548","Lenny",1,6,"control","Hand-Correct Bowl",0,0
+"1549","Lenny",1,7,"pointing","Face-Hand",0,0
+"1550","Lenny",1,7,"pointing","Face-Correct Bowl",0,0
+"1551","Lenny",1,7,"pointing","Hand-Correct Bowl",0,0
+"1552","Lenny",1,8,"p+g","Face-Hand",0,0
+"1553","Lenny",1,8,"p+g","Face-Correct Bowl",0,0
+"1554","Lenny",1,8,"p+g","Hand-Correct Bowl",0,0
+"1555","Lenny",1,9,"control","Face-Hand",0,0
+"1556","Lenny",1,9,"control","Face-Correct Bowl",0,0
+"1557","Lenny",1,9,"control","Hand-Correct Bowl",0,0
+"1558","Lenny",1,10,"p+g","Face-Hand",0,0
+"1559","Lenny",1,10,"p+g","Face-Correct Bowl",0,0
+"1560","Lenny",1,10,"p+g","Hand-Correct Bowl",0,0
+"1561","Lenny",1,11,"p+g","Face-Hand",0,0
+"1562","Lenny",1,11,"p+g","Face-Correct Bowl",0,0
+"1563","Lenny",1,11,"p+g","Hand-Correct Bowl",0,0
+"1564","Lenny",1,12,"p+g","Face-Hand",0,0
+"1565","Lenny",1,12,"p+g","Face-Correct Bowl",0,0
+"1566","Lenny",1,12,"p+g","Hand-Correct Bowl",0,0
+"1567","Lenny",1,13,"control","Face-Hand",0,0
+"1568","Lenny",1,13,"control","Face-Correct Bowl",0,0
+"1569","Lenny",1,13,"control","Hand-Correct Bowl",0,0
+"1570","Lenny",1,14,"p+g","Face-Hand",0,0
+"1571","Lenny",1,14,"p+g","Face-Correct Bowl",0,0
+"1572","Lenny",1,14,"p+g","Hand-Correct Bowl",0,0
+"1573","Lenny",1,15,"p+g","Face-Hand",0,0
+"1574","Lenny",1,15,"p+g","Face-Correct Bowl",1,1
+"1575","Lenny",1,15,"p+g","Hand-Correct Bowl",1,1
+"1576","Lenny",2,1,"throwing","Face-Hand",0,0
+"1577","Lenny",2,1,"throwing","Face-Correct Bowl",0,0
+"1578","Lenny",2,1,"throwing","Hand-Correct Bowl",0,0
+"1579","Lenny",2,2,"throwing","Face-Hand",0,0
+"1580","Lenny",2,2,"throwing","Face-Correct Bowl",0,0
+"1581","Lenny",2,2,"throwing","Hand-Correct Bowl",0,0
+"1582","Lenny",2,3,"control","Face-Hand",0,0
+"1583","Lenny",2,3,"control","Face-Correct Bowl",0,0
+"1584","Lenny",2,3,"control","Hand-Correct Bowl",0,0
+"1585","Lenny",2,4,"throwing","Face-Hand",0,0
+"1586","Lenny",2,4,"throwing","Face-Correct Bowl",0,0
+"1587","Lenny",2,4,"throwing","Hand-Correct Bowl",0,0
+"1588","Lenny",2,5,"throwing","Face-Hand",0,0
+"1589","Lenny",2,5,"throwing","Face-Correct Bowl",0,0
+"1590","Lenny",2,5,"throwing","Hand-Correct Bowl",0,0
+"1591","Lenny",2,6,"throwing","Face-Hand",0,0
+"1592","Lenny",2,6,"throwing","Face-Correct Bowl",0,0
+"1593","Lenny",2,6,"throwing","Hand-Correct Bowl",0,0
+"1594","Lenny",2,7,"throwing","Face-Hand",0,0
+"1595","Lenny",2,7,"throwing","Face-Correct Bowl",0,0
+"1596","Lenny",2,7,"throwing","Hand-Correct Bowl",0,0
+"1597","Lenny",2,8,"control","Face-Hand",0,0
+"1598","Lenny",2,8,"control","Face-Correct Bowl",0,0
+"1599","Lenny",2,8,"control","Hand-Correct Bowl",0,0
+"1600","Lenny",2,9,"gazing","Face-Hand",0,0
+"1601","Lenny",2,9,"gazing","Face-Correct Bowl",0,0
+"1602","Lenny",2,9,"gazing","Hand-Correct Bowl",0,0
+"1603","Lenny",2,10,"gazing","Face-Hand",0,0
+"1604","Lenny",2,10,"gazing","Face-Correct Bowl",0,0
+"1605","Lenny",2,10,"gazing","Hand-Correct Bowl",0,0
+"1606","Lenny",2,11,"gazing","Face-Hand",0,0
+"1607","Lenny",2,11,"gazing","Face-Correct Bowl",0,0
+"1608","Lenny",2,11,"gazing","Hand-Correct Bowl",0,0
+"1609","Lenny",2,12,"gazing","Face-Hand",0,0
+"1610","Lenny",2,12,"gazing","Face-Correct Bowl",0,0
+"1611","Lenny",2,12,"gazing","Hand-Correct Bowl",0,0
+"1612","Lenny",2,13,"control","Face-Hand",0,0
+"1613","Lenny",2,13,"control","Face-Correct Bowl",0,0
+"1614","Lenny",2,13,"control","Hand-Correct Bowl",0,0
+"1615","Lenny",2,14,"gazing","Face-Hand",0,0
+"1616","Lenny",2,14,"gazing","Face-Correct Bowl",0,0
+"1617","Lenny",2,14,"gazing","Hand-Correct Bowl",0,0
+"1618","Lenny",2,15,"gazing","Face-Hand",0,0
+"1619","Lenny",2,15,"gazing","Face-Correct Bowl",0,0
+"1620","Lenny",2,15,"gazing","Hand-Correct Bowl",0,0
+"1621","Mitos",1,1,"pointing","Face-Hand",1,1
+"1622","Mitos",1,1,"pointing","Face-Correct Bowl",0,0
+"1623","Mitos",1,1,"pointing","Hand-Correct Bowl",0,0
+"1624","Mitos",1,2,"pointing","Face-Hand",0,0
+"1625","Mitos",1,2,"pointing","Face-Correct Bowl",0,0
+"1626","Mitos",1,2,"pointing","Hand-Correct Bowl",0,0
+"1627","Mitos",1,3,"control","Face-Hand",0,0
+"1628","Mitos",1,3,"control","Face-Correct Bowl",0,0
+"1629","Mitos",1,3,"control","Hand-Correct Bowl",0,0
+"1630","Mitos",1,4,"pointing","Face-Hand",0,0
+"1631","Mitos",1,4,"pointing","Face-Correct Bowl",0,0
+"1632","Mitos",1,4,"pointing","Hand-Correct Bowl",0,0
+"1633","Mitos",1,5,"pointing","Face-Hand",0,0
+"1634","Mitos",1,5,"pointing","Face-Correct Bowl",0,0
+"1635","Mitos",1,5,"pointing","Hand-Correct Bowl",0,0
+"1636","Mitos",1,6,"pointing","Face-Hand",1,1
+"1637","Mitos",1,6,"pointing","Face-Correct Bowl",0,0
+"1638","Mitos",1,6,"pointing","Hand-Correct Bowl",0,0
+"1639","Mitos",1,7,"pointing","Face-Hand",0,0
+"1640","Mitos",1,7,"pointing","Face-Correct Bowl",0,0
+"1641","Mitos",1,7,"pointing","Hand-Correct Bowl",0,0
+"1642","Mitos",1,8,"control","Face-Hand",0,0
+"1643","Mitos",1,8,"control","Face-Correct Bowl",0,0
+"1644","Mitos",1,8,"control","Hand-Correct Bowl",0,0
+"1645","Mitos",1,9,"gazing","Face-Hand",0,0
+"1646","Mitos",1,9,"gazing","Face-Correct Bowl",0,0
+"1647","Mitos",1,9,"gazing","Hand-Correct Bowl",0,0
+"1648","Mitos",1,10,"gazing","Face-Hand",0,0
+"1649","Mitos",1,10,"gazing","Face-Correct Bowl",0,0
+"1650","Mitos",1,10,"gazing","Hand-Correct Bowl",0,0
+"1651","Mitos",1,11,"gazing","Face-Hand",0,0
+"1652","Mitos",1,11,"gazing","Face-Correct Bowl",0,0
+"1653","Mitos",1,11,"gazing","Hand-Correct Bowl",0,0
+"1654","Mitos",1,12,"gazing","Face-Hand",0,0
+"1655","Mitos",1,12,"gazing","Face-Correct Bowl",0,0
+"1656","Mitos",1,12,"gazing","Hand-Correct Bowl",0,0
+"1657","Mitos",1,13,"control","Face-Hand",0,0
+"1658","Mitos",1,13,"control","Face-Correct Bowl",0,0
+"1659","Mitos",1,13,"control","Hand-Correct Bowl",0,0
+"1660","Mitos",1,14,"gazing","Face-Hand",0,0
+"1661","Mitos",1,14,"gazing","Face-Correct Bowl",0,0
+"1662","Mitos",1,14,"gazing","Hand-Correct Bowl",0,0
+"1663","Mitos",1,15,"gazing","Face-Hand",0,0
+"1664","Mitos",1,15,"gazing","Face-Correct Bowl",0,0
+"1665","Mitos",1,15,"gazing","Hand-Correct Bowl",0,0
+"1666","Mitos",2,1,"throwing","Face-Hand",0,0
+"1667","Mitos",2,1,"throwing","Face-Correct Bowl",0,0
+"1668","Mitos",2,1,"throwing","Hand-Correct Bowl",0,0
+"1669","Mitos",2,2,"throwing","Face-Hand",4,1
+"1670","Mitos",2,2,"throwing","Face-Correct Bowl",0,0
+"1671","Mitos",2,2,"throwing","Hand-Correct Bowl",0,0
+"1672","Mitos",2,3,"control","Face-Hand",0,0
+"1673","Mitos",2,3,"control","Face-Correct Bowl",0,0
+"1674","Mitos",2,3,"control","Hand-Correct Bowl",0,0
+"1675","Mitos",2,4,"throwing","Face-Hand",0,0
+"1676","Mitos",2,4,"throwing","Face-Correct Bowl",0,0
+"1677","Mitos",2,4,"throwing","Hand-Correct Bowl",0,0
+"1678","Mitos",2,5,"throwing","Face-Hand",0,0
+"1679","Mitos",2,5,"throwing","Face-Correct Bowl",0,0
+"1680","Mitos",2,5,"throwing","Hand-Correct Bowl",0,0
+"1681","Mitos",2,6,"throwing","Face-Hand",0,0
+"1682","Mitos",2,6,"throwing","Face-Correct Bowl",0,0
+"1683","Mitos",2,6,"throwing","Hand-Correct Bowl",0,0
+"1684","Mitos",2,7,"throwing","Face-Hand",0,0
+"1685","Mitos",2,7,"throwing","Face-Correct Bowl",0,0
+"1686","Mitos",2,7,"throwing","Hand-Correct Bowl",0,0
+"1687","Mitos",2,8,"control","Face-Hand",0,0
+"1688","Mitos",2,8,"control","Face-Correct Bowl",0,0
+"1689","Mitos",2,8,"control","Hand-Correct Bowl",0,0
+"1690","Mitos",2,9,"p+g","Face-Hand",2,1
+"1691","Mitos",2,9,"p+g","Face-Correct Bowl",0,0
+"1692","Mitos",2,9,"p+g","Hand-Correct Bowl",0,0
+"1693","Mitos",2,10,"p+g","Face-Hand",1,1
+"1694","Mitos",2,10,"p+g","Face-Correct Bowl",1,1
+"1695","Mitos",2,10,"p+g","Hand-Correct Bowl",1,1
+"1696","Mitos",2,11,"p+g","Face-Hand",0,0
+"1697","Mitos",2,11,"p+g","Face-Correct Bowl",0,0
+"1698","Mitos",2,11,"p+g","Hand-Correct Bowl",0,0
+"1699","Mitos",2,12,"p+g","Face-Hand",0,0
+"1700","Mitos",2,12,"p+g","Face-Correct Bowl",0,0
+"1701","Mitos",2,12,"p+g","Hand-Correct Bowl",0,0
+"1702","Mitos",2,13,"control","Face-Hand",0,0
+"1703","Mitos",2,13,"control","Face-Correct Bowl",0,0
+"1704","Mitos",2,13,"control","Hand-Correct Bowl",0,0
+"1705","Mitos",2,14,"p+g","Face-Hand",0,0
+"1706","Mitos",2,14,"p+g","Face-Correct Bowl",0,0
+"1707","Mitos",2,14,"p+g","Hand-Correct Bowl",0,0
+"1708","Mitos",2,15,"p+g","Face-Hand",2,1
+"1709","Mitos",2,15,"p+g","Face-Correct Bowl",0,0
+"1710","Mitos",2,15,"p+g","Hand-Correct Bowl",0,0
+"1711","Lillybet",1,1,"throwing","Face-Hand",0,0
+"1712","Lillybet",1,1,"throwing","Face-Correct Bowl",0,0
+"1713","Lillybet",1,1,"throwing","Hand-Correct Bowl",0,0
+"1714","Lillybet",1,2,"throwing","Face-Hand",0,0
+"1715","Lillybet",1,2,"throwing","Face-Correct Bowl",0,0
+"1716","Lillybet",1,2,"throwing","Hand-Correct Bowl",0,0
+"1717","Lillybet",1,3,"control","Face-Hand",0,0
+"1718","Lillybet",1,3,"control","Face-Correct Bowl",0,0
+"1719","Lillybet",1,3,"control","Hand-Correct Bowl",0,0
+"1720","Lillybet",1,4,"throwing","Face-Hand",0,0
+"1721","Lillybet",1,4,"throwing","Face-Correct Bowl",0,0
+"1722","Lillybet",1,4,"throwing","Hand-Correct Bowl",0,0
+"1723","Lillybet",1,5,"throwing","Face-Hand",0,0
+"1724","Lillybet",1,5,"throwing","Face-Correct Bowl",0,0
+"1725","Lillybet",1,5,"throwing","Hand-Correct Bowl",0,0
+"1726","Lillybet",1,6,"throwing","Face-Hand",0,0
+"1727","Lillybet",1,6,"throwing","Face-Correct Bowl",0,0
+"1728","Lillybet",1,6,"throwing","Hand-Correct Bowl",0,0
+"1729","Lillybet",1,7,"throwing","Face-Hand",0,0
+"1730","Lillybet",1,7,"throwing","Face-Correct Bowl",0,0
+"1731","Lillybet",1,7,"throwing","Hand-Correct Bowl",0,0
+"1732","Lillybet",1,8,"control","Face-Hand",0,0
+"1733","Lillybet",1,8,"control","Face-Correct Bowl",0,0
+"1734","Lillybet",1,8,"control","Hand-Correct Bowl",0,0
+"1735","Lillybet",1,9,"pointing","Face-Hand",0,0
+"1736","Lillybet",1,9,"pointing","Face-Correct Bowl",0,0
+"1737","Lillybet",1,9,"pointing","Hand-Correct Bowl",0,0
+"1738","Lillybet",1,10,"pointing","Face-Hand",0,0
+"1739","Lillybet",1,10,"pointing","Face-Correct Bowl",0,0
+"1740","Lillybet",1,10,"pointing","Hand-Correct Bowl",0,0
+"1741","Lillybet",1,11,"pointing","Face-Hand",0,0
+"1742","Lillybet",1,11,"pointing","Face-Correct Bowl",0,0
+"1743","Lillybet",1,11,"pointing","Hand-Correct Bowl",0,0
+"1744","Lillybet",1,12,"pointing","Face-Hand",0,0
+"1745","Lillybet",1,12,"pointing","Face-Correct Bowl",0,0
+"1746","Lillybet",1,12,"pointing","Hand-Correct Bowl",0,0
+"1747","Lillybet",1,13,"control","Face-Hand",0,0
+"1748","Lillybet",1,13,"control","Face-Correct Bowl",0,0
+"1749","Lillybet",1,13,"control","Hand-Correct Bowl",0,0
+"1750","Lillybet",1,14,"pointing","Face-Hand",0,0
+"1751","Lillybet",1,14,"pointing","Face-Correct Bowl",0,0
+"1752","Lillybet",1,14,"pointing","Hand-Correct Bowl",0,0
+"1753","Lillybet",1,15,"pointing","Face-Hand",0,0
+"1754","Lillybet",1,15,"pointing","Face-Correct Bowl",0,0
+"1755","Lillybet",1,15,"pointing","Hand-Correct Bowl",0,0
+"1756","Lillybet",2,1,"p+g","Face-Hand",0,0
+"1757","Lillybet",2,1,"p+g","Face-Correct Bowl",0,0
+"1758","Lillybet",2,1,"p+g","Hand-Correct Bowl",0,0
+"1759","Lillybet",2,2,"p+g","Face-Hand",0,0
+"1760","Lillybet",2,2,"p+g","Face-Correct Bowl",0,0
+"1761","Lillybet",2,2,"p+g","Hand-Correct Bowl",0,0
+"1762","Lillybet",2,3,"control","Face-Hand",0,0
+"1763","Lillybet",2,3,"control","Face-Correct Bowl",0,0
+"1764","Lillybet",2,3,"control","Hand-Correct Bowl",0,0
+"1765","Lillybet",2,4,"p+g","Face-Hand",0,0
+"1766","Lillybet",2,4,"p+g","Face-Correct Bowl",0,0
+"1767","Lillybet",2,4,"p+g","Hand-Correct Bowl",0,0
+"1768","Lillybet",2,5,"p+g","Face-Hand",0,0
+"1769","Lillybet",2,5,"p+g","Face-Correct Bowl",0,0
+"1770","Lillybet",2,5,"p+g","Hand-Correct Bowl",0,0
+"1771","Lillybet",2,6,"p+g","Face-Hand",0,0
+"1772","Lillybet",2,6,"p+g","Face-Correct Bowl",0,0
+"1773","Lillybet",2,6,"p+g","Hand-Correct Bowl",0,0
+"1774","Lillybet",2,7,"p+g","Face-Hand",0,0
+"1775","Lillybet",2,7,"p+g","Face-Correct Bowl",0,0
+"1776","Lillybet",2,7,"p+g","Hand-Correct Bowl",0,0
+"1777","Lillybet",2,8,"control","Face-Hand",0,0
+"1778","Lillybet",2,8,"control","Face-Correct Bowl",0,0
+"1779","Lillybet",2,8,"control","Hand-Correct Bowl",0,0
+"1780","Lillybet",2,9,"gazing","Face-Hand",0,0
+"1781","Lillybet",2,9,"gazing","Face-Correct Bowl",0,0
+"1782","Lillybet",2,9,"gazing","Hand-Correct Bowl",0,0
+"1783","Lillybet",2,10,"gazing","Face-Hand",0,0
+"1784","Lillybet",2,10,"gazing","Face-Correct Bowl",0,0
+"1785","Lillybet",2,10,"gazing","Hand-Correct Bowl",0,0
+"1786","Lillybet",2,11,"gazing","Face-Hand",0,0
+"1787","Lillybet",2,11,"gazing","Face-Correct Bowl",0,0
+"1788","Lillybet",2,11,"gazing","Hand-Correct Bowl",0,0
+"1789","Lillybet",2,12,"gazing","Face-Hand",0,0
+"1790","Lillybet",2,12,"gazing","Face-Correct Bowl",0,0
+"1791","Lillybet",2,12,"gazing","Hand-Correct Bowl",0,0
+"1792","Lillybet",2,13,"control","Face-Hand",0,0
+"1793","Lillybet",2,13,"control","Face-Correct Bowl",0,0
+"1794","Lillybet",2,13,"control","Hand-Correct Bowl",0,0
+"1795","Lillybet",2,14,"gazing","Face-Hand",0,0
+"1796","Lillybet",2,14,"gazing","Face-Correct Bowl",0,0
+"1797","Lillybet",2,14,"gazing","Hand-Correct Bowl",0,0
+"1798","Lillybet",2,15,"gazing","Face-Hand",0,0
+"1799","Lillybet",2,15,"gazing","Face-Correct Bowl",0,0
+"1800","Lillybet",2,15,"gazing","Hand-Correct Bowl",0,0

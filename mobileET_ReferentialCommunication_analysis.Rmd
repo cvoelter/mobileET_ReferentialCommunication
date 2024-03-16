@@ -1,0 +1,2118 @@
+---
+title: "MobileET_Ostension_data_analysis"
+author: "Christoph Voelter"
+date: "15/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+rm(list = ls())
+
+library(tidyverse)
+
+library(glmmTMB)
+library(lme4)
+library(multcomp)
+library(gghalves)
+library(ggbeeswarm)
+library(ggsignif)
+library(lmerTest)
+
+source("./functions/diagnostic_fcns.r")
+source("./functions/glmm_stability.r")
+source("./functions/boot_glmm.r")
+source("./functions/boot_glmm2.r")
+source("./functions/glmmTMB_stability.r")
+source("./functions/drop1_para_glmmtmb.r")
+source("./functions/extract_ranef_gmmTMB.r")
+source("./functions/boot_glmmTMB.r")
+
+#load("workspaces/mobile_et_data_analysis.RData")
+```
+
+
+### Notes:
+- Diara has 12 (instead of 6) p+g trials but no gazing trials.
+- Arco (session 1): no ET recordings for trial 8, 9 and 10
+- Floki (mobileET_ostension_floki_s2_yarbus - session 1): no fixations in trial 15 (bad tracking quality)
+- Floki (mobileET_ostension_floki_s3_yarbus, session 2): no fixations in areas of interest
+
+3 trials excluded in which some phases are repeated (Mexx S1T9, Floki S2T11, Django S2T1)
+2 further trials excluded in which dog was released by handler prematurely (Lenny S2T1, Riu S1T1)
+2 further trial excluded because dog did not make a choice (Lumi S2T14, Edgar S2T13)
+3 further trials not included because not recorded (Arco S1 Trials 8, 9, 10)
+
+We merged the gaze tage data including the tagged fixations (areas of interest) with the loopy data including the interest periods by reformatting the data frames into a long format with one row per millisecond. After merging the dataframes we aggregated the data again by calculating the sum of the fixations within each interest period and area of interest. Next, we added the zeros (all instances in which the dogs did not look into an area of interest).
+
+### Main analysis plan
+
+* choice performance across conditions - done
+* is choice performance predicted by looks to baited bowl in the signaling phase?
+* signaling phase: max X gaze coordinates in baited direction (yarbus data) - done
+* signaling phase: face aoi  - done
+* signaling phase: baited container aoi -done
+* addressing phase: face aoi
+
+
+## Eye-tracking data
+### Data processing
+#### Read in combined data
+```{r}
+met.data <- read.csv("data/mobile_ET_combined_data_20230427.csv") 
+
+table(met.data$subject, met.data$sex)
+table(met.data$subject, met.data$age)
+
+```
+
+
+
+####  (mean of summed fixations) data by Subject, Interest Period, AoI
+```{r}
+agg.data <- met.data %>%
+  group_by(subject, condition, interest_period, aoi) %>%
+  summarise(mean_lt = mean(fixation_time))
+
+```
+
+```{r}
+ggplot(agg.data, aes(x=aoi, y=mean_lt)) + 
+  facet_grid(condition~ interest_period, scales="free") + 
+  coord_flip() + 
+  geom_boxplot(outlier.colour = "white")+
+  geom_point(alpha=0.2) +
+  theme_bw()
+```
+### Signaling IP - time series
+```{r}
+signalling.data <- met.data %>%
+  filter(interest_period=="signaling")
+```
+
+
+### Signaling IP - Face AoI
+```{r}
+signalling.face.data <- met.data %>%
+  filter(aoi=="face", interest_period=="signaling")
+```
+
+```{r}
+hist(signalling.face.data$prop_fixation_time)
+```
+
+prepare DV
+```{r}
+signalling.face.data$prop_fixation_time.scaled <-
+  (signalling.face.data$prop_fixation_time * (length(signalling.face.data$prop_fixation_time) - 1) + 0.5) / length(signalling.face.data$prop_fixation_time)#transform DV to exclude 0 and 1s
+
+
+max(signalling.face.data$prop_fixation_time.scaled)
+max(signalling.face.data$prop_fixation_time)
+min(signalling.face.data$prop_fixation_time.scaled)
+min(signalling.face.data$prop_fixation_time)
+
+contr <-
+  glmmTMBControl(optCtrl = list(iter.max = 100000000, eval.max = 100000000))
+```
+
+prepare predictor variables
+```{r}
+signalling.face.data$z.trial<-as.vector(scale(signalling.face.data$trial, center = TRUE, scale=TRUE))
+signalling.face.data$z.age<-as.vector(scale(signalling.face.data$age, center = TRUE, scale=TRUE))
+signalling.face.data$z.session<-as.vector(scale(signalling.face.data$session, center = TRUE, scale=TRUE))
+
+signalling.face.data$condition <- as.factor(signalling.face.data$condition)
+levels(signalling.face.data$condition)
+signalling.face.data$condition.c1=as.vector(scale(as.numeric(signalling.face.data$condition==levels(as.factor(signalling.face.data$condition))[2]), center=TRUE, scale= FALSE))
+signalling.face.data$condition.c2=as.vector(scale(as.numeric(signalling.face.data$condition==levels(as.factor(signalling.face.data$condition))[3]), center=TRUE, scale= FALSE))
+signalling.face.data$condition.c3=as.vector(scale(as.numeric(signalling.face.data$condition==levels(as.factor(signalling.face.data$condition))[4]), center=TRUE, scale= FALSE))
+signalling.face.data$condition.c4=as.vector(scale(as.numeric(signalling.face.data$condition==levels(as.factor(signalling.face.data$condition))[5]), center=TRUE, scale= FALSE))
+signalling.face.data$sex<- as.factor(signalling.face.data$sex)
+
+view(dfSummary(signalling.face.data))
+```
+
+
+
+
+fit model
+```{r}
+mm1_signalling.face=glmmTMB(prop_fixation_time.scaled ~ 
+                             condition+z.trial+z.session+z.age+sex +
+                             (1|subject)+
+                             (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                             (0+z.session|subject) + (0+z.trial|subject), #pruned to convergence issues
+                           data=signalling.face.data, family=beta_family, control=contr)
+
+summary(mm1_signalling.face)
+```
+
+
+```{r}
+mm1_signalling.face_null=glmmTMB(prop_fixation_time.scaled ~ 
+                             z.trial+z.session+z.age+sex +
+            (1|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject) + (0+z.trial|subject),
+             data=signalling.face.data, family=beta_family, control=contr)
+
+anova(mm1_signalling.face, mm1_signalling.face_null, test="Chisq")
+
+```
+
+LRT
+```{r}
+mm1_signalling.face_drop1 <- drop1(mm1_signalling.face, test="Chisq")
+mm1_signalling.face_drop1
+mm1_signalling.face_drop1<- mm1_signalling.face_drop1%>% 
+  filter(!is.na(Df)) %>% 
+  add_row(Df = rep(NA,1),  .before = 1) %>% 
+  add_row(Df = rep(NA,3),  .before = 3)
+```
+ + Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm1_signalling.face, linfct = mcp(condition = "Tukey"))
+
+mm1_signalling.face_pc<-summary(xx)$test
+
+mm1_signalling.face_pairwise_comp <- cbind(mm1_signalling.face_pc$coefficients, mm1_signalling.face_pc$sigma, mm1_signalling.face_pc$tstat, mm1_signalling.face_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_signalling.face_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_signalling.face_pairwise_comp, file = "saves/mm1_signalling.face_pairwise_comp_final.csv")
+```
+
++ check for overdispersion
+```{r}
+overdisp.test(mm1_signalling.face)
+```
+
+
++ Collinearity checks
+```{r}
+library(car)
+xx=lm(prop_fixation_time.scaled ~                              condition+z.trial+z.session+z.age+sex, data=signalling.face.data)
+vif(xx)
+```
+
+```{r eval=FALSE}
+mm1_signalling.face.ci=boot.glmmtmb(mm1_signalling.face, 
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95, data=signalling.face.data)
+```
+
+#### output table: GLMM04
+
+```{r}
+mm1_signalling.face_table <- bind_cols(as.data.frame(summary(mm1_signalling.face)$coefficients$cond),
+                                      mm1_signalling.face_drop1)%>%#,
+                                    # mm1_area_tail.ci$ci.estimates$fe[1:7,]) %>%
+  dplyr::select(Estimate, SE = `Std. Error`, Chi2 = LRT, df = Df, p = `Pr(>Chi)`, z_wald=`z value`, p_wald=`Pr(>|z|)`) %>% #LowerCI = X2.5., UpperCI = X97.5., 
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall=3))) %>% 
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall=2))) %>% 
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p=replace(p, p==0, "<0.001"))
+
+write.csv(mm1_signalling.face_table, file = "saves/mm1_signalling.face_table_final.csv")
+```
+
+
+#### Signalling - AoI Face - Plotting
+
+```{r}
+signalling.face.agg.data <- signalling.face.data %>%
+  group_by(subject, condition) %>%
+  summarise(mean_lt = mean(prop_fixation_time))
+
+```
+
+```{r}
+signalling.face.plot <-
+  ggplot(signalling.face.agg.data, aes(x = condition, y = mean_lt)) +
+  coord_flip() +
+  geom_boxplot(outlier.colour = "white", fill="darkblue") +
+  #geom_jitter(alpha=0.5, width = 0.1) +
+  geom_quasirandom(
+    size = 1.1,
+    alpha = 1,
+    color = "darkgray",
+    dodge.width = -0.8,
+    width = 0.15
+  ) +
+  theme_light() +
+  ylab("Proportion fixation time") + xlab("") +
+  geom_signif(
+    comparisons = list(
+      c("control", "p+g"),
+      c("control", "pointing"),
+      c("control", "throwing"),
+      c("gazing", "p+g"),
+      c("gazing", "pointing"),
+      c("gazing", "throwing")
+    ) ,
+    annotation = c("***", "***", "***", "**", "*", "+"),
+    y_position = seq(1, 1.325, by = 0.065),
+    tip_length = 0,
+    vjust = 0.5
+  ) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "none",
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  ) +
+  ggtitle("Signaling: Face Interest Area") +
+  scale_y_continuous(breaks = c(0, 0.25, 0.50, 0.75, 1.00))
+
+signalling.face.plot
+```
+
+```{r}
+ggsave(signalling.face.plot, filename = "graphics/signalling.face.plot.png", width=8, height=7, scale=0.7)
+
+```
+### Addressing IP - Face AoI
+
+```{r}
+
+addressing.face.data <- met.data %>%
+  filter(aoi=="face", interest_period=="addressing")
+
+table(addressing.face.data$subject, addressing.face.data$condition)
+```
+
+```{r}
+hist(addressing.face.data$prop_fixation_time)
+```
+
+prepare DV
+```{r}
+addressing.face.data$prop_fixation_time.scaled <-
+  (addressing.face.data$prop_fixation_time * (length(addressing.face.data$prop_fixation_time) - 1) + 0.5) / length(addressing.face.data$prop_fixation_time)#transform DV to exclude 0 and 1s
+
+
+max(addressing.face.data$prop_fixation_time.scaled)
+max(addressing.face.data$prop_fixation_time)
+min(addressing.face.data$prop_fixation_time.scaled)
+min(addressing.face.data$prop_fixation_time)
+
+contr <-
+  glmmTMBControl(optCtrl = list(iter.max = 100000000, eval.max = 100000000))
+```
+
+prepare predictor variables
+```{r}
+addressing.face.data$z.trial<-as.vector(scale(addressing.face.data$trial, center = TRUE, scale=TRUE))
+addressing.face.data$z.age<-as.vector(scale(addressing.face.data$age, center = TRUE, scale=TRUE))
+addressing.face.data$z.session<-as.vector(scale(addressing.face.data$session, center = TRUE, scale=TRUE))
+
+addressing.face.data$condition <- as.factor(addressing.face.data$condition)
+levels(addressing.face.data$condition)
+addressing.face.data$condition.c1=as.vector(scale(as.numeric(addressing.face.data$condition==levels(as.factor(addressing.face.data$condition))[2]), center=TRUE, scale= FALSE))
+addressing.face.data$condition.c2=as.vector(scale(as.numeric(addressing.face.data$condition==levels(as.factor(addressing.face.data$condition))[3]), center=TRUE, scale= FALSE))
+addressing.face.data$condition.c3=as.vector(scale(as.numeric(addressing.face.data$condition==levels(as.factor(addressing.face.data$condition))[4]), center=TRUE, scale= FALSE))
+addressing.face.data$condition.c4=as.vector(scale(as.numeric(addressing.face.data$condition==levels(as.factor(addressing.face.data$condition))[5]), center=TRUE, scale= FALSE))
+addressing.face.data$sex<- as.factor(addressing.face.data$sex)
+
+view(dfSummary(addressing.face.data))
+```
+
+
+
+
+fit model
+```{r}
+mm1_addressing.face=glmmTMB(prop_fixation_time.scaled ~ 
+                              condition+z.trial+z.session+z.age+sex +
+                              (1|subject)+(0+z.trial|subject)+
+                          (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+                          (0+condition.c3|subject)+(0+condition.c4|subject),
+                          #(0+z.session|subject), pruned due convergence issues
+                            data=addressing.face.data, family=beta_family, control=contr)
+
+summary(mm1_addressing.face)
+```
+
+
+```{r}
+mm1_addressing.face_null=glmmTMB(prop_fixation_time.scaled ~ 
+                             z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+
+              (0+condition.c3|subject)+(0+condition.c4|subject),
+           # (0+z.session|subject),
+             data=addressing.face.data, family=beta_family, control=contr)
+
+anova(mm1_addressing.face, mm1_addressing.face_null, test="Chisq")
+
+```
+
+LRT
+```{r}
+mm1_addressing.face_drop1 <- drop1(mm1_addressing.face, test="Chisq")
+mm1_addressing.face_drop1
+mm1_addressing.face_drop1<- mm1_addressing.face_drop1%>% 
+  filter(!is.na(Df)) %>% 
+  add_row(Df = rep(NA,1),  .before = 1) %>% 
+  add_row(Df = rep(NA,3),  .before = 3)
+#model without trial as predictor does not converge
+```
+ + Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm1_addressing.face, linfct = mcp(condition = "Tukey"))
+
+mm1_addressing.face_pc<-summary(xx)$test
+
+mm1_addressing.face_pairwise_comp <- cbind(mm1_addressing.face_pc$coefficients, mm1_addressing.face_pc$sigma, mm1_addressing.face_pc$tstat, mm1_addressing.face_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_addressing.face_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_addressing.face_pairwise_comp, file = "saves/mm1_addressing.face_pairwise_comp_final.csv")
+```
+
++ check for overdispersion
+```{r}
+overdisp.test(mm1_addressing.face)
+```
+
+
++ Collinearity checks
+```{r}
+library(car)
+xx=lm(prop_fixation_time.scaled ~                              condition+z.trial+z.session+z.age+sex, data=addressing.face.data)
+vif(xx)
+```
+
+```{r eval=FALSE}
+mm1_addressing.face.ci=boot.glmmtmb(mm1_addressing.face, 
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95, data=addressing.face.data)
+```
+
+#### output table: GLMM02
+
+```{r}
+mm1_addressing.face_table <- bind_cols(as.data.frame(summary(mm1_addressing.face)$coefficients$cond),
+                                      mm1_addressing.face_drop1)%>%#,
+                                    # mm1_area_tail.ci$ci.estimates$fe[1:7,]) %>%
+  dplyr::select(Estimate, SE = `Std. Error`, Chi2 = LRT, df = Df, p = `Pr(>Chi)`, z_wald=`z value`, p_wald=`Pr(>|z|)`) %>% #LowerCI = X2.5., UpperCI = X97.5., 
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall=3))) %>% 
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall=2))) %>% 
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p=replace(p, p==0, "<0.001"))
+
+write.csv(mm1_addressing.face_table, file = "saves/mm1_addressing.face_table_final.csv")
+```
+
+
+#### Addressing - AoI Face - Plotting
+
+```{r}
+addressing.face.agg.data <- addressing.face.data %>%
+  group_by(subject, condition) %>%
+  summarise(mean_lt = mean(prop_fixation_time))
+
+```
+
+```{r}
+addressing.face.plot <-
+  ggplot(addressing.face.agg.data, aes(x = condition, y = mean_lt)) +
+  coord_flip() +
+  geom_boxplot(outlier.colour = "white", fill="darkblue") +
+  #geom_jitter(alpha=0.5, width = 0.1) +
+  geom_quasirandom(
+    size = 1.1,
+    alpha = 1,
+    color = "darkgrey",
+    dodge.width = -0.8,
+    width = 0.15
+  ) +
+  theme_light() +
+  ylab("Proportion fixation time") + xlab("") +
+  geom_signif(
+    comparisons = list(
+        c("control", "throwing")
+    ) ,
+    annotation = c("*"),
+    y_position = seq(1.01, 1.05, by = 0.04),
+    tip_length = 0,
+    vjust = 0.4
+  ) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "none",
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  ) +
+  ggtitle("Addressing: Face Interest Area") +
+  scale_y_continuous(breaks = c(0, 0.25, 0.50, 0.75, 1.00))
+
+addressing.face.plot
+```
+
+```{r}
+ggsave(addressing.face.plot, filename = "graphics/addressing.face.plot.png", width=8, height=7, scale=0.7)
+
+```
+
+
+
+
+
+### Signalling - AoI Bowl 
+```{r}
+levels(as.factor(met.data$aoi))
+signalling.bowl.data <- met.data %>%
+  filter((aoi=="bright_green_bowl" | aoi=="dark_green_bowl" | aoi=="hand/brightg_bowl" | aoi=="hand/darkg_bowl"), interest_period=="signaling")%>%
+  group_by(subject, session, trial, condition, age, sex)%>%
+  summarise(sum_fix_time=sum(fixation_time), sum_prop_fix_time= sum(prop_fixation_time))
+```
+
+
+
+#### Signalling - AoI Bowl - Plotting
+
+```{r}
+signalling.bowl.agg.data <- signalling.bowl.data %>%
+  group_by(subject, condition) %>%
+  summarise(mean_lt = mean(sum_prop_fix_time))
+
+```
+
+```{r}
+ggplot(signalling.bowl.agg.data, aes(x=condition, y=mean_lt)) + 
+  coord_flip() + 
+  geom_boxplot(outlier.colour = "white")+
+  geom_jitter(alpha=0.5, width = 0.1) +
+  theme_bw() + 
+  ylab("Fixation time") + xlab("")
+```
+
+
+### Signalling - Correct Bowl 
+```{r}
+levels(as.factor(met.data$aoi))
+signalling.corr.bowl.data <- met.data %>%
+  filter(aoi==correct_bowl , interest_period=="signaling")%>%
+  group_by(subject, session, trial, condition, age, sex)%>%
+  summarise(sum_fix_time=sum(fixation_time), sum_prop_fix_time= sum(prop_fixation_time))
+table(signalling.corr.bowl.data$subject, signalling.corr.bowl.data$condition)
+
+table(signalling.corr.bowl.data$subject, signalling.corr.bowl.data$session)
+```
+
+```{r}
+levels(as.factor(met.data$aoi))
+signalling.corr.bowl.hand.data <- met.data %>%
+  filter(((aoi=="bright_green_bowl" | aoi=="hand/brightg_bowl") & correct_bowl =="bright_green_bowl") | ((aoi=="dark_green_bowl" | aoi=="hand/darkg_bowl") & correct_bowl =="dark_green_bowl"), interest_period=="signaling")%>%
+  group_by(subject, session, trial, condition, age, sex)%>%
+  summarise(sum_fix_time=sum(fixation_time), sum_prop_fix_time= sum(prop_fixation_time))
+```
+
+
+```{r}
+hist(signalling.corr.bowl.data$sum_prop_fix_time)
+```
+
+prepare DV
+```{r}
+
+
+signalling.corr.bowl.data$sum_prop_fix_time.scaled <-
+  (signalling.corr.bowl.data$sum_prop_fix_time * (length(signalling.corr.bowl.data$sum_prop_fix_time) - 1) + 0.5) / length(signalling.corr.bowl.data$sum_prop_fix_time)#transform DV to exclude 0 and 1s
+
+
+max(signalling.corr.bowl.data$sum_prop_fix_time.scaled)
+max(signalling.corr.bowl.data$sum_prop_fix_time)
+min(signalling.corr.bowl.data$sum_prop_fix_time.scaled)
+min(signalling.corr.bowl.data$sum_prop_fix_time)
+
+contr <-
+  glmmTMBControl(optCtrl = list(iter.max = 100000000, eval.max = 100000000))
+```
+
+prepare predictor variables
+```{r}
+signalling.corr.bowl.data$z.trial<-as.vector(scale(signalling.corr.bowl.data$trial, center = TRUE, scale=TRUE))
+signalling.corr.bowl.data$z.age<-as.vector(scale(signalling.corr.bowl.data$age, center = TRUE, scale=TRUE))
+signalling.corr.bowl.data$z.session<-as.vector(scale(signalling.corr.bowl.data$session, center = TRUE, scale=TRUE))
+
+signalling.corr.bowl.data$condition <- as.factor(signalling.corr.bowl.data$condition)
+levels(signalling.corr.bowl.data$condition)
+signalling.corr.bowl.data$condition.c1=as.vector(scale(as.numeric(signalling.corr.bowl.data$condition==levels(as.factor(signalling.corr.bowl.data$condition))[2]), center=TRUE, scale= FALSE))
+signalling.corr.bowl.data$condition.c2=as.vector(scale(as.numeric(signalling.corr.bowl.data$condition==levels(as.factor(signalling.corr.bowl.data$condition))[3]), center=TRUE, scale= FALSE))
+signalling.corr.bowl.data$condition.c3=as.vector(scale(as.numeric(signalling.corr.bowl.data$condition==levels(as.factor(signalling.corr.bowl.data$condition))[4]), center=TRUE, scale= FALSE))
+signalling.corr.bowl.data$condition.c4=as.vector(scale(as.numeric(signalling.corr.bowl.data$condition==levels(as.factor(signalling.corr.bowl.data$condition))[5]), center=TRUE, scale= FALSE))
+signalling.corr.bowl.data$sex<- as.factor(signalling.corr.bowl.data$sex)
+
+```
+
+
+
+
+fit model
+```{r}
+mm1_signaling_correct_bowl=glmmTMB(sum_prop_fix_time.scaled ~                                    condition+z.trial+z.session+z.age+sex +
+                                     (1|subject)+ (0+z.trial|subject)+
+ (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                                     (0+z.session|subject),
+                                   data=signalling.corr.bowl.data, family=beta_family, control=contr)
+
+summary(mm1_signaling_correct_bowl)
+```
+
+
+```{r}
+mm1_signaling_correct_bowl_null=glmmTMB(sum_prop_fix_time.scaled ~ 
+                             z.trial+z.session+z.age+sex +
+            (1|subject)+ (0+z.trial|subject) + 
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject),
+             data=signalling.corr.bowl.data, family=beta_family, control=contr)
+
+
+anova(mm1_signaling_correct_bowl,
+      mm1_signaling_correct_bowl_null,
+      test = "Chisq")
+
+```
+
+LRT
+```{r}
+mm1_signaling_correct_bowl_drop1 <-
+  drop1(mm1_signaling_correct_bowl, test = "Chisq")
+mm1_signaling_correct_bowl_drop1
+mm1_signaling_correct_bowl_drop1 <-
+  mm1_signaling_correct_bowl_drop1 %>%
+  filter(!is.na(Df)) %>%
+  add_row(Df = rep(NA, 1),  .before = 1) %>%
+  add_row(Df = rep(NA, 3),  .before = 3)
+```
+ + Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm1_signaling_correct_bowl, linfct = mcp(condition = "Tukey"))
+
+mm1_signaling_correct_bowl_pc<-summary(xx)$test
+
+mm1_signaling_correct_bowl_pairwise_comp <- cbind(mm1_signaling_correct_bowl_pc$coefficients, mm1_signaling_correct_bowl_pc$sigma, mm1_signaling_correct_bowl_pc$tstat, mm1_signaling_correct_bowl_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_signaling_correct_bowl_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_signaling_correct_bowl_pairwise_comp, file = "saves/mm1_signaling_correct_bowl_pairwise_comp_final.csv")
+```
+
++ check for overdispersion
+```{r}
+overdisp.test(mm1_signaling_correct_bowl)
+```
+
+
++ Collinearity checks
+```{r}
+library(car)
+xx=lm(sum_prop_fix_time.scaled ~                              condition+z.trial+z.session+z.age+sex, data=signalling.corr.bowl.data)
+vif(xx)
+```
+
+```{r eval=FALSE}
+
+
+mm1_signaling_correct_bowl.ci<-boot.glmmtmb(mm1_signaling_correct_bowl, data=as.data.frame(signalling.corr.bowl.data),
+nboots=1000, para=T, n.cores="all-1", resol=100, level=0.95 )
+
+mm1_signaling_correct_bowl.ci$ci.estimates$fe
+
+```
+
+#### output table: GLMM05
+
+```{r}
+mm1_signaling_correct_bowl_table <- bind_cols(as.data.frame(summary(mm1_signaling_correct_bowl)$coefficients$cond),              mm1_signaling_correct_bowl_drop1,
+                                              mm1_area_tail.ci$ci.estimates$fe[1:7,])%>%
+  dplyr::select(Estimate, SE = `Std. Error`, LowerCI = X2.5., UpperCI = X97.5., Chi2 = LRT, df = Df, p = `Pr(>Chi)`, z_wald=`z value`, p_wald=`Pr(>|z|)`) %>% # 
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall=3))) %>% 
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall=2))) %>% 
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p=replace(p, p==0, "<0.001"))
+
+write.csv(mm1_signaling_correct_bowl_table, file = "saves/mm1_signaling_correct_bowl_table_final.csv")
+```
+
+
+
+
+
+#### Signalling - AoI Correct Bowl - Plotting
+
+```{r}
+signalling.corr.bowl.agg.data <- signalling.corr.bowl.data %>%
+  group_by(subject, condition) %>%
+  summarise(mean_lt = mean(sum_prop_fix_time))
+
+```
+
+```{r}
+signalling.corr.bowl.plot<-ggplot(data = signalling.corr.bowl.agg.data, aes(x = condition, y = mean_lt)) +
+  coord_flip() +
+  geom_boxplot(fill="chartreuse4", outlier.colour = "white") +
+  #geom_jitter(alpha=0.5, width = 0.1) +
+  theme_light() +
+  ylab("Proportion fixation time") + xlab("") +
+  geom_quasirandom(
+    size = 1,
+    alpha = 0.8,
+    color = "black",
+    dodge.width = -0.8,
+    width = 0.3
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("p+g", "gazing"),
+      c("p+g", "pointing"),
+      c("p+g", "control"),
+      c("p+g", "throwing"),
+      c("control", "pointing")
+    ) ,
+    #c("pointing", "throwing"),
+    annotation = c("**", "+", "***", "**", "+"),
+    y_position = seq(0.45, 0.6, by = 0.03),
+    tip_length = 0,
+    vjust = 0.5
+  ) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "none",
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  ) +
+  ggtitle("Signaling: Correct Bowl Interest Area")
+
+signalling.corr.bowl.plot
+```
+
+```{r}
+ggsave(signalling.corr.bowl.plot, filename = "graphics/signalling_corr_bowl_plot.png", width=8, height=7, scale=0.7)
+
+```
+
+### Signalling - AoI Correct / Incorrect Bowl compared 
+```{r}
+levels(as.factor(met.data$aoi))
+
+signalling.corr.incorr.bowl.data <- met.data %>%
+  mutate(correct_aoi = as.factor(ifelse(aoi==correct_bowl, "correct", ifelse((aoi!=correct_bowl & (aoi=="bright_green_bowl" | aoi=="dark_green_bowl")), "incorrect", ""))))%>%
+  filter((aoi=="bright_green_bowl" | aoi=="dark_green_bowl"), interest_period=="signaling")%>%
+  group_by(subject, session, trial, condition, correct_aoi)%>%
+  summarise(sum_fix_time=sum(fixation_time), sum_prop_fix_time= sum(prop_fixation_time))
+```
+
+#### Signalling - AoI Correct/Incorrect Bowl - Plotting
+
+```{r}
+signalling.corr.incorr.bowl.agg.data <- signalling.corr.incorr.bowl.data %>%
+  group_by(subject, condition, correct_aoi) %>%
+  summarise(mean_lt = mean(sum_prop_fix_time))
+
+```
+
+```{r}
+alpha_level <- 0.15
+orange_col <-  "#B55900"#"#184F84" #"#FFB400"
+blue_col <-  "#005CB5" #"#844D18"#"#004BFF"
+
+library(ggpp)
+bowl_plot <-
+  ggplot(
+    signalling.corr.incorr.bowl.agg.data,
+    aes(
+      x = condition,
+      y = mean_lt,
+      color = correct_aoi,
+      fill = correct_aoi
+    )
+  ) +
+  coord_flip() +
+  # geom_point(data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi=="correct"), aes(x=condition, y=mean_lt), size=0.9, alpha=alpha_level, color=blue_col, position = position_jitternudge(width=0.08, x = 0.2,  nudge.from = "jittered.x"))+#position_nudge(x = 0.3)) +
+  # geom_point(data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi=="incorrect"), aes(x=condition, y=mean_lt), size=0.9,  alpha=alpha_level, color=orange_col, position = position_jitternudge(width=0.08, x = -0.15,  nudge.from = "jittered.x")) +
+  # geom_quasirandom(data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi=="correct"), aes(x=condition, y=mean_lt), size=0.7, alpha=alpha_level, color=blue_col, dodge.width = 2, width=0.2)+
+  #   geom_quasirandom(data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi=="incorrect"), aes(x=condition, y=mean_lt), size=0.7, alpha=alpha_level, color=orange_col, dodge.width = 3, width=0.2)+
+  
+  geom_half_boxplot(
+    data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi == "correct"),
+    aes(x = condition, y = mean_lt, fill = correct_aoi),
+    position = position_nudge(x = 0.1),
+    side = "r",
+    outlier.shape = NA,
+    center = TRUE,
+    errorbar.draw = TRUE,
+    width = .4,
+    alpha = .5
+  ) +
+  geom_half_boxplot(
+    data = signalling.corr.incorr.bowl.agg.data %>% filter(correct_aoi == "incorrect"),
+    aes(x = condition, y = mean_lt),
+    position = position_nudge(x = -0.3),
+    side = "r",
+    outlier.shape = NA,
+    center = TRUE,
+    errorbar.draw = TRUE,
+    width = .4,
+    alpha = .5
+  ) +
+  geom_quasirandom(
+    size = 1,
+    alpha = 0.1,
+    color = "black",
+    dodge.width = -0.8,
+    width = 0.15
+  ) +
+  scale_color_manual(values = c("correct" = blue_col, "incorrect" = orange_col)) +
+  scale_fill_manual(values = c("correct" = blue_col, "incorrect" = orange_col)) +
+  theme_light() +
+  ylab("Proportion fixation time") + xlab("") +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = c(0.85, 0.90),
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  )
+
+bowl_plot
+```
+
+
+```{r}
+ggsave(bowl_plot, filename = "graphics/aoi_bowl_correct3.png", width=8, height=7, scale=0.7)
+```
+
+
+
+
+
+
+
+### Yarbus data
+```{r}
+
+yarbus.data <- read.csv("data/mobile_ET_yarbus_agg_data_20230427.csv") %>%
+  filter(!(subject=="Mexx2" & session==1 & trial==9 ),#phase repeated
+         !(subject=="Django2" & session==2 & trial==1),#phase repeated
+         !(subject=="Floki" & session==1 & trial==11),#phase repeated
+          !(subject=="Lenny" & session==1 & trial==1),#owner released dog prematurely
+         !(subject=="Riu" & session==1 & trial==1),#owner released dog prematurely
+         !(subject=="Lumi" & session==2 & trial==14),#did not make a choice
+         !(subject=="Edgar3" & session==2 & trial==13))#did not make a choice
+  
+levels(as.factor(yarbus.data$subject))
+```
+
+```{r}
+ggplot(yarbus.data%>%filter(interest_period=="bowl_displacement"), aes(x = condition, y = max_x))+
+    geom_boxplot() +
+    theme_bw()+ 
+    ylab("Maximum X gaze coordinates in baited direction")+
+    xlab("")+
+    coord_flip()+
+    geom_hline(yintercept = 320, lty=2, color="red")+
+  facet_wrap(~baited_side)
+```
+
+baseline correction (subtract the median addressing value)
+first extract median values in addressing phase
+```{r}
+yarbus.data.wide <- yarbus.data %>%
+  dplyr::select(subject, session, condition, trial, interest_period, median_x) %>%
+  pivot_wider(names_from = interest_period, values_from = median_x) %>%
+  dplyr::select(-baiting,-bowl_displacement,-choice,-signaling)
+```
+
+subtract median addressing phase value
+```{r}
+yarbus.data.signaling <- yarbus.data %>%
+  filter(interest_period == "signaling") %>%
+  full_join(yarbus.data.wide) %>%
+  mutate(
+    baitedX_baseline_corrected = baitedX - addressing,
+    baitedX_corrected = as.numeric(
+      ifelse(
+        baited_side == "r",
+        baitedX_baseline_corrected * (-1),
+        ifelse(baited_side == "l", baitedX_baseline_corrected, "")
+      )
+    ),
+    baitedX_prop = (baitedX_corrected+640)/1280
+  )
+
+hist(yarbus.data.signaling$baitedX_corrected)
+max(yarbus.data.signaling$baitedX_corrected, na.rm=TRUE)
+min(yarbus.data.signaling$baitedX_corrected, na.rm=TRUE)
+max(yarbus.data.signaling$baitedX_prop, na.rm=TRUE)
+min(yarbus.data.signaling$baitedX_prop, na.rm=TRUE)
+
+
+```
+```{r}
+yarbus.data.signaling.agg<-yarbus.data.signaling%>%
+  group_by(subject, condition)%>%
+  summarise(mean_baitedX_corrected=mean(baitedX_corrected, na.rm=TRUE),
+            mean_baitedX_prop=mean(baitedX_prop, na.rm=TRUE))
+```
+
+
+```{r}
+ggplot(yarbus.data.signaling, aes(x = condition, y = baitedX_corrected))+
+    geom_boxplot() +
+    theme_bw()+ 
+    ylab("Maximum X gaze coordinates in baited direction")+
+    xlab("")+
+    coord_flip()+
+    geom_hline(yintercept = 0, lty=2, color="red")
+```
+
+```{r}
+yarbus.signaling.plot <-
+  ggplot(yarbus.data.signaling.agg,
+         aes(x = condition, y = mean_baitedX_corrected)) +
+  geom_hline(yintercept = 0, lty=2, color="firebrick")+
+  geom_boxplot(outlier.colour = "white") +
+  theme_light() +
+  ylab("Maximum X gaze coordinates in baited direction") +
+  xlab("") +
+  coord_flip() +
+  geom_quasirandom(
+    size = 1.1,
+    alpha = 0.8,
+    color = "black",
+    dodge.width = -0.8,
+    width = 0.15
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("control", "gazing"),
+      c("pointing", "p+g"),
+      c("control", "p+g"),
+      c("control", "pointing"),
+      c("control", "throwing")
+    ) ,
+    #c("pointing", "throwing"),
+    annotation = c("+",  "+", "***", "**", "**"),
+    y_position = seq(210, 260, by = 10),
+    tip_length = 0,
+    vjust = 0.4
+  ) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "none",
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  ) +
+  ggtitle("Signaling: Gaze Shift to Baited Side")
+
+yarbus.signaling.plot
+```
+
+```{r}
+ggsave(yarbus.signaling.plot, filename = "graphics/mobileET_yarbus_signaling_plot.png", width=8, height=7, scale=0.7)
+
+```
+
+#### Analysis of yarbus data
+```{r}
+yarbus.data.signaling$z.trial<-as.vector(scale(yarbus.data.signaling$trial, center = TRUE, scale=TRUE))
+yarbus.data.signaling$z.age<-as.vector(scale(yarbus.data.signaling$age, center = TRUE, scale=TRUE))
+yarbus.data.signaling$z.session<-as.vector(scale(yarbus.data.signaling$session, center = TRUE, scale=TRUE))
+
+yarbus.data.signaling$condition <- as.factor(yarbus.data.signaling$condition)
+levels(yarbus.data.signaling$condition)
+yarbus.data.signaling$condition.c1=as.vector(scale(as.numeric(yarbus.data.signaling$condition==levels(as.factor(yarbus.data.signaling$condition))[2]), center=TRUE, scale= FALSE))
+yarbus.data.signaling$condition.c2=as.vector(scale(as.numeric(yarbus.data.signaling$condition==levels(as.factor(yarbus.data.signaling$condition))[3]), center=TRUE, scale= FALSE))
+yarbus.data.signaling$condition.c3=as.vector(scale(as.numeric(yarbus.data.signaling$condition==levels(as.factor(yarbus.data.signaling$condition))[4]), center=TRUE, scale= FALSE))
+yarbus.data.signaling$condition.c4=as.vector(scale(as.numeric(yarbus.data.signaling$condition==levels(as.factor(yarbus.data.signaling$condition))[5]), center=TRUE, scale= FALSE))
+yarbus.data.signaling$sex<- as.factor(yarbus.data.signaling$sex)
+
+min(yarbus.data.signaling$baitedX_corrected, na.rm=TRUE)
+yarbus.data.signaling$log_baitedX_corrected<-log(yarbus.data.signaling$baitedX_corrected+min(yarbus.data.signaling$baitedX_corrected, na.rm=TRUE)+1)
+min(yarbus.data.signaling$log_baitedX_corrected, na.rm=TRUE)
+hist(yarbus.data.signaling$baitedX_corrected)
+hist(yarbus.data.signaling$log_baitedX_corrected)
+view(dfSummary(yarbus.data.signaling))
+```
+
+
+
+
+#### beta model
+```{r}
+yarbus.data.signaling.beta<- yarbus.data.signaling %>%
+  filter(!is.na(baitedX_prop))
+
+```
+
+
+```{r}
+mm1.yarbus.signaling.beta <-
+  glmmTMB(
+    baitedX_prop ~ condition + z.trial + z.session +  z.age + sex +
+      (1 | subject) + 
+      (0 + z.trial | subject) +
+      (0 + condition.c1 | subject) + 
+      (0 + condition.c2 | subject) + 
+      (0 + condition.c3 | subject) + 
+      (0 + condition.c4 | subject) +
+      (0 + z.session | subject),
+    data = yarbus.data.signaling.beta,
+    family = beta_family,
+    control = contr
+  )
+
+summary(mm1.yarbus.signaling.beta)
+```
+LRT
+```{r}
+mm1.yarbus.signaling.beta_drop1 <- drop1(mm1.yarbus.signaling.beta, test="Chisq")
+mm1.yarbus.signaling.beta_drop1
+mm1.yarbus.signaling.beta_drop1<- mm1.yarbus.signaling.beta_drop1%>% 
+  filter(!is.na(Df)) %>% 
+  add_row(Df = rep(NA,1),  .before = 1) %>% 
+  add_row(Df = rep(NA,3),  .before = 3)
+
+```
+ + Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm1.yarbus.signaling.beta, linfct = mcp(condition = "Tukey"))
+
+mm1.yarbus.signaling.beta_pc<-summary(xx)$test
+
+mm1.yarbus.signaling.beta_pairwise_comp <- cbind(mm1.yarbus.signaling.beta_pc$coefficients, mm1.yarbus.signaling.beta_pc$sigma, mm1.yarbus.signaling.beta_pc$tstat, mm1.yarbus.signaling.beta_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1.yarbus.signaling.beta_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1.yarbus.signaling.beta_pairwise_comp, file = "saves/mm1.yarbus.signaling.beta_pairwise_comp_final.csv")
+```
+
++ check for overdispersion
+```{r}
+overdisp.test(mm1.yarbus.signaling.beta)
+```
+
+
++ Collinearity checks
+```{r}
+library(car)
+xx=lm(baitedX_prop ~  condition+z.trial+z.session+z.age+sex, data=yarbus.data.signaling)
+vif(xx)
+```
+
+```{r eval=FALSE}
+mm1.yarbus.signaling.beta.ci=boot.glmmtmb(mm1.yarbus.signaling.beta, 
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95, data=yarbus.data.signaling.beta)
+```
+
+#### output table: GLMM03
+
+```{r}
+mm1.yarbus.signaling.beta_table <-
+  bind_cols(as.data.frame(summary(mm1.yarbus.signaling.beta)$coefficients$cond),
+            mm1.yarbus.signaling.beta_drop1) %>%
+    # mm1_area_tail.ci$ci.estimates$fe[1:7,]) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+    Chi2 = LRT,
+    df = Df,
+    p = `Pr(>Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #LowerCI = X2.5., UpperCI = X97.5.,
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall =
+                                                     2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm1.yarbus.signaling.beta_table, file = "saves/mm1.yarbus.signaling.beta_table_final.csv")
+```
+
+## Behavioral data
+
+#### read in counterbalancing data
+
+```{r}
+cb.data <- read.csv("data/mobile_ET_ostension_counterbalancing_20230201.csv") %>%
+  filter(ET_data == 1) %>%
+  filter(correct!="na") %>%
+  dplyr::select(-session) %>%
+  rename(session = session_new, trial = trial_number) %>%
+  mutate (trial = as.numeric(ifelse(session==2, trial-15, trial))) %>% #bring trial in same format as loopy data
+  mutate(yarbus_file = ifelse(yarbus_file=="", NA, yarbus_file),
+         chosen_bowl = as.factor(ifelse(dark_green_bowl_side == chosen_side, "dark_green_bowl", ifelse((dark_green_bowl_side != chosen_side)& dark_green_bowl_side !="", "bright_green_bowl", ""))),
+         correct_bowl = as.factor(ifelse(dark_green_bowl_side == baited_side, "dark_green_bowl", ifelse((dark_green_bowl_side != baited_side)& dark_green_bowl_side !="", "bright_green_bowl", ""))))
+```
+
+
+```{r}
+cb.data.agg <- cb.data %>%
+  mutate(correct = as.numeric(correct))%>%
+  group_by(subject, condition) %>%
+  summarise(mean_resp = mean(correct))%>%
+  ungroup()
+```
+* Descriptives
+```{r}
+cb.data.agg2 <- cb.data.agg %>%
+  group_by(condition) %>%
+  summarise(mean = round(mean(mean_resp), 2), se=round(sd(mean_resp)/sqrt(length(mean_resp)), 2))
+
+```
+
+
+### Behavioral data: Comparison against chance
+```{r}
+library(broom)
+beh.data.ttest<-cb.data.agg %>%
+  group_by(condition) %>%
+  summarise(ttest = list(t.test(mean_resp, mu=0.5))) %>%
+  mutate(ttest = map(ttest, tidy)) %>%
+  unnest(cols = c(ttest))%>%
+  mutate(p_corrected = p.adjust(p.value, method = "holm"))
+
+```
+
+```{r}
+write.csv(beh.data.ttest, file="saves/beh.data.ttest.csv")
+```
+
+### Behavioral data: condition comparison
+
+```{r}
+cb.data <- cb.data %>% filter(!(yarbus_file=="mobileET_ostension_mexx_s1_yarbus" & trial==9),#phase repeated
+         !(yarbus_file=="mobileET_ostension_django_s2_yarbus_new"& trial==1),#phase repeated
+         !(yarbus_file=="mobileET_ostension_floki_s2_yarbus_new"& trial==11),#phase repeated
+          !(yarbus_file=="mobileET_ostension_lenny_s2_yarbus"& trial==1),#owner released dog prematurely
+         !(yarbus_file=="mobileET_ostension_Riu_S1_Yarbus"& trial==1),#owner released dog prematurely
+         !(yarbus_file=="mobileET_ostension_Lumi_s3_yarbus"& trial==14),#did not make a choice
+         !(yarbus_file=="mobileET_ostension_edgar_s3_yarbus"& trial==13),
+         !(yarbus_file=="mobileET_ostension_edgar_s3_yarbus"& trial==13))
+  
+
+cb.data$z.trial<-as.vector(scale(cb.data$trial, center = TRUE, scale=TRUE))
+cb.data$z.age<-as.vector(scale(as.numeric(cb.data$age), center = TRUE, scale=TRUE))
+cb.data$z.session<-as.vector(scale(cb.data$session, center = TRUE, scale=TRUE))
+
+cb.data$condition <- as.factor(cb.data$condition)
+levels(cb.data$condition)
+cb.data$condition.c1=as.vector(scale(as.numeric(cb.data$condition==levels(as.factor(cb.data$condition))[2]), center=TRUE, scale= FALSE))
+cb.data$condition.c2=as.vector(scale(as.numeric(cb.data$condition==levels(as.factor(cb.data$condition))[3]), center=TRUE, scale= FALSE))
+cb.data$condition.c3=as.vector(scale(as.numeric(cb.data$condition==levels(as.factor(cb.data$condition))[4]), center=TRUE, scale= FALSE))
+cb.data$condition.c4=as.vector(scale(as.numeric(cb.data$condition==levels(as.factor(cb.data$condition))[5]), center=TRUE, scale= FALSE))
+cb.data$sex<- as.factor(cb.data$sex)
+cb.data$correct<-as.numeric(cb.data$correct)
+#view(dfSummary(cb.data))
+table(cb.data$subject, cb.data$session)
+table(cb.data$subject, cb.data$yarbus_file)
+```
+
+fit model
+```{r}
+mm1_choice=glmer(correct ~ condition+z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject),
+             data=cb.data, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+summary(mm1_choice)
+drop1(mm1_choice, test="Chisq")
+```
+
+
+```{r}
+mm1_choice_null=glmer(correct ~ z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject),
+             data=cb.data, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+
+anova(mm1_choice, mm1_choice_null, test="Chisq")
+
+```
+
+```{r}
+
+mm1_choice_drop1 <- drop1(mm1_choice, test="Chisq")%>% 
+  filter(!is.na(npar)) %>% 
+  add_row(npar = rep(NA,1),  .before = 1) %>% 
+  add_row(npar = rep(NA,3),  .before = 3)
+```
++ Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm1_choice, linfct = mcp(condition = "Tukey"))
+
+mm1_choice_pc<-summary(xx)$test
+
+mm1_choice_pairwise_comp <- cbind(mm1_choice_pc$coefficients, mm1_choice_pc$sigma, mm1_choice_pc$tstat, mm1_choice_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                 less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                 greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                 two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_choice_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_choice_pairwise_comp, file = "saves/mm1_choice_pairwise_comp_final.csv")
+```
+
+Check for colinearity
+```{r}
+library(car)
+xx=lm(correct ~ condition+z.trial+z.session+ sex+z.age, data=cb.data)
+vif(xx)
+```
+
+```{r}
+mm1_choice.ci=boot.glmm.pred(model.res=mm1_choice, excl.warnings=F,
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95)
+
+```
+
+relative model complexity
+```{r}
+length(residuals(mm1_choice))/
+(length(fixef(mm1_choice))+
+nrow(as.data.frame(summary(mm1_choice)$varcor)))
+```
+model stability
+```{r evaluate = FALSE}
+
+mm1_choice.stab=glmm.model.stab(model.res=mm1_choice, contr=NULL, para=F, data=NULL)
+
+mm1_choice.stab$summary
+
+m.stab.plot(round(mm1_choice.stab$summary[, -1], 3))
+```
+--> model stable with regard to the fixed effects
+
+
+#### output table: GLMM01
+
+```{r}
+mm1_choice_output_table <-
+  bind_cols(as.data.frame(summary(mm1_choice)$coeff),
+            mm1_choice_drop1,
+            mm1_choice.ci$ci.estimates) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+    LowerCI = X2.5.,
+    UpperCI = X97.5.,
+    Chi2 = LRT,
+    df = npar,
+    p = `Pr(Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall = 2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm1_choice_output_table, file = "saves/mm1_choice_output_table_final.csv")
+```
+
+
+
+#### plotting
+
+```{r}
+library("ggbeeswarm")
+library(rstatix)
+library(ggpubr)
+
+beh.data.ttest2 <- cb.data.agg %>%
+  group_by(condition) %>%
+  t_test(mean_resp ~ 1, mu = 0.5) %>%
+  ungroup()%>%
+  mutate(p_corrected = p.adjust(p, method = "holm"))%>%
+  add_significance("p_corrected")
+
+beh_data_plot <-
+  ggplot(data = cb.data.agg, aes(x = condition, y = mean_resp)) +
+  #geom_boxplot(outlier.colour = "white", color=blue_col)+
+  #geom_violin()+
+  geom_half_boxplot(
+    aes(),
+    fill="grey",
+    color = "black",
+    side = "l",
+    outlier.shape = NA,
+    center = FALSE,
+    errorbar.draw = TRUE,
+    width = .5#,
+    #alpha = .6
+  ) +
+  geom_dotplot(binaxis = "y",
+               dotsize = 0.4,
+               fill = "black",
+               alpha=0.5) +
+  theme_light() +
+  ylab("Mean proportion correct") + xlab("") +
+  coord_flip() +
+  geom_hline(yintercept = 0.5,
+             lty = 2,
+             color = "firebrick", alpha=0.6) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "none",
+    legend.text = element_text(size = 11),
+    legend.background = element_rect(fill = 'transparent', color = NA)
+  ) +
+  ggtitle("Choice Performance") +
+  stat_pvalue_manual(beh.data.ttest2,
+                     x = "condition",
+                     label = "p_corrected.signif",
+                     y.position = 1.05) + #,hide.ns=TRUE
+  geom_signif(
+    comparisons = list(
+      c("control", "p+g"),
+      c("control", "pointing"),
+      c("p+g", "throwing")
+      ),
+    annotation = c("**", "**", "*"),
+    y_position = seq(1.04, 1.14, by = 0.05),
+    tip_length = 0,
+    vjust = 0.5
+  ) +
+  scale_y_continuous(breaks=c(0, 0.25, 0.50, 0.75, 1.00))
+  #scale_fill_brewer(palette = "YlGnBu")
+
+beh_data_plot
+```
+
+
+```{r}
+ggsave(beh_data_plot, filename = "graphics/beh_data_plot.png", width=8, height=7, scale=0.6)
+
+```
+
+
+```{r}
+choice.data.agg <- cb.data %>%
+  mutate(correct = as.numeric(correct)) %>%
+  group_by(subject, condition) %>%
+  summarise(
+    correct_c = sum(correct == 1) / length(correct),
+    incorrect = sum(correct == 0) / length(correct)
+  ) %>%
+  ungroup() %>%
+  rename(correct = correct_c) %>%
+  pivot_longer(
+    cols = c(correct, incorrect),
+    names_to = "choice",
+    values_to = "mean_resp"
+  )
+```
+
+```{r}
+alpha_level<-0.4
+orange_col <-  "#B55900"#"#184F84" #"#FFB400"
+blue_col <-  "#005CB5" #"#844D18"#"#004BFF"
+
+library(ggpp)
+beh_data_plot2<-ggplot(choice.data.agg, aes(x=condition, y=mean_resp, color=choice, fill=choice)) + 
+  coord_flip() + 
+  geom_half_boxplot(
+    data = choice.data.agg %>% filter(choice=="correct"), aes(x = condition, y=mean_resp, fill=choice), position = position_nudge(x = 0.1), 
+    side = "r",outlier.shape = NA, center = TRUE, errorbar.draw = TRUE, width = .4, 
+    alpha = .3) +
+  geom_half_boxplot(
+    data = choice.data.agg %>% filter(choice=="incorrect"), aes(x = condition, y=mean_resp), position = position_nudge(x = -0.25), 
+    side = "r",outlier.shape = NA, center = TRUE, errorbar.draw = TRUE, width = .4, 
+    alpha = .3) +
+  geom_point(data = choice.data.agg %>% filter(choice=="correct"), aes(x=condition, y=mean_resp), size=0.9, alpha=alpha_level, color=blue_col, position = position_jitternudge(width=0.05, x = 0.2,  nudge.from = "jittered.x"))+#position_nudge(x = 0.3)) +
+  geom_point(data = choice.data.agg %>% filter(choice=="incorrect"), aes(x=condition, y=mean_resp), size=0.9,  alpha=alpha_level, color=orange_col, position = position_jitternudge(width=0.05, x = -0.15,  nudge.from = "jittered.x")) +
+  
+  scale_color_manual(values=c("correct"=blue_col, "incorrect"=orange_col))+
+  scale_fill_manual(values=c("correct"=blue_col, "incorrect"=orange_col))+
+  theme_bw() + 
+  ylab("Proportion correct") + xlab("")+
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        legend.title = element_blank(), legend.position = "none", #c(0.85, 0.90),
+        legend.text=element_text(size=11), legend.background = element_rect(fill='transparent', color=NA))
+
+beh_data_plot2
+```
+
+
+### do correct bowl looks predict correct choice?
+```{r}
+cb.data.corr.bowl.look <- met.data %>%
+  filter(aoi == correct_bowl , interest_period == "signaling") %>%
+  group_by(subject, session, trial, condition, age, sex, correct) %>%
+  summarise(
+    sum_fix_time = sum(fixation_time),
+    sum_prop_fix_time = sum(prop_fixation_time)
+  ) %>%
+  ungroup() %>%
+  mutate(bowl_look = as.factor(ifelse(
+    sum_fix_time > 0,
+    "looked",
+    ifelse(sum_fix_time == 0, "no_look", NA)
+  )))
+```
+
+```{r}
+cb.data.corr.bowl.look$z.trial<-as.vector(scale(cb.data.corr.bowl.look$trial, center = TRUE, scale=TRUE))
+cb.data.corr.bowl.look$z.age<-as.vector(scale(as.numeric(cb.data.corr.bowl.look$age), center = TRUE, scale=TRUE))
+cb.data.corr.bowl.look$z.session<-as.vector(scale(cb.data.corr.bowl.look$session, center = TRUE, scale=TRUE))
+
+cb.data.corr.bowl.look$condition <- as.factor(cb.data.corr.bowl.look$condition)
+levels(cb.data.corr.bowl.look$condition)
+cb.data.corr.bowl.look$condition.c1=as.vector(scale(as.numeric(cb.data.corr.bowl.look$condition==levels(as.factor(cb.data.corr.bowl.look$condition))[2]), center=TRUE, scale= FALSE))
+cb.data.corr.bowl.look$condition.c2=as.vector(scale(as.numeric(cb.data.corr.bowl.look$condition==levels(as.factor(cb.data.corr.bowl.look$condition))[3]), center=TRUE, scale= FALSE))
+cb.data.corr.bowl.look$condition.c3=as.vector(scale(as.numeric(cb.data.corr.bowl.look$condition==levels(as.factor(cb.data.corr.bowl.look$condition))[4]), center=TRUE, scale= FALSE))
+cb.data.corr.bowl.look$condition.c4=as.vector(scale(as.numeric(cb.data.corr.bowl.look$condition==levels(as.factor(cb.data.corr.bowl.look$condition))[5]), center=TRUE, scale= FALSE))
+cb.data.corr.bowl.look$bowl_look.c=as.vector(scale(as.numeric(cb.data.corr.bowl.look$bowl_look==levels(as.factor(cb.data.corr.bowl.look$bowl_look))[2]), center=TRUE, scale= FALSE))
+cb.data.corr.bowl.look$sex<- as.factor(cb.data.corr.bowl.look$sex)
+cb.data.corr.bowl.look$correct<-as.numeric(cb.data.corr.bowl.look$correct)
+
+
+view(dfSummary(cb.data.corr.bowl.look))
+```
+
+fit model
+```{r}
+mm1_choice_look=glmer(correct ~ condition*bowl_look+z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject)+ (0+bowl_look.c|subject),
+             data=cb.data.corr.bowl.look, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+summary(mm1_choice_look)
+mm1_choice_look_drop1<-drop1(mm1_choice_look, test="Chisq")#no significant interaction
+mm1_choice_look_drop1
+```
+
+```{r}
+mm2_choice_look=glmer(correct ~ condition+bowl_look+z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject)+ (0+bowl_look.c|subject),
+             data=cb.data.corr.bowl.look, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+summary(mm2_choice_look)
+drop1(mm2_choice_look, test="Chisq")
+```
+
+
+
+```{r}
+mm1_choice_look_null=glmer(correct ~ z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject)+ (0+bowl_look.c|subject),
+             data=cb.data.corr.bowl.look, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+
+anova(mm1_choice_look, mm1_choice_look_null, test="Chisq")
+
+```
+
+```{r}
+
+mm2_choice_look_drop1 <- drop1(mm2_choice_look, test="Chisq")%>% 
+  filter(!is.na(npar)) %>% 
+  add_row(npar = rep(NA,1),  .before = 1) %>% 
+  add_row(npar = rep(NA,3),  .before = 3)
+```
++ Pairwise comparisons  
+The p values for the post-hoc pairwise comparisons of factor levels were adjusted for multiple comparisons using a single-step procedure based on the joint t distribution of the linear function (using the function glht of the R package multcomp; see Hothorn, Bretz, & Westfall, 2008). 
+```{r echo=FALSE}
+xx=glht(mm2_choice_look, linfct = mcp(condition = "Tukey"))
+
+mm2_choice_look_pc<-summary(xx)$test
+
+mm2_choice_look_pairwise_comp <- cbind(mm2_choice_look_pc$coefficients, mm2_choice_look_pc$sigma, mm2_choice_look_pc$tstat, mm2_choice_look_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                 less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                 greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                 two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm2_choice_look_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm2_choice_look_pairwise_comp, file = "saves/mm2_choice_look_pairwise_comp_final.csv")
+```
+
+Check for colinearity
+```{r}
+library(car)
+xx=lm(correct ~ condition+bowl_look+z.trial+z.session+ sex+z.age, data=cb.data.corr.bowl.look)
+vif(xx)
+```
+
+```{r}
+mm2_choice_look.ci=boot.glmm.pred(model.res=mm2_choice_look, excl.warnings=F,
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95)
+
+```
+
+
+#### output table: GLMM06
+
+```{r}
+mm2_choice_look_output_table <-
+  bind_cols(as.data.frame(summary(mm2_choice_look)$coeff),
+            mm2_choice_look_drop1) %>%#,
+            #mm2_choice_look.ci$ci.estimates) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+   # LowerCI = X2.5.,
+  #  UpperCI = X97.5.,
+    Chi2 = LRT,
+    df = npar,
+    p = `Pr(Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall = 2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm2_choice_look_output_table, file = "saves/mm2_choice_look_output_table_final.csv")
+```
+
+#### plotting
+```{r}
+cb.data.corr.bowl.look.agg <- cb.data.corr.bowl.look %>%
+  group_by(subject, condition, bowl_look) %>%
+  summarise(mean_correct = mean(correct)) %>%
+  ungroup() %>%
+  mutate(bowl_look = fct_recode(as.factor(bowl_look), "look"="looked", "no look" = "no_look"))
+
+cb.data.corr.bowl.look.agg2 <- cb.data.corr.bowl.look.agg %>%
+  group_by( bowl_look) %>%
+  summarise(mean_correct2 = mean(mean_correct), se = sd(mean_correct)/sqrt(length(mean_correct))) %>%
+  ungroup()
+
+```
+
+```{r}
+alpha_level <- 0.15
+orange_col <-  "#B55900"#"#184F84" #"#FFB400"
+blue_col <-  "#005CB5" #"#844D18"#"#004BFF"
+
+library(ggpp)
+choice_look_plot <-
+  ggplot(
+    cb.data.corr.bowl.look.agg,
+    aes(
+      x = condition,
+      y = mean_correct,
+      fill=bowl_look
+    )
+  ) +
+  coord_flip() +
+  geom_half_boxplot(
+    data = cb.data.corr.bowl.look.agg %>% filter(bowl_look == "look"),
+    aes(x = condition, y = mean_correct, fill=bowl_look),
+    position = position_nudge(x = 0.02),
+    side = "r",
+    outlier.shape = NA,
+    center = TRUE,
+    errorbar.draw = TRUE,
+    width = .62,
+    alpha = .7
+  ) +
+  geom_half_boxplot(
+    data = cb.data.corr.bowl.look.agg %>% filter(bowl_look == "no look"),
+    aes(x = condition, y = mean_correct, fill=bowl_look),
+    position = position_nudge(x = -0.35),
+    side = "r",
+    outlier.shape = NA,
+    center = TRUE,
+    errorbar.draw = TRUE,
+    width = .62,
+    alpha = .7
+  ) +
+  geom_quasirandom(
+    size = 1,
+    alpha = 0.8,
+    color = "black",
+    dodge.width = -0.75,
+    width = 0.15,
+    shape=1
+  ) +
+  # geom_dotplot(aes(
+  #     x = condition,
+  #     y = mean_correct,
+  #     color = bowl_look,
+  #     fill = bowl_look
+  #   ),
+  #   binaxis = "y",
+  #              dotsize = 0.4,
+  #   position=position_dodge(-0.5)) +
+  geom_hline(yintercept = 0.5,
+             lty = 2,
+             color = "firebrick") +
+  scale_color_manual(values = c("look" = "chartreuse4", "no look" = "darkorange3")) +
+  scale_fill_manual(values = c("look" = "chartreuse4", "no look" = "darkorange3")) +
+  theme_light() +
+  ylab("Mean proportion correct") + xlab("") +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.title = element_blank(),
+    legend.position = c(0.84, 0.06),
+    #legend.position = "bottom",
+    legend.text = element_text(size = 8),
+    legend.background = element_rect(fill = 'transparent', color = NA),
+      )+
+  guides(fill=guide_legend(nrow=1, override.aes = list(size = 0.5)))+
+  ggtitle("Choice performance and Correct Bowl Looks")
+
+choice_look_plot
+```
+
+```{r}
+ggsave(choice_look_plot, filename = "graphics/choice_look_plot.png", width=8, height=8, scale=0.7)
+
+```
+
+### AoI transitions
+
+
+```{r}
+transition.data <- read.csv("data/aoi_transition_frequency_data.csv") %>%
+  rename(subject = subject.x) %>%
+  full_join(cb.data)
+
+face.hand.transition.data <- transition.data%>%
+  filter(transition_category == "Face-Hand") %>%
+  filter(condition != "control")
+
+face.corbowl.transition.data <- transition.data%>%
+  filter(transition_category == "Face-Correct Bowl")
+
+hand.corbowl.transition.data <- transition.data%>%
+  filter(transition_category == "Hand-Correct Bowl") %>%
+  filter(condition != "control")
+
+```
+
+#### Face - Hand transition
+without control condition due to complete separation issues
+
+```{r}
+face.hand.transition.data$z.trial<-as.vector(scale(face.hand.transition.data$trial, center = TRUE, scale=TRUE))
+face.hand.transition.data$z.age<-as.vector(scale(as.numeric(face.hand.transition.data$age), center = TRUE, scale=TRUE))
+face.hand.transition.data$z.session<-as.vector(scale(face.hand.transition.data$session, center = TRUE, scale=TRUE))
+
+face.hand.transition.data$condition <- as.factor(face.hand.transition.data$condition)
+levels(face.hand.transition.data$condition)
+face.hand.transition.data$condition.c1=as.vector(scale(as.numeric(face.hand.transition.data$condition==levels(as.factor(face.hand.transition.data$condition))[2]), center=TRUE, scale= FALSE))
+face.hand.transition.data$condition.c2=as.vector(scale(as.numeric(face.hand.transition.data$condition==levels(as.factor(face.hand.transition.data$condition))[3]), center=TRUE, scale= FALSE))
+face.hand.transition.data$condition.c3=as.vector(scale(as.numeric(face.hand.transition.data$condition==levels(as.factor(face.hand.transition.data$condition))[4]), center=TRUE, scale= FALSE))
+
+face.hand.transition.data$sex<- as.factor(face.hand.transition.data$sex)
+face.hand.transition.data$correct<-as.numeric(face.hand.transition.data$correct)
+
+table(face.hand.transition.data$subject, face.hand.transition.data$session)
+
+```
+
+fit model
+```{r}
+mm1_face_hand = glmer(
+  transition_binary ~ condition + z.trial + z.session + z.age + sex +
+    (1 | subject) + (0 + z.trial | subject) +
+    (0 + condition.c1 | subject) + (0 + condition.c2 |
+                                      subject) +
+    (0 + condition.c3 | subject) + 
+    (0 + z.session | subject),
+  data = face.hand.transition.data,
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun =
+                                                                2e5))
+)
+summary(mm1_face_hand)
+drop1(mm1_face_hand, test = "Chisq")
+```
+
+
+```{r}
+mm1_face_hand_null=glmer(transition_binary ~ z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+
+            (0+z.session|subject),
+             data=face.hand.transition.data, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+
+anova(mm1_face_hand, mm1_face_hand_null, test="Chisq")
+
+```
+
+```{r}
+
+mm1_face_hand_drop1 <- drop1(mm1_face_hand, test="Chisq")%>% 
+  filter(!is.na(npar)) %>% 
+  add_row(npar = rep(NA,1),  .before = 1) %>% 
+  add_row(npar = rep(NA,2),  .before = 3)
+```
+
++ Pairwise comparisons  
+```{r echo=FALSE}
+xx=glht(mm1_face_hand, linfct = mcp(condition = "Tukey"))
+
+mm1_face_hand_pc<-summary(xx)$test
+
+mm1_face_hand_pairwise_comp <- cbind(mm1_face_hand_pc$coefficients, mm1_face_hand_pc$sigma, mm1_face_hand_pc$tstat, mm1_face_hand_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                 less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                 greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                 two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_face_hand_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_face_hand_pairwise_comp, file = "saves/mm1_face_hand_pairwise_comp_final.csv")
+```
+
+Check for colinearity
+```{r}
+library(car)
+xx=lm(transition_binary ~ condition+z.trial+z.session+ sex+z.age, data=face.hand.transition.data)
+vif(xx)
+```
+
+```{r}
+mm1_face_hand.ci=boot.glmm.pred(model.res=mm1_face_hand, excl.warnings=F,
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95)
+
+```
+
+relative model complexity
+```{r}
+length(residuals(mm1_face_hand))/
+(length(fixef(mm1_face_hand))+
+nrow(as.data.frame(summary(mm1_face_hand)$varcor)))
+```
+model stability
+```{r evaluate = FALSE}
+
+mm1_face_hand.stab=glmm.model.stab(model.res=mm1_face_hand, contr=NULL, para=F, data=NULL)
+
+mm1_face_hand.stab$summary
+
+m.stab.plot(round(mm1_face_hand.stab$summary[, -1], 3))
+```
+--> model stable with regard to the fixed effects
+
+```{r}
+mm1_face_hand_output_table <-
+  bind_cols(as.data.frame(summary(mm1_face_hand)$coeff),
+            mm1_face_hand_drop1,
+            mm1_face_hand.ci$ci.estimates) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+    LowerCI = X2.5.,
+    UpperCI = X97.5.,
+    Chi2 = LRT,
+    df = npar,
+    p = `Pr(Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall = 2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm1_face_hand_output_table, file = "saves/mm1_face_hand_output_table_final.csv")
+```
+
+#### Face - Correct bowl transition
+
+```{r}
+face.corbowl.transition.data$z.trial<-as.vector(scale(face.corbowl.transition.data$trial, center = TRUE, scale=TRUE))
+face.corbowl.transition.data$z.age<-as.vector(scale(as.numeric(face.corbowl.transition.data$age), center = TRUE, scale=TRUE))
+face.corbowl.transition.data$z.session<-as.vector(scale(face.corbowl.transition.data$session, center = TRUE, scale=TRUE))
+
+face.corbowl.transition.data$condition <- as.factor(face.corbowl.transition.data$condition)
+levels(face.corbowl.transition.data$condition)
+face.corbowl.transition.data$condition.c1=as.vector(scale(as.numeric(face.corbowl.transition.data$condition==levels(as.factor(face.corbowl.transition.data$condition))[2]), center=TRUE, scale= FALSE))
+face.corbowl.transition.data$condition.c2=as.vector(scale(as.numeric(face.corbowl.transition.data$condition==levels(as.factor(face.corbowl.transition.data$condition))[3]), center=TRUE, scale= FALSE))
+face.corbowl.transition.data$condition.c3=as.vector(scale(as.numeric(face.corbowl.transition.data$condition==levels(as.factor(face.corbowl.transition.data$condition))[4]), center=TRUE, scale= FALSE))
+face.corbowl.transition.data$condition.c4=as.vector(scale(as.numeric(face.corbowl.transition.data$condition==levels(as.factor(face.corbowl.transition.data$condition))[5]), center=TRUE, scale= FALSE))
+face.corbowl.transition.data$sex<- as.factor(face.corbowl.transition.data$sex)
+face.corbowl.transition.data$correct<-as.numeric(face.corbowl.transition.data$correct)
+
+table(face.corbowl.transition.data$subject, face.corbowl.transition.data$session)
+
+table(face.corbowl.transition.data$subject, face.corbowl.transition.data$transition_binary, face.corbowl.transition.data$condition)
+
+
+```
+
+fit model
+```{r}
+mm1_face_corbowl = glmer(
+  transition_binary ~ condition + z.trial + z.session + z.age + sex +
+    (1 | subject) + (0 + z.trial | subject) +
+    (0 + condition.c1 | subject) + (0 + condition.c2 |
+                                      subject) +
+    (0 + condition.c3 | subject) + (0 + condition.c4 |
+                                      subject) +
+    (0 + z.session | subject),
+  data = face.corbowl.transition.data,
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun =
+                                                                2e5))
+)
+summary(mm1_face_corbowl)
+drop1(mm1_face_corbowl, test = "Chisq")
+```
+
+
+```{r}
+mm1_face_corbowl_null=glmer(transition_binary ~ z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+(0+condition.c4|subject)+
+            (0+z.session|subject),
+             data=face.corbowl.transition.data, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+
+anova(mm1_face_corbowl, mm1_face_corbowl_null, test="Chisq")
+
+```
+
+```{r}
+
+mm1_face_corbowl_drop1 <- drop1(mm1_face_corbowl, test="Chisq")%>% 
+  filter(!is.na(npar)) %>% 
+  add_row(npar = rep(NA,1),  .before = 1) %>% 
+  add_row(npar = rep(NA,3),  .before = 3)
+```
+
++ Pairwise comparisons  
+```{r echo=FALSE}
+xx=glht(mm1_face_corbowl, linfct = mcp(condition = "Tukey"))
+
+mm1_face_corbowl_pc<-summary(xx)$test
+
+mm1_face_corbowl_pairwise_comp <- cbind(mm1_face_corbowl_pc$coefficients, mm1_face_corbowl_pc$sigma, mm1_face_corbowl_pc$tstat, mm1_face_corbowl_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                 less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                 greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                 two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_face_corbowl_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_face_corbowl_pairwise_comp, file = "saves/mm1_face_corbowl_pairwise_comp_final.csv")
+```
+
+Check for colinearity
+```{r}
+library(car)
+xx=lm(transition_binary ~ condition+z.trial+z.session+ sex+z.age, data=face.corbowl.transition.data)
+vif(xx)
+```
+
+```{r}
+mm1_face_corbowl.ci=boot.glmm.pred(model.res=mm1_face_corbowl, excl.warnings=F,
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95)
+
+```
+
+relative model complexity
+```{r}
+length(residuals(mm1_face_corbowl))/
+(length(fixef(mm1_face_corbowl))+
+nrow(as.data.frame(summary(mm1_face_corbowl)$varcor)))
+```
+model stability
+```{r evaluate = FALSE}
+
+mm1_face_corbowl.stab=glmm.model.stab(model.res=mm1_face_corbowl, contr=NULL, para=F, data=NULL)
+
+mm1_face_corbowl.stab$summary
+
+m.stab.plot(round(mm1_face_corbowl.stab$summary[, -1], 3))
+```
+--> model stable with regard to the fixed effects
+
+```{r}
+mm1_face_corbowl_output_table <-
+  bind_cols(as.data.frame(summary(mm1_face_corbowl)$coeff),
+            mm1_face_corbowl_drop1,
+            mm1_face_corbowl.ci$ci.estimates) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+    LowerCI = X2.5.,
+    UpperCI = X97.5.,
+    Chi2 = LRT,
+    df = npar,
+    p = `Pr(Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall = 2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm1_face_corbowl_output_table, file = "saves/mm1_face_corbowl_output_table_final.csv")
+```
+
+
+#### Hand - Correct bowl transition
+without control condition due to complete separation issues.
+```{r}
+hand.corbowl.transition.data$z.trial<-as.vector(scale(hand.corbowl.transition.data$trial, center = TRUE, scale=TRUE))
+hand.corbowl.transition.data$z.age<-as.vector(scale(as.numeric(hand.corbowl.transition.data$age), center = TRUE, scale=TRUE))
+hand.corbowl.transition.data$z.session<-as.vector(scale(hand.corbowl.transition.data$session, center = TRUE, scale=TRUE))
+
+hand.corbowl.transition.data$condition <- as.factor(hand.corbowl.transition.data$condition)
+levels(hand.corbowl.transition.data$condition)
+hand.corbowl.transition.data$condition.c1=as.vector(scale(as.numeric(hand.corbowl.transition.data$condition==levels(as.factor(hand.corbowl.transition.data$condition))[2]), center=TRUE, scale= FALSE))
+hand.corbowl.transition.data$condition.c2=as.vector(scale(as.numeric(hand.corbowl.transition.data$condition==levels(as.factor(hand.corbowl.transition.data$condition))[3]), center=TRUE, scale= FALSE))
+hand.corbowl.transition.data$condition.c3=as.vector(scale(as.numeric(hand.corbowl.transition.data$condition==levels(as.factor(hand.corbowl.transition.data$condition))[4]), center=TRUE, scale= FALSE))
+
+hand.corbowl.transition.data$sex<- as.factor(hand.corbowl.transition.data$sex)
+hand.corbowl.transition.data$correct<-as.numeric(hand.corbowl.transition.data$correct)
+
+table(hand.corbowl.transition.data$subject, hand.corbowl.transition.data$session)
+
+
+table(hand.corbowl.transition.data$subject, hand.corbowl.transition.data$transition_binary, hand.corbowl.transition.data$condition)
+
+```
+
+fit model
+```{r}
+mm1_hand_corbowl = glmer(
+  transition_binary ~ condition + z.trial + z.session + z.age + sex +
+    (1 | subject) + (0 + z.trial | subject) +
+    (0 + condition.c1 | subject) + (0 + condition.c2 |
+                                      subject) +
+    (0 + condition.c3 | subject)  +
+    (0 + z.session | subject),
+  data = hand.corbowl.transition.data,
+  family = binomial,
+  control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun =
+                                                                2e5))
+)
+summary(mm1_hand_corbowl)
+drop1(mm1_hand_corbowl, test = "Chisq")
+```
+
+
+```{r}
+mm1_hand_corbowl_null=glmer(transition_binary ~ z.trial+z.session+z.age+sex +
+            (1|subject)+(0+z.trial|subject)+
+            (0+condition.c1|subject)+(0+condition.c2|subject)+ 
+              (0+condition.c3|subject)+
+            (0+z.session|subject),
+             data=hand.corbowl.transition.data, family=binomial, 
+            control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)))
+
+anova(mm1_hand_corbowl, mm1_hand_corbowl_null, test="Chisq")
+
+```
+
+```{r}
+
+mm1_hand_corbowl_drop1 <- drop1(mm1_hand_corbowl, test="Chisq")%>% 
+  filter(!is.na(npar)) %>% 
+  add_row(npar = rep(NA,1),  .before = 1) %>% 
+  add_row(npar = rep(NA,2),  .before = 3)
+```
+
++ Pairwise comparisons  
+```{r echo=FALSE}
+xx=glht(mm1_hand_corbowl, linfct = mcp(condition = "Tukey"))
+
+mm1_hand_corbowl_pc<-summary(xx)$test
+
+mm1_hand_corbowl_pairwise_comp <- cbind(mm1_hand_corbowl_pc$coefficients, mm1_hand_corbowl_pc$sigma, mm1_hand_corbowl_pc$tstat, mm1_hand_corbowl_pc$pvalues)
+pname <- switch(xx$alternativ, 
+                 less = paste("Pr(<", ifelse(xx$df ==0, "z", "t"), ")", sep = ""), 
+                 greater = paste("Pr(>", ifelse(xx$df == 0, "z", "t"), ")", sep = ""), 
+                 two.sided = paste("Pr(>|", ifelse(xx$df == 0, "z", "t"), "|)", sep = ""))                                                                   
+colnames(mm1_hand_corbowl_pairwise_comp) <- c("Estimate", "Std. Error", ifelse(xx$df ==0, "z value", "t value"), pname)
+write.csv(mm1_hand_corbowl_pairwise_comp, file = "saves/mm1_hand_corbowl_pairwise_comp_final.csv")
+```
+
+Check for colinearity
+```{r}
+library(car)
+xx=lm(transition_binary ~ condition+z.trial+z.session+ sex+z.age, data=hand.corbowl.transition.data)
+vif(xx)
+```
+
+```{r}
+mm1_hand_corbowl.ci=boot.glmm.pred(model.res=mm1_hand_corbowl, excl.warnings=F,
+nboots=1000, para=T, n.cores="all-1", resol=1000, level=0.95)
+
+```
+
+relative model complexity
+```{r}
+length(residuals(mm1_hand_corbowl))/
+(length(fixef(mm1_hand_corbowl))+
+nrow(as.data.frame(summary(mm1_hand_corbowl)$varcor)))
+```
+model stability
+```{r evaluate = FALSE}
+
+mm1_hand_corbowl.stab=glmm.model.stab(model.res=mm1_hand_corbowl, contr=NULL, para=F, data=NULL)
+
+mm1_hand_corbowl.stab$summary
+
+m.stab.plot(round(mm1_hand_corbowl.stab$summary[, -1], 3))
+```
+--> model stable with regard to the fixed effects
+
+```{r}
+mm1_hand_corbowl_output_table <-
+  bind_cols(as.data.frame(summary(mm1_hand_corbowl)$coeff),
+            mm1_hand_corbowl_drop1,
+            mm1_hand_corbowl.ci$ci.estimates) %>%
+  dplyr::select(
+    Estimate,
+    SE = `Std. Error`,
+    LowerCI = X2.5.,
+    UpperCI = X97.5.,
+    Chi2 = LRT,
+    df = npar,
+    p = `Pr(Chi)`,
+    z_wald = `z value`,
+    p_wald = `Pr(>|z|)`
+  ) %>% #
+  mutate(across(.cols = c(p), ~ format(round(.x, 3), nsmall = 3))) %>%
+  mutate(across(.cols = c(Estimate:Chi2), ~ format(round(.x, 2), nsmall = 2))) %>%
+  #mutate(across(Chi2:p, ~replace_na(.x, "")))%>%
+  mutate(p = replace(p, p == 0, "<0.001"))
+
+write.csv(mm1_hand_corbowl_output_table, file = "saves/mm1_hand_corbowl_output_table_final.csv")
+```
+
+
+### Latency analysis
+```{r}
+latency.data <- read.csv("data/latency_first_look_into_aoi.csv") %>%
+  filter(aoi3 == "correct bowl") %>%
+  left_join(cb.data)
+```
+* Analysis of latency for the looks into the correct bowl IA
+```{r}
+latency.data$z.trial<-as.vector(scale(latency.data$trial, center = TRUE, scale=TRUE))
+latency.data$z.age<-as.vector(scale(as.numeric(latency.data$age), center = TRUE, scale=TRUE))
+latency.data$z.session<-as.vector(scale(latency.data$session, center = TRUE, scale=TRUE))
+
+latency.data$condition <- as.factor(latency.data$condition)
+levels(latency.data$condition)
+latency.data$condition.c1=as.vector(scale(as.numeric(latency.data$condition==levels(as.factor(latency.data$condition))[2]), center=TRUE, scale= FALSE))
+latency.data$condition.c2=as.vector(scale(as.numeric(latency.data$condition==levels(as.factor(latency.data$condition))[3]), center=TRUE, scale= FALSE))
+latency.data$condition.c3=as.vector(scale(as.numeric(latency.data$condition==levels(as.factor(latency.data$condition))[4]), center=TRUE, scale= FALSE))
+latency.data$condition.c4=as.vector(scale(as.numeric(latency.data$condition==levels(as.factor(latency.data$condition))[5]), center=TRUE, scale= FALSE))
+latency.data$sex<- as.factor(latency.data$sex)
+latency.data$first_look<-as.numeric(latency.data$first_look)
+
+table(latency.data$subject, latency.data$session)
+table(latency.data$subject, latency.data$condition)
+hist(latency.data$first_look)
+hist(sqrt(latency.data$first_look))
+min(latency.data$first_look)
+latency.data$first_look_sqrt <- sqrt(latency.data$first_look)
+```
+
+fit model
+```{r}
+mm1_latency_corbowl = lmer(
+  first_look_sqrt ~ condition + z.trial + z.session + z.age + sex +
+    (1 | subject) + (0 + z.trial | subject) +
+    (0 + condition.c1 | subject) + (0 + condition.c2 |
+                                      subject) +
+    (0 + condition.c3 | subject) + (0 + condition.c4 |
+                                      subject) +
+    (0 + z.session | subject),
+  data = latency.data, REML=FALSE
+  )
+diagnostics.plot(mm1_latency_corbowl)
+summary(mm1_latency_corbowl)
+drop1(mm1_latency_corbowl, test = "Chisq")
+```
+
+
+```{r}
+mm1_latency_corbowl_null = lmer(
+  first_look_sqrt ~  z.trial + z.session + z.age + sex +
+    (1 | subject) + (0 + z.trial | subject) +
+    (0 + condition.c1 | subject) + (0 + condition.c2 |
+                                      subject) +
+    (0 + condition.c3 | subject) + (0 + condition.c4 |
+                                      subject) +
+    (0 + z.session | subject),
+  data = latency.data, REML=FALSE
+  )
+
+anova(mm1_latency_corbowl, mm1_latency_corbowl_null, test="Chisq")
+
+```
+
+
+### Save stuff
+```{r}
+save.image("mobile_et_data_analysis.RData")
+```
+
+### Plot grid
+```{r}
+library(cowplot)
+mobile_et_ostensions_pg<-plot_grid(beh_data_plot, yarbus.signaling.plot, addressing.face.plot, signalling.face.plot, signalling.corr.bowl.plot, choice_look_plot, labels=c("a", "b", "c", "d", "e", "f"), ncol=2)
+mobile_et_ostensions_pg
+ggsave(mobile_et_ostensions_pg, file="graphics/mobile_et_ostensions_pg2.png", width=26, height=30, scale=0.38)
+```
+
