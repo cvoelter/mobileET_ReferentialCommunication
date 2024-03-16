@@ -2,25 +2,34 @@
 Data analysis of "Using mobile eye tracking to study dogs’ understanding of human referential communication""
 
 ## Structure
-|   02_mobileET_ostension_data_analysis.Rmd: Markdown file including the analyses.
-|   README.md
-|   
-+---data: folder containing data files
-|       aoi_transition_frequency_data.csv: data file regarding the frequencies of transitions between areas of interest
-|       latency_first_look_into_aoi.csv: latencies of first look into different areas of interest
-|       mobile_ET_combined_data_20230427.csv: combined eye-tracking and behavioral data
-|       mobile_ET_ostension_counterbalancing_20230201.csv: counterbalancing and behavioral data
-|       mobile_ET_yarbus_agg_data_20230427.csv: the aggregated Yarbus data containing information about the descriptive stats regarding the gaze coordinates for the different interest periods.
-|       mobile_ET_yarbus_raw_data_20230427.csv: the raw Yarbus data containing information about the gaze coordinates of each fixation.
-|
-+---functions: helper functions
-|       
-+---graphics: data visualisations
-|       
-+---saves: output of the analyses
-|       
-\---workspaces: R images of the analyses
 
+- **02_mobileET_ostension_data_analysis.Rmd**: Markdown file including the analyses.
+- **README.md**
+
+### data
+Folder containing data files:
+
+- **aoi_transition_frequency_data.csv**: Data file regarding the frequencies of transitions between areas of interest.
+- **latency_first_look_into_aoi.csv**: Latencies of the first look into different areas of interest.
+- **mobile_ET_combined_data_20230427.csv**: Combined eye-tracking and behavioral data.
+- **mobile_ET_ostension_counterbalancing_20230201.csv**: Counterbalancing and behavioral data.
+- **mobile_ET_yarbus_agg_data_20230427.csv**: The aggregated Yarbus data containing information about the descriptive stats regarding the gaze coordinates for the different interest periods.
+- **mobile_ET_yarbus_raw_data_20230427.csv**: The raw Yarbus data containing information about the gaze coordinates of each fixation.
+
+### functions
+Folder containing helper functions.
+
+### graphics
+Folder containing data visualizations.
+
+### saves
+Folder containing output of the analyses.
+
+### workspaces
+Folder containing R images of the analyses.
+
+
+## Variables description of the data files
 
 ### Variables Description: aoi_transition_frequency_data.csv
 
