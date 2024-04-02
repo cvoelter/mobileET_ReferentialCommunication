@@ -1,6 +1,6 @@
 ---
 title: "MobileET_Ostension_data_analysis"
-author: "Christoph Voelter"
+author: ""
 date: "15/10/2022"
 output: html_document
 ---
