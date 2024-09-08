@@ -59,12 +59,13 @@ We merged the gaze tage data including the tagged fixations (areas of interest) 
 ## Eye-tracking data
 ### Data processing
 #### Read in combined data
+
 ```{r}
 met.data <- read.csv("data/mobile_ET_combined_data_20230427.csv") 
 
 table(met.data$subject, met.data$sex)
 table(met.data$subject, met.data$age)
-
+table(met.data$subject, met.data$experimenter)
 ```
 
 
@@ -131,7 +132,7 @@ signalling.face.data$condition.c3=as.vector(scale(as.numeric(signalling.face.dat
 signalling.face.data$condition.c4=as.vector(scale(as.numeric(signalling.face.data$condition==levels(as.factor(signalling.face.data$condition))[5]), center=TRUE, scale= FALSE))
 signalling.face.data$sex<- as.factor(signalling.face.data$sex)
 
-view(dfSummary(signalling.face.data))
+#view(dfSummary(signalling.face.data))
 ```
 
 
@@ -220,6 +221,30 @@ mm1_signalling.face_table <- bind_cols(as.data.frame(summary(mm1_signalling.face
 write.csv(mm1_signalling.face_table, file = "saves/mm1_signalling.face_table_final.csv")
 ```
 
+#### Signalling - AoI Face - Experimenter
+fit model
+```{r}
+mm1_signalling.face.exp=glmmTMB(prop_fixation_time.scaled ~ 
+                             condition*experimenter+z.trial+z.session+z.age+sex +
+                             (1|subject)+
+                             (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                             (0+z.session|subject) + (0+z.trial|subject), #pruned to convergence issues
+                           data=signalling.face.data, family=beta_family, control=contr)
+
+summary(mm1_signalling.face.exp)
+drop1(mm1_signalling.face.exp, test = "Chisq")
+```
+```{r}
+mm1_signalling.face.exp2=glmmTMB(prop_fixation_time.scaled ~ 
+                             condition+experimenter+z.trial+z.session+z.age+sex +
+                             (1|subject)+
+                             (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                             (0+z.session|subject) + (0+z.trial|subject), #pruned to convergence issues
+                           data=signalling.face.data, family=beta_family, control=contr)
+
+summary(mm1_signalling.face.exp2)
+drop1(mm1_signalling.face.exp2, test = "Chisq")
+```
 
 #### Signalling - AoI Face - Plotting
 
@@ -508,7 +533,7 @@ ggplot(signalling.bowl.agg.data, aes(x=condition, y=mean_lt)) +
 levels(as.factor(met.data$aoi))
 signalling.corr.bowl.data <- met.data %>%
   filter(aoi==correct_bowl , interest_period=="signaling")%>%
-  group_by(subject, session, trial, condition, age, sex)%>%
+  group_by(subject, session, trial, condition, age, sex, experimenter)%>%
   summarise(sum_fix_time=sum(fixation_time), sum_prop_fix_time= sum(prop_fixation_time))
 table(signalling.corr.bowl.data$subject, signalling.corr.bowl.data$condition)
 
@@ -656,6 +681,30 @@ write.csv(mm1_signaling_correct_bowl_table, file = "saves/mm1_signaling_correct_
 ```
 
 
+#### Signalling - AoI correct Bowl - Experimenter impact
+
+fit model
+```{r}
+mm1_signaling_correct_bowl_exp=glmmTMB(sum_prop_fix_time.scaled ~                                    condition*experimenter+z.trial+z.session+z.age+sex +
+                                     (1|subject)+ (0+z.trial|subject)+
+ (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                                     (0+z.session|subject),
+                                   data=signalling.corr.bowl.data, family=beta_family, control=contr)
+
+summary(mm1_signaling_correct_bowl_exp)
+drop1(mm1_signaling_correct_bowl_exp, test="Chisq")
+```
+
+```{r}
+mm1_signaling_correct_bowl_exp2=glmmTMB(sum_prop_fix_time.scaled ~                                    condition + experimenter+z.trial+z.session+z.age+sex +
+                                     (1|subject)+ (0+z.trial|subject)+
+ (0+condition.c1|subject)+(0+condition.c2|subject)+ (0+condition.c3|subject)+(0+condition.c4|subject)+
+                                     (0+z.session|subject),
+                                   data=signalling.corr.bowl.data, family=beta_family, control=contr)
+
+summary(mm1_signaling_correct_bowl_exp2)
+drop1(mm1_signaling_correct_bowl_exp2, test="Chisq")
+```
 
 
 
